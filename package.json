@@ -1,0 +1,25 @@
+{
+  "name": "ravecare90",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24 <25" },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env backend/src/server.js",
+    "db:migrate": "node --env-file-if-exists=.env backend/scripts/migrate.js",
+    "admin": "node --env-file-if-exists=.env backend/scripts/admin.js",
+    "check": "node scripts/check.js",
+    "test": "node --test --test-concurrency=1 backend/test/*.test.js",
+    "test:coverage": "node --experimental-test-coverage --test --test-concurrency=1 --test-coverage-lines=90 --test-coverage-branches=85 --test-coverage-functions=90 --test-coverage-include=backend/src/*.js --test-coverage-exclude=backend/src/server.js backend/test/*.test.js",
+    "verify": "npm run check && npm run test:coverage && npm audit --omit=dev --audit-level=high"
+  },
+  "dependencies": {
+    "@fastify/cookie": "11.1.2",
+    "@fastify/helmet": "13.1.1",
+    "@fastify/rate-limit": "11.2.0",
+    "fastify": "5.12.5",
+    "pg": "8.23.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": { "@electric-sql/pglite": "0.5.8" }
+}
