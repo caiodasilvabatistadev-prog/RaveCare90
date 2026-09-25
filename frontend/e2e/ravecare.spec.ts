@@ -4,10 +4,10 @@ test('carrega a landing page e seus conteúdos principais', async ({ page }) => 
   await page.goto('/')
 
   await expect(
-    page.getByRole('heading', { name: /o seu tratamento não termina na consulta/i }),
+    page.getByRole('heading', { name: /seu cuidado continua depois da consulta/i }),
   ).toBeVisible()
   await expect(page.locator('video')).toHaveCount(3)
-  await expect(page.getByRole('link', { name: /começar agora/i }).first()).toBeVisible()
+  await expect(page.getByRole('link', { name: /quero começar/i }).first()).toBeVisible()
 })
 
 test('frontend alcança o backend e persiste um usuário no banco', async ({ request }) => {
@@ -30,4 +30,3 @@ test('frontend alcança o backend e persiste um usuário no banco', async ({ req
   })
   expect(body).not.toHaveProperty('password')
 })
-
