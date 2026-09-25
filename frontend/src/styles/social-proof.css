@@ -1,0 +1,113 @@
+.testimonials { overflow:hidden; color:#fff; background:radial-gradient(circle at 8% 18%,rgba(164,61,225,.76),transparent 31%),radial-gradient(circle at 92% 80%,rgba(23,200,222,.53),transparent 34%),linear-gradient(130deg,#352078 8%,#7026b9 53%,#456ce2 100%); }
+.resources { background:#fff; }.resources .section-heading--inverse h2,.resources .section-heading--inverse .section-description { color:var(--color-text); }.resources .section-heading--inverse .section-description { color:var(--color-text-muted); }.resources .section-heading--inverse .eyebrow { color:var(--color-primary); }.resources .resource-card { border:1px solid var(--color-line); box-shadow:0 12px 28px rgba(53,32,120,.07); }
+.about,.guidance { background:#fff; }.professional { color:#fff; background:radial-gradient(circle at 13% 82%,rgba(164,61,225,.7),transparent 32%),radial-gradient(circle at 91% 18%,rgba(23,200,222,.5),transparent 28%),linear-gradient(135deg,#352078 5%,#7026b9 57%,#456ce2 100%); }.professional h2,.professional .professional-copy>p:not(.eyebrow),.professional .professional-copy blockquote { color:#fff; }.professional .eyebrow { color:#9cecf3; }.professional .professional-role { color:#9cecf3!important; }.professional .professional-registration { color:#fff!important; background:rgba(255,255,255,.16); }.professional .professional-copy blockquote { border-left-color:#9cecf3; }.professional .professional-copy blockquote svg { color:#9cecf3; }.professional .professional-services span { color:#fff; border-color:rgba(255,255,255,.36); background:rgba(53,32,120,.2); }.professional .professional-services svg { color:#9cecf3; }.professional .button--secondary { color:var(--color-primary-dark); background:#fff; }.professional .professional-portrait { min-height:470px; justify-content:flex-end; border-radius:0; background:transparent; overflow:visible; }.professional .professional-photo-wrap { width:min(100%,390px); height:450px; padding:0; border-radius:0; background:transparent; box-shadow:none; }.professional .professional-photo { border:0; border-radius:0; object-fit:contain; object-position:center bottom; filter:drop-shadow(0 24px 28px rgba(24,11,67,.3)); }.professional .professional-portrait p { margin-top:12px; color:#fff; }
+.hero-person--cutout { inset:12px 15px 0; overflow:visible; border:0; border-radius:0; background:transparent; box-shadow:none; }.hero-person--cutout:after { display:none; }.hero-person--cutout img { object-fit:contain; object-position:center bottom; filter:drop-shadow(0 24px 30px rgba(24,11,67,.35)); }
+.testimonials .section-heading { margin-bottom:38px; }.testimonials .eyebrow { color:#9cecf3; }.testimonials .section-heading h2,.testimonials .section-description { color:#fff; }
+.testimonial-carousel { max-width:1120px; margin-inline:auto; }.testimonial-stage { position:relative; height:470px; overflow:hidden; }.testimonial-panel { position:absolute; top:10px; left:50%; width:min(590px,62vw); height:450px; display:grid; place-items:center; padding:18px; border:1px solid rgba(255,255,255,.46); border-radius:28px; background:linear-gradient(145deg,rgba(255,255,255,.25),rgba(255,255,255,.1)); box-shadow:0 22px 52px rgba(24,11,67,.35); cursor:pointer; opacity:.46; filter:blur(2.5px); transform:translateX(-127%) scale(.72); transition:transform .42s cubic-bezier(.2,.8,.2,1),filter .3s,opacity .3s; }
+.testimonial-panel.is-active { z-index:2; cursor:default; opacity:1; filter:none; transform:translateX(-50%) scale(1); }.testimonial-panel.is-next { z-index:1; transform:translateX(27%) scale(.72); }.testimonial-panel.is-hidden { pointer-events:none; visibility:hidden; }.testimonial-panel:not(.is-active):hover { opacity:.72; filter:blur(1.4px); }
+.testimonial-card { width:100%; height:100%; margin:0; overflow:hidden; border:8px solid #fff; border-radius:19px; background:#efe9f5; box-shadow:0 16px 35px rgba(53,32,120,.14); }.testimonial-card img { display:block; width:100%; height:100%; object-fit:contain; object-position:center; }
+.testimonial-controls { display:flex; align-items:center; justify-content:center; gap:18px; margin:21px 0 14px; }.testimonial-controls button { width:43px; height:43px; display:grid; place-items:center; border:1px solid rgba(255,255,255,.4); border-radius:50%; color:var(--color-primary-dark); background:#fff; cursor:pointer; transition:background .2s,color .2s,transform .2s; }.testimonial-controls button:hover { color:#fff; background:var(--color-violet); transform:translateY(-2px); }.testimonial-controls p { min-width:70px; margin:0; color:#fff; font-size:.89rem; text-align:center; }.testimonial-controls p span { color:#ded2f3; }.testimonial-dots { display:flex; justify-content:center; gap:7px; }.testimonial-dots button { width:7px; height:7px; padding:0; border:0; border-radius:50%; background:rgba(255,255,255,.44); cursor:pointer; }.testimonial-dots button.is-active { width:25px; border-radius:8px; background:#9cecf3; }
+.testimonial-note { display:flex; align-items:flex-start; gap:12px; max-width:780px; margin:24px auto 0; padding:17px 20px; border:1px solid rgba(255,255,255,.3); border-radius:15px; color:#f7f4fc; background:rgba(35,18,79,.32); font-size:.83rem; line-height:1.55; }.testimonial-note p { margin:0; }.testimonial-note svg { flex:0 0 auto; color:#9cecf3; }
+
+.instagram-content { color:#fff; background:#21163b; overflow:hidden; }
+.instagram-content .section-heading { margin-bottom:30px; }.instagram-content .section-heading h2,.instagram-content .section-description { color:#fff; }.instagram-content .eyebrow { color:#9cecf3; }
+.instagram-grid { display:grid; grid-template-columns:1.05fr .95fr; align-items:center; gap:60px; }
+.instagram-button { display:inline-flex; align-items:center; gap:9px; padding:14px 18px; border:1px solid rgba(255,255,255,.35); border-radius:999px; background:rgba(255,255,255,.09); font-size:.9rem; font-weight:700; transition:transform .2s,background .2s; }
+.instagram-button:hover { transform:translateY(-2px); background:rgba(255,255,255,.16); }
+.instagram-reels { display:grid; grid-template-columns:repeat(3,1fr); gap:13px; }
+.reel-card { min-height:250px; display:flex; flex-direction:column; justify-content:space-between; padding:18px; border:1px solid rgba(255,255,255,.2); border-radius:19px; background:linear-gradient(160deg,rgba(164,61,225,.88),rgba(69,108,226,.72)); transition:transform .2s; }
+.reel-card:nth-child(2) { background:linear-gradient(160deg,rgba(23,200,222,.74),rgba(112,38,185,.88)); }.reel-card:nth-child(3) { background:linear-gradient(160deg,rgba(69,108,226,.85),rgba(164,61,225,.8)); }.reel-card:hover { transform:translateY(-5px); }
+.reel-card span { font-size:.62rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; opacity:.82; }.reel-card strong { font:700 1.13rem/1.08 'Manrope'; letter-spacing:-.04em; }
+
+@media (max-width:800px) { .instagram-grid { grid-template-columns:1fr; gap:42px; } }
+@media (max-width:500px) { .testimonial-stage { height:385px; }.testimonial-panel { top:7px; width:82vw; height:370px; padding:10px; border-radius:21px; }.testimonial-panel.is-previous { transform:translateX(-121%) scale(.72); }.testimonial-panel.is-next { transform:translateX(21%) scale(.72); }.testimonial-card { border-width:5px; }.testimonial-note { padding:15px; }.instagram-reels { grid-template-columns:1fr; }.reel-card { min-height:150px; }.professional .professional-portrait { min-height:365px; }.professional .professional-photo-wrap { height:340px; }.professional .professional-portrait p { margin-top:4px; } }
+
+/* Alternância visual: claro e paleta da marca em sequência. */
+.hero { min-height:700px; }.hero-visual { height:590px; align-self:end; }.hero-sun { z-index:0; width:470px; height:470px; right:-10px; top:34px; }.hero-person--cutout { z-index:2; inset:0 0 0 20px; overflow:visible; border:0; border-radius:0; background:transparent; box-shadow:none; }.hero-person--cutout:after { display:none; }.hero-person--cutout img { object-fit:contain; object-position:center bottom; filter:drop-shadow(0 24px 30px rgba(24,11,67,.35)); }.hero-doctor-info { z-index:4; bottom:12px; left:0; }
+.resources { background:#fff; }.resources .section-heading--inverse h2,.resources .section-heading--inverse .section-description { color:var(--color-text); }.resources .section-heading--inverse .section-description { color:var(--color-text-muted); }.resources .section-heading--inverse .eyebrow { color:var(--color-primary); }.resources .resource-card { border:1px solid var(--color-line); box-shadow:0 12px 28px rgba(53,32,120,.07); }
+.professional { color:#fff; background:radial-gradient(circle at 13% 82%,rgba(164,61,225,.7),transparent 32%),radial-gradient(circle at 91% 18%,rgba(23,200,222,.5),transparent 28%),linear-gradient(135deg,#352078 5%,#7026b9 57%,#456ce2 100%); }.professional h2,.professional .professional-copy>p:not(.eyebrow),.professional .professional-copy blockquote { color:#fff; }.professional .eyebrow { color:#9cecf3; }.professional .professional-role { color:#9cecf3!important; }.professional .professional-registration { color:#fff!important; background:rgba(255,255,255,.16); }.professional .professional-copy blockquote { border-left-color:#9cecf3; }.professional .professional-copy blockquote svg { color:#9cecf3; }.professional .professional-services span { color:#fff; border-color:rgba(255,255,255,.36); background:rgba(53,32,120,.2); }.professional .professional-services svg { color:#9cecf3; }.professional .button--secondary { color:var(--color-primary-dark); background:#fff; }.professional .professional-portrait { position:relative; min-height:470px; justify-content:center; border-radius:34px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.22); overflow:hidden; }.professional-symbol { z-index:2; display:grid; place-items:center; width:218px; height:218px; border:1px solid rgba(255,255,255,.55); border-radius:50%; color:#fff; background:rgba(53,32,120,.21); box-shadow:0 20px 42px rgba(24,11,67,.22); }.professional-orbit { position:absolute; border:1px solid rgba(255,255,255,.26); border-radius:50%; }.professional-orbit--one { width:410px; height:410px; }.professional-orbit--two { width:280px; height:280px; border-color:rgba(156,236,243,.58); }.professional .professional-portrait p { z-index:2; display:flex; align-items:center; gap:7px; margin-top:26px; color:#fff; }
+.about { color:#fff; background:linear-gradient(135deg,#7026b9 0%,#a43de1 54%,#456ce2 100%); }.about .eyebrow,.about .about-content>p:not(.eyebrow),.about .check-list svg { color:#c9f7fb; }.about .about-content h3,.about .check-list { color:#fff; }.about .about-art { background:rgba(53,32,120,.2); border:1px solid rgba(255,255,255,.24); }
+.testimonials { color:var(--color-text); background:#fff; }.testimonials .eyebrow { color:var(--color-primary); }.testimonials .section-heading h2 { color:var(--color-text); }.testimonials .section-description { color:var(--color-text-muted); }.testimonial-panel { border-color:rgba(112,38,185,.22); background:linear-gradient(145deg,#f8f5fc,#ece3f9); box-shadow:0 22px 52px rgba(53,32,120,.18); }.testimonial-controls p { color:var(--color-primary-dark); }.testimonial-controls p span { color:var(--color-text-muted); }.testimonial-dots button { background:#d0c0e7; }.testimonial-dots button.is-active { background:var(--color-primary); }.testimonial-note { border-color:var(--color-line); color:var(--color-text-muted); background:var(--color-surface); }.testimonial-note svg { color:var(--color-primary); }
+.guidance { color:#fff; background:#352078; }.guidance .section-heading h2,.guidance .section-heading .section-description { color:#fff; }.guidance .eyebrow { color:#9cecf3; }.guidance .article-card { border-color:rgba(255,255,255,.15); box-shadow:none; background:rgba(255,255,255,.96); }
+.instagram-content { color:var(--color-text); background:#fff; }.instagram-content .section-heading h2 { color:var(--color-text); }.instagram-content .section-description { color:var(--color-text-muted); }.instagram-content .eyebrow { color:var(--color-primary); }.instagram-button { border-color:var(--color-line); background:var(--color-surface); color:var(--color-primary-dark); }.instagram-button:hover { background:#eee4fa; }
+@media (max-width:800px) { .hero { min-height:auto; }.hero-visual { height:520px; }.hero-sun { width:390px; height:390px; }.professional .professional-portrait { min-height:390px; }.professional-orbit--one { width:340px; height:340px; } }
+@media (max-width:500px) { .hero-visual { width:min(100%,350px); height:440px; }.hero-sun { width:325px; height:325px; right:-15px; top:26px; }.hero-person--cutout { left:0; }.hero-doctor-info { left:0; bottom:0; min-width:min(100%,295px); }.professional .professional-portrait { min-height:340px; }.professional-symbol { width:170px; height:170px; }.professional-symbol svg { width:82px; height:82px; }.professional-orbit--one { width:300px; height:300px; }.professional-orbit--two { width:215px; height:215px; } }
+
+/* A imagem é livre: o círculo é exclusivamente um elemento de fundo. */
+.hero-visual .hero-person.hero-person--cutout { z-index:2; inset:0 0 0 20px; overflow:visible; clip-path:none; border:0; border-radius:0; background:transparent; box-shadow:none; }
+.hero-visual .hero-person.hero-person--cutout::after { display:none; }
+.hero-visual .hero-person.hero-person--cutout img { width:100%; height:100%; display:block; object-fit:contain; object-position:center bottom; border:0; border-radius:0; clip-path:none; }
+@media (max-width:500px) { .hero-visual .hero-person.hero-person--cutout { left:0; } }
+
+/* A base da médica coincide exatamente com o fim da hero. */
+.hero#inicio { padding-bottom:0; }
+.hero#inicio .hero-grid { align-items:stretch; }
+.hero#inicio .hero-visual { align-self:stretch; height:auto; min-height:590px; }
+.hero#inicio .hero-person.hero-person--cutout { bottom:0; }
+@media (max-width:800px) { .hero#inicio { padding-bottom:0; }.hero#inicio .hero-visual { height:auto; min-height:520px; } }
+@media (max-width:500px) { .hero#inicio .hero-visual { height:auto; min-height:440px; } }
+
+/* Tratamento: somente a área externa é branca; os cards mantêm a paleta. */
+section.resources#acompanhamento { background:#fff; }
+section.resources#acompanhamento .section-heading--inverse h2 { color:var(--color-text); }
+section.resources#acompanhamento .section-heading--inverse .section-description { color:var(--color-text-muted); }
+section.resources#acompanhamento .section-heading--inverse .eyebrow { color:var(--color-primary); }
+
+/* Como funciona: bloco colorido para contrastar com o tratamento branco. */
+section.about#como-funciona { color:#fff; background:linear-gradient(135deg,#352078 0%,#7026b9 46%,#456ce2 100%); }
+section.about#como-funciona .eyebrow,
+section.about#como-funciona .about-content>p:not(.eyebrow),
+section.about#como-funciona .check-list svg { color:#c9f7fb; }
+section.about#como-funciona .section-heading h2,
+section.about#como-funciona .about-content h3,
+section.about#como-funciona .check-list { color:#fff; }
+section.about#como-funciona .about-art { color:#fff; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.26); }
+
+/* Conteúdos: borda idêntica nos três cards. */
+.instagram-content .instagram-reels .reel-card,
+.instagram-content .instagram-reels .reel-card:nth-child(2),
+.instagram-content .instagram-reels .reel-card:nth-child(3) { border:1px solid rgba(53,32,120,.22); border-radius:19px; outline-offset:3px; }
+.instagram-content .instagram-grid { grid-template-columns:1fr; gap:44px; }
+.instagram-content .instagram-reels { grid-template-columns:repeat(auto-fit,minmax(326px,1fr)); align-items:start; }
+.instagram-content .instagram-reels .reel-card--embed { min-height:520px; padding:0; overflow:hidden; background:#fff; }
+.instagram-content .instagram-reels .reel-card--embed iframe { width:100%!important; max-width:100%!important; min-width:0!important; height:520px!important; display:block; border:0; background:#fff; }
+.instagram-content .instagram-reels .reel-card--embed .instagram-media { width:100%!important; min-width:0!important; max-width:none!important; min-height:520px; display:grid; place-items:center; margin:0!important; padding:0!important; border:0!important; background:linear-gradient(145deg,#7026b9,#456ce2); }
+.instagram-content .instagram-reels .reel-card--embed .instagram-media>a { min-height:520px; width:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; color:#fff; font-weight:800; }
+.instagram-content .instagram-reels .reel-card--embed:hover { transform:none; }
+@media (max-width:500px) { .instagram-content .instagram-reels { grid-template-columns:1fr; }.instagram-content .instagram-reels .reel-card--embed,.instagram-content .instagram-reels .reel-card--embed iframe,.instagram-content .instagram-reels .reel-card--embed .instagram-media,.instagram-content .instagram-reels .reel-card--embed .instagram-media>a { min-height:470px; height:470px!important; } }
+.instagram-content .instagram-reels .reel-card--video-link { min-height:340px; }
+.instagram-content .instagram-reels .reel-card--video-link small { display:flex; align-items:center; gap:5px; font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.06em; opacity:.86; }
+.instagram-content .instagram-reels .reel-card--native { min-height:0; padding:0; overflow:hidden; color:var(--color-text); background:#fff; }
+.instagram-content .instagram-reels .reel-card--native:hover { transform:none; }
+.instagram-content .instagram-reels .reel-card--native video { width:100%; aspect-ratio:9/16; display:block; object-fit:cover; background:#21163b; }
+.instagram-content .native-video-caption { display:flex; flex-direction:column; gap:5px; padding:16px 18px 19px; }
+.instagram-content .native-video-caption span { color:var(--color-primary); }
+.instagram-content .native-video-caption strong { color:var(--color-text); font:700 1rem/1.2 'Manrope'; }
+
+/* Conteúdo: repete o gradiente colorido da seção Como funciona. */
+section.guidance#conteudo { color:#fff; background:linear-gradient(135deg,#352078 0%,#7026b9 46%,#456ce2 100%); }
+section.guidance#conteudo .section-heading h2,
+section.guidance#conteudo .section-heading .section-description { color:#fff; }
+section.guidance#conteudo .eyebrow { color:#9cecf3; }
+section.guidance#conteudo .article-card { color:var(--color-text); border-color:rgba(255,255,255,.22); background:rgba(255,255,255,.96); box-shadow:0 16px 34px rgba(35,18,79,.18); }
+
+/* Instagram: ícone flat e interação com a paleta da marca. */
+.instagram-content .instagram-button .instagram-flat-icon { fill:none; stroke:currentColor; stroke-width:2; }
+.instagram-content .instagram-button .instagram-flat-icon__dot { fill:currentColor; stroke:none; }
+.instagram-content .instagram-button:hover,
+.instagram-content .instagram-button:focus-visible { color:#fff; border-color:transparent; background:linear-gradient(135deg,#7026b9,#a43de1 46%,#456ce2 78%,#17c8de); box-shadow:0 12px 26px rgba(83,40,158,.24); transform:translateY(-2px); }
+.instagram-content .instagram-button:hover svg,
+.instagram-content .instagram-button:focus-visible svg { color:#fff; }
+.instagram-content .instagram-button:focus-visible { outline:3px solid rgba(23,200,222,.34); outline-offset:3px; }
+
+/* Retrato profissional: uma foto distinta da imagem utilizada na hero. */
+.professional .professional-portrait.professional-portrait--photo { min-height:470px; justify-content:center; padding:28px; border-radius:34px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.22); overflow:hidden; }
+.professional .professional-profile-image { position:relative; z-index:2; width:100%; height:380px; display:block; object-fit:cover; object-position:center 28%; border:1px solid rgba(255,255,255,.52); border-radius:26px; box-shadow:0 22px 44px rgba(24,11,67,.26); }
+.professional .professional-portrait.professional-portrait--photo p { position:relative; z-index:2; margin:18px 0 0; }
+@media (max-width:500px) { .professional .professional-portrait.professional-portrait--photo { min-height:390px; padding:18px; }.professional .professional-profile-image { height:310px; border-radius:21px; } }
+
+/* Ajuste pontual: hero e tratamento. */
+.hero { padding-bottom:0; }.hero-grid { align-items:stretch; }.hero-copy { align-self:center; padding-bottom:70px; }.hero-visual { align-self:stretch; height:auto; min-height:590px; }.hero-sun { top:auto; bottom:42px; }.hero-person--cutout { inset:0 0 0 20px; }.hero-doctor-info { bottom:20px; }
+.resources .resource-card { color:#fff; border:1px solid rgba(255,255,255,.28); box-shadow:0 14px 30px rgba(53,32,120,.15); background:linear-gradient(145deg,#7026b9,#456ce2); }.resources .resource-card:nth-child(2) { background:linear-gradient(145deg,#a43de1,#7026b9); }.resources .resource-card:nth-child(3) { background:linear-gradient(145deg,#456ce2,#17c8de); }.resources .resource-card h3,.resources .resource-card p { color:#fff; }.resources .resource-card svg { color:#c9f7fb; }
+@media (max-width:800px) { .hero-copy { padding-bottom:0; }.hero-visual { min-height:520px; }.hero-doctor-info { bottom:12px; } }
+@media (max-width:500px) { .hero-visual { min-height:440px; }.hero-doctor-info { bottom:8px; } }
