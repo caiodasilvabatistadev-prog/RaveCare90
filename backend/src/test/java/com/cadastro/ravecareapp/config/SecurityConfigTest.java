@@ -27,4 +27,15 @@ class SecurityConfigTest {
         mockMvc.perform(get("/api/v1/users"))
                 .andExpect(status().isForbidden());
     }
+
+    @Test
+    void shouldAllowPublicLandingPageResources() throws Exception {
+        mockMvc.perform(get("/index.html"))
+                .andExpect(result -> {
+                    int responseStatus = result.getResponse().getStatus();
+                    if (responseStatus == 401 || responseStatus == 403) {
+                        throw new AssertionError("Public landing page was blocked by security");
+                    }
+                });
+    }
 }

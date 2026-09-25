@@ -27,20 +27,15 @@ O workflow de CI repete essas validações e executa o E2E contra os três servi
 
 ## Railway
 
-Crie três serviços no mesmo projeto:
+No plano com limite reduzido, use dois serviços no mesmo projeto:
 
 - PostgreSQL gerenciado, sem domínio público.
-- `backend`, conectado a este repositório com Root Directory `/backend` e Config File `/backend/railway.toml`.
-- `frontend`, conectado a este repositório com Root Directory `/frontend` e Config File `/frontend/railway.toml`.
+- Serviço web conectado à raiz deste repositório. O `Dockerfile` da raiz compila o React e o inclui no Spring Boot.
 
-Variáveis do backend:
+Variáveis do serviço web:
 
 - `DB_URL=jdbc:postgresql://${{Postgres.PGHOST}}:${{Postgres.PGPORT}}/${{Postgres.PGDATABASE}}`
 - `DB_USERNAME=${{Postgres.PGUSER}}`
 - `DB_PASSWORD=${{Postgres.PGPASSWORD}}`
 
-Variável do frontend:
-
-- `BACKEND_HOST=${{backend.RAILWAY_PRIVATE_DOMAIN}}:${{backend.PORT}}`
-
-Somente o frontend precisa de domínio público. Backend e banco permanecem na rede privada do projeto.
+Somente o serviço web recebe domínio público. O banco permanece na rede privada do projeto.
