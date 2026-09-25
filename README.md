@@ -24,3 +24,23 @@ O arquivo `.env` não é versionado. O PostgreSQL não publica porta para a máq
 - E2E: com a composição ativa, `npm run test:e2e` dentro de `frontend/`.
 
 O workflow de CI repete essas validações e executa o E2E contra os três serviços em contêineres.
+
+## Railway
+
+Crie três serviços no mesmo projeto:
+
+- PostgreSQL gerenciado, sem domínio público.
+- `backend`, conectado a este repositório com Root Directory `/backend` e Config File `/backend/railway.toml`.
+- `frontend`, conectado a este repositório com Root Directory `/frontend` e Config File `/frontend/railway.toml`.
+
+Variáveis do backend:
+
+- `DB_URL=jdbc:postgresql://${{Postgres.PGHOST}}:${{Postgres.PGPORT}}/${{Postgres.PGDATABASE}}`
+- `DB_USERNAME=${{Postgres.PGUSER}}`
+- `DB_PASSWORD=${{Postgres.PGPASSWORD}}`
+
+Variável do frontend:
+
+- `BACKEND_HOST=${{backend.RAILWAY_PRIVATE_DOMAIN}}:${{backend.PORT}}`
+
+Somente o frontend precisa de domínio público. Backend e banco permanecem na rede privada do projeto.
