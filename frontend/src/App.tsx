@@ -1,3 +1,5 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+
 import { Header } from './components/Header'
 import { About } from './sections/About'
 import { FinalCta } from './sections/FinalCta'
@@ -9,12 +11,15 @@ import { Resources } from './sections/Resources'
 import { Guidance } from './sections/Guidance'
 import { InstagramContent } from './sections/InstagramContent'
 import { Testimonials } from './sections/Testimonials'
+import { Login } from './pages/Login'
+import { Register } from './pages/Register'
 import './styles/social-proof.css'
 
-export default function App() {
+function LandingPage() {
   return (
     <>
       <Header />
+
       <main>
         <Hero />
         <Resources />
@@ -26,7 +31,20 @@ export default function App() {
         <InstagramContent />
         <FinalCta />
       </main>
+
       <Footer />
     </>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/cadastro" element={<Register />} />
+      </Routes>
+    </BrowserRouter>
   )
 }

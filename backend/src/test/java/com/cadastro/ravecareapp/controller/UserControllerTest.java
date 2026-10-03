@@ -1,6 +1,7 @@
 package com.cadastro.ravecareapp.controller;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import com.cadastro.ravecareapp.dto.request.CreateUserRequest;
+import com.cadastro.ravecareapp.config.JwtService;
 import com.cadastro.ravecareapp.dto.response.UserResponse;
 import com.cadastro.ravecareapp.enums.UserRole;
 import com.cadastro.ravecareapp.service.UserService;
@@ -36,6 +37,9 @@ class UserControllerTest {
 
     @MockitoBean
     private UserService userService;
+
+    @MockitoBean
+    private JwtService jwtService;
 
     @Test
     void shouldCreateUser() throws Exception {

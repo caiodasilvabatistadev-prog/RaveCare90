@@ -1,6 +1,7 @@
 package com.cadastro.ravecareapp.config;
 
 import com.cadastro.ravecareapp.controller.UserController;
+import com.cadastro.ravecareapp.config.JwtService;
 import com.cadastro.ravecareapp.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ class SecurityConfigTest {
 
     @MockitoBean
     private UserService userService;
+
+    @MockitoBean
+    private JwtService jwtService;
 
     @Test
     void shouldDenyUserDirectoryWithoutAuthentication() throws Exception {

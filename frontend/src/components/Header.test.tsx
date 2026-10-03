@@ -1,12 +1,24 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
+import { MemoryRouter } from 'react-router-dom'
+import { AuthProvider } from '../auth/AuthContext'
 import { Header } from './Header'
+
+function renderHeader() {
+  return render(
+    <MemoryRouter>
+      <AuthProvider>
+        <Header />
+      </AuthProvider>
+    </MemoryRouter>,
+  )
+}
 
 describe('Header', () => {
   it('abre e fecha a navegação móvel', async () => {
     const user = userEvent.setup()
-    render(<Header />)
+    renderHeader()
     const toggle = screen.getByRole('button', { name: 'Abrir navegação' })
     const navigation = screen.getByRole('navigation', { name: 'Navegação principal' })
     expect(toggle).toHaveAttribute('aria-expanded', 'false')
@@ -19,10 +31,29 @@ describe('Header', () => {
   })
 
   it('exibe os principais caminhos da página', () => {
-    render(<Header />)
+    renderHeader()
     expect(screen.getByRole('link', { name: 'Tratamento' })).toHaveAttribute('href', '#acompanhamento')
     expect(screen.getByRole('link', { name: 'Cannabis medicinal' })).toHaveAttribute('href', '#conteudo')
     expect(screen.getByRole('link', { name: 'Depoimentos' })).toHaveAttribute('href', '#depoimentos')
     expect(screen.getByRole('link', { name: 'Quero conversar' })).toHaveAttribute('href', '#comece')
+  })
+
+  it('mostra a sessão e permite sair na home', async () => {
+    localStorage.setItem('ravecare_token', 'token-de-teste')
+    localStorage.setItem('ravecare_user', JSON.stringify({
+      id: '1',
+      name: 'Ana Silva',
+      email: 'ana@example.com',
+      role: 'PATIENT',
+      active: true,
+    }))
+
+    const user = userEvent.setup()
+    renderHeader()
+
+    expect(screen.getByText('Olá, Ana')).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: 'Sair' }))
+    expect(screen.getByRole('link', { name: 'Entrar' })).toBeInTheDocument()
+    expect(localStorage.getItem('ravecare_token')).toBeNull()
   })
 })
