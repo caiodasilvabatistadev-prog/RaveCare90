@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -32,6 +33,9 @@ class UserServiceTest {
     @Mock
     private PasswordEncoder passwordEncoder;
 
+    @Mock
+    private EmailVerificationService emailVerificationService;
+
     @InjectMocks
     private UserService userService;
 
@@ -50,6 +54,9 @@ class UserServiceTest {
                 "12345678"
         );
 
+        ArgumentCaptor<User> savedUser =
+                ArgumentCaptor.forClass(User.class);
+
         when(userRepository.existsByEmailIgnoreCase("vinicius@example.com"))
                 .thenReturn(false);
 
@@ -65,10 +72,13 @@ class UserServiceTest {
         assertEquals("Vinicius", response.name());
         assertEquals("vinicius@example.com", response.email());
         assertEquals(UserRole.PATIENT, response.role());
-        assertTrue(response.active());
+        assertFalse(response.active());
 
         verify(passwordEncoder).encode("12345678");
-        verify(userRepository).save(any(User.class));
+        verify(userRepository).save(savedUser.capture());
+        verify(emailVerificationService).sendFor(savedUser.getValue());
+
+        assertFalse(savedUser.getValue().isEmailVerified());
     }
 
     @Test

@@ -5,6 +5,8 @@ import com.cadastro.ravecareapp.config.JwtService;
 import com.cadastro.ravecareapp.dto.response.UserResponse;
 import com.cadastro.ravecareapp.enums.UserRole;
 import com.cadastro.ravecareapp.service.UserService;
+import com.cadastro.ravecareapp.service.RegistrationRateLimiter;
+import com.cadastro.ravecareapp.exception.RateLimitExceededException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.doThrow;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -39,6 +42,9 @@ class UserControllerTest {
     private UserService userService;
 
     @MockitoBean
+    private RegistrationRateLimiter registrationRateLimiter;
+
+    @MockitoBean
     private JwtService jwtService;
 
     @Test
@@ -56,7 +62,7 @@ class UserControllerTest {
                 "Vinicius",
                 "vinicius@example.com",
                 UserRole.PATIENT,
-                true,
+                false,
                 LocalDateTime.now(),
                 LocalDateTime.now()
         );
@@ -72,7 +78,7 @@ class UserControllerTest {
                 .andExpect(jsonPath("$.name").value("Vinicius"))
                 .andExpect(jsonPath("$.email").value("vinicius@example.com"))
                 .andExpect(jsonPath("$.role").value("PATIENT"))
-                .andExpect(jsonPath("$.active").value(true))
+                .andExpect(jsonPath("$.active").value(false))
                 .andExpect(jsonPath("$.password").doesNotExist());
     }
 
@@ -132,5 +138,25 @@ class UserControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(invalidRequest))
                 .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void shouldRejectTooManyRegistrationAttempts() throws Exception {
+        CreateUserRequest request = new CreateUserRequest(
+                "Vinicius", "vinicius@example.com", "12345678"
+        );
+
+        doThrow(new RateLimitExceededException())
+                .when(registrationRateLimiter)
+                .check("127.0.0.1");
+
+        mockMvc.perform(post("/api/v1/users")
+                        .with(servletRequest -> {
+                            servletRequest.setRemoteAddr("127.0.0.1");
+                            return servletRequest;
+                        })
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+                .andExpect(status().isTooManyRequests());
     }
 }

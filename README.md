@@ -15,7 +15,7 @@ Landing page e API para acompanhamento de tratamentos com cannabis medicinal.
 3. Execute `docker compose up -d --build --wait`.
 4. Abra `http://localhost:8088`.
 
-O arquivo `.env` não é versionado. O PostgreSQL não publica porta para a máquina e só pode ser acessado pela rede interna da composição.
+O arquivo `.env` não é versionado. O PostgreSQL não publica porta para a máquina e só pode ser acessado pela rede interna da composição. A composição também inclui o Mailpit, um servidor de e-mail somente para desenvolvimento e testes; ele não envia mensagens para endereços reais.
 
 ## Testes
 
@@ -39,3 +39,5 @@ Variáveis do serviço web:
 - `DB_PASSWORD=${{Postgres.PGPASSWORD}}`
 
 Somente o serviço web recebe domínio público. O banco permanece na rede privada do projeto.
+
+Além das variáveis de banco, configure no serviço web: `JWT_SECRET`, `GOOGLE_CLIENT_ID`, `APP_PUBLIC_URL`, `APP_CORS_ALLOWED_ORIGINS`, `MAIL_HOST`, `MAIL_PORT`, `MAIL_USERNAME`, `MAIL_PASSWORD`, `MAIL_SMTP_AUTH` e `MAIL_SMTP_STARTTLS_ENABLE`. Nunca copie valores reais para o Git.

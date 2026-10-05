@@ -19,13 +19,16 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final EmailVerificationService emailVerificationService;
 
     public UserService(
             UserRepository userRepository,
-            PasswordEncoder passwordEncoder
+            PasswordEncoder passwordEncoder,
+            EmailVerificationService emailVerificationService
     ) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.emailVerificationService = emailVerificationService;
     }
 
     @Transactional
@@ -44,7 +47,9 @@ public class UserService {
                 UserRole.PATIENT
         );
 
-        return toResponse(userRepository.save(user));
+        User savedUser = userRepository.save(user);
+        emailVerificationService.sendFor(savedUser);
+        return toResponse(savedUser);
     }
 
     @Transactional(readOnly = true)

@@ -3,6 +3,7 @@ package com.cadastro.ravecareapp.config;
 import com.cadastro.ravecareapp.controller.UserController;
 import com.cadastro.ravecareapp.config.JwtService;
 import com.cadastro.ravecareapp.service.UserService;
+import com.cadastro.ravecareapp.service.RegistrationRateLimiter;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -22,6 +23,9 @@ class SecurityConfigTest {
 
     @MockitoBean
     private UserService userService;
+
+    @MockitoBean
+    private RegistrationRateLimiter registrationRateLimiter;
 
     @MockitoBean
     private JwtService jwtService;

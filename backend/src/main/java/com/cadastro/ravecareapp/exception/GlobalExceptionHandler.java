@@ -28,6 +28,15 @@ public class GlobalExceptionHandler {
         return response(HttpStatus.BAD_REQUEST, "Não foi possível concluir a solicitação.", request);
     }
 
+    @ExceptionHandler(RateLimitExceededException.class)
+    ResponseEntity<ApiErrorResponse> handleRateLimit(HttpServletRequest request) {
+        return response(
+                HttpStatus.TOO_MANY_REQUESTS,
+                "Tente novamente mais tarde.",
+                request
+        );
+    }
+
     @ExceptionHandler(Exception.class)
     ResponseEntity<ApiErrorResponse> handleUnexpected(HttpServletRequest request) {
         return response(HttpStatus.INTERNAL_SERVER_ERROR, "Ocorreu um erro interno.", request);

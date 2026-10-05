@@ -30,7 +30,8 @@ class UserTest {
         assertEquals("vinicius@example.com", user.getEmail());
         assertEquals("password", user.getPassword());
         assertEquals(UserRole.PATIENT, user.getRole());
-        assertTrue(user.isActive());
+        assertFalse(user.isActive());
+        assertFalse(user.isEmailVerified());
     }
 
     @Test
@@ -47,12 +48,14 @@ class UserTest {
         user.setPassword("new-password");
         user.setRole(UserRole.DOCTOR);
         user.setActive(false);
+        user.setEmailVerified(true);
 
         assertEquals("Vinicius Mangueira", user.getName());
         assertEquals("new@example.com", user.getEmail());
         assertEquals("new-password", user.getPassword());
         assertEquals(UserRole.DOCTOR, user.getRole());
         assertFalse(user.isActive());
+        assertTrue(user.isEmailVerified());
     }
 
     @Test

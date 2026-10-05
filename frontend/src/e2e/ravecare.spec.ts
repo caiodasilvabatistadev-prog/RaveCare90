@@ -26,7 +26,7 @@ test('frontend alcança o backend e persiste um usuário no banco', async ({ req
     name: 'Paciente E2E',
     email,
     role: 'PATIENT',
-    active: true,
+    active: false,
   })
   expect(body).not.toHaveProperty('password')
 })

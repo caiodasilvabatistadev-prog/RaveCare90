@@ -37,7 +37,10 @@ public class User {
     private UserRole role;
 
     @Column(nullable = false)
-    private boolean active = true;
+    private boolean active = false;
+
+    @Column(name = "email_verified", nullable = false)
+    private boolean emailVerified = false;
 
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
@@ -98,6 +101,10 @@ public class User {
         return active;
     }
 
+    public boolean isEmailVerified() {
+        return emailVerified;
+    }
+
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -124,5 +131,9 @@ public class User {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public void setEmailVerified(boolean emailVerified) {
+        this.emailVerified = emailVerified;
     }
 }

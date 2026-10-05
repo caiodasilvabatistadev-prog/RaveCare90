@@ -9,7 +9,9 @@ COPY src src
 RUN ./mvnw -B -q package -DskipTests
 
 FROM eclipse-temurin:17-jre-alpine
-RUN addgroup -S ravecare && adduser -S ravecare -G ravecare
+RUN apk add --no-cache wget \
+    && addgroup -S ravecare \
+    && adduser -S ravecare -G ravecare
 WORKDIR /app
 
 COPY --from=build /workspace/target/*.jar app.jar

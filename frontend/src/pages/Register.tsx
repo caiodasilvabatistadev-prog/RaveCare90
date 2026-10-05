@@ -19,7 +19,7 @@ export function Register() {
   const [error, setError] = useState('')
 
   const apiUrl =
-    import.meta.env.VITE_API_URL || 'http://localhost:8081'
+    import.meta.env.VITE_API_URL ?? 'http://localhost:8081'
 
   async function handleRegister(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()

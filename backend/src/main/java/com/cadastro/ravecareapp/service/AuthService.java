@@ -85,6 +85,9 @@ public class AuthService {
                 UserRole.PATIENT
         );
 
+        user.setEmailVerified(true);
+        user.setActive(true);
+
         return users.save(user);
     }
 

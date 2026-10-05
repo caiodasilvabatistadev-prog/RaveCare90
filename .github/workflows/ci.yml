@@ -52,6 +52,7 @@ jobs:
       POSTGRES_DB: ravecare_ci
       POSTGRES_USER: ravecare_ci
       POSTGRES_PASSWORD: ci-only-not-a-production-secret
+      JWT_SECRET: ci-only-secret-with-at-least-thirty-two-characters
       APP_PORT: 8088
     steps:
       - uses: actions/checkout@v5
