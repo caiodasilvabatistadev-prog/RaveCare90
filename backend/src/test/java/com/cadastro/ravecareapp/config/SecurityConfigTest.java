@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.UUID;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -33,6 +35,9 @@ class SecurityConfigTest {
     @Test
     void shouldDenyUserDirectoryWithoutAuthentication() throws Exception {
         mockMvc.perform(get("/api/v1/users"))
+                .andExpect(status().isForbidden());
+
+        mockMvc.perform(get("/api/v1/users/{id}", UUID.randomUUID()))
                 .andExpect(status().isForbidden());
     }
 

@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
+import { ConfirmEmail } from './pages/ConfirmEmail'
 import { Header } from './components/Header'
 import { About } from './sections/About'
 import { FinalCta } from './sections/FinalCta'
@@ -38,13 +38,14 @@ function LandingPage() {
 }
 
 export default function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/cadastro" element={<Register />} />
-      </Routes>
-    </BrowserRouter>
-  )
-}
+ return (
+   <BrowserRouter>
+     <Routes>
+       <Route path="/" element={<LandingPage />} />
+       <Route path="/login" element={<Login />} />
+       <Route path="/cadastro" element={<Register />} />
+       <Route path="/confirmar-email" element={<ConfirmEmail />} />
+     </Routes>
+   </BrowserRouter>
+ )
+ }

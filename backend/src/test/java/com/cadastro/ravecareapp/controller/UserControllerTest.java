@@ -16,7 +16,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -83,45 +82,14 @@ class UserControllerTest {
     }
 
     @Test
-    void shouldFindUserById() throws Exception {
+    void shouldNotExposeUserListingEndpoints() throws Exception {
         UUID id = UUID.randomUUID();
 
-        UserResponse response = new UserResponse(
-                id,
-                "Vinicius",
-                "vinicius@example.com",
-                UserRole.PATIENT,
-                true,
-                LocalDateTime.now(),
-                LocalDateTime.now()
-        );
-
-        when(userService.findById(id)).thenReturn(response);
-
         mockMvc.perform(get("/api/v1/users/{id}", id))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(id.toString()))
-                .andExpect(jsonPath("$.email").value("vinicius@example.com"));
-    }
-
-    @Test
-    void shouldFindAllUsers() throws Exception {
-        UserResponse response = new UserResponse(
-                UUID.randomUUID(),
-                "Vinicius",
-                "vinicius@example.com",
-                UserRole.PATIENT,
-                true,
-                LocalDateTime.now(),
-                LocalDateTime.now()
-        );
-
-        when(userService.findAll()).thenReturn(List.of(response));
+                .andExpect(status().isNotFound());
 
         mockMvc.perform(get("/api/v1/users"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].name").value("Vinicius"))
-                .andExpect(jsonPath("$[0].email").value("vinicius@example.com"));
+                .andExpect(status().isMethodNotAllowed());
     }
 
     @Test

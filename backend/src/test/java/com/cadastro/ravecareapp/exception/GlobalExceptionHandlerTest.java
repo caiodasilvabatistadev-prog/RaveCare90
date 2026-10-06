@@ -41,6 +41,18 @@ class GlobalExceptionHandlerTest {
     }
 
     @Test
+    void shouldReturnMethodNotAllowedForUnsupportedHttpMethod() {
+        when(request.getRequestURI()).thenReturn("/api/v1/users");
+
+        assertResponse(
+                handler.handleMethodNotAllowed(request),
+                HttpStatus.METHOD_NOT_ALLOWED,
+                "Método HTTP não permitido.",
+                "/api/v1/users"
+        );
+    }
+
+    @Test
     void shouldReturnInternalErrorWithoutExposingDetails() {
         when(request.getRequestURI()).thenReturn("/api/v1/users");
 

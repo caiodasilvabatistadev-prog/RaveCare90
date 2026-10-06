@@ -5,14 +5,10 @@ import com.cadastro.ravecareapp.dto.response.UserResponse;
 import com.cadastro.ravecareapp.entity.User;
 import com.cadastro.ravecareapp.enums.UserRole;
 import com.cadastro.ravecareapp.exception.BusinessException;
-import com.cadastro.ravecareapp.exception.ResourceNotFoundException;
 import com.cadastro.ravecareapp.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.UUID;
 
 @Service
 public class UserService {
@@ -50,28 +46,6 @@ public class UserService {
         User savedUser = userRepository.save(user);
         emailVerificationService.sendFor(savedUser);
         return toResponse(savedUser);
-    }
-
-    @Transactional(readOnly = true)
-    public UserResponse findById(UUID id) {
-        return toResponse(findEntityById(id));
-    }
-
-    @Transactional(readOnly = true)
-    public List<UserResponse> findAll() {
-        return userRepository
-                .findAll()
-                .stream()
-                .map(this::toResponse)
-                .toList();
-    }
-
-    private User findEntityById(UUID id) {
-        return userRepository
-                .findById(id)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException("User not found")
-                );
     }
 
     private String normalizeEmail(String email) {

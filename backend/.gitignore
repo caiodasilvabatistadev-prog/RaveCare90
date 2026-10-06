@@ -1,5 +1,6 @@
 HELP.md
 target/
+.maven-repository*/
 .env
 .env.*
 !.env.example
