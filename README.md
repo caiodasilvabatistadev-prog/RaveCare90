@@ -17,6 +17,13 @@ Landing page e API para acompanhamento de tratamentos com cannabis medicinal.
 
 O arquivo `.env` não é versionado. O PostgreSQL não publica porta para a máquina e só pode ser acessado pela rede interna da composição. A composição também inclui o Mailpit, um servidor de e-mail somente para desenvolvimento e testes; ele não envia mensagens para endereços reais.
 
+### Pausar novos cadastros
+
+Defina `REGISTRATION_ENABLED=false` no `.env` e recrie o serviço `backend`.
+Enquanto essa chave estiver desligada, `POST /api/v1/users` responde `403` e
+nenhuma conta nova é criada. O valor padrão é `true`, para manter o cadastro
+local disponível.
+
 ## Testes
 
 - Frontend: `npm run lint`, `npm run test:coverage` e `npm run build` dentro de `frontend/`.

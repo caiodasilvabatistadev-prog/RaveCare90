@@ -1,28 +1,7 @@
-import {
-  createContext,
-  useState,
-} from 'react'
+import { useState } from 'react'
 import type { ReactNode } from 'react'
-
-export type User = {
-  id: string
-  name: string
-  email: string
-  role: string
-  active: boolean
-}
-
-type AuthContextData = {
-  user: User | null
-  token: string | null
-  isAuthenticated: boolean
-  login: (token: string, user: User) => void
-  logout: () => void
-}
-
-export const AuthContext = createContext<AuthContextData>(
-  {} as AuthContextData
-)
+import { AuthContext } from './auth-context'
+import type { User } from './auth-context'
 
 type AuthProviderProps = {
   children: ReactNode

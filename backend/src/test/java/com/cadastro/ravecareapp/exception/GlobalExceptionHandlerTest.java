@@ -64,6 +64,18 @@ class GlobalExceptionHandlerTest {
         );
     }
 
+    @Test
+    void shouldReturnForbiddenWhenRegistrationIsClosed() {
+        when(request.getRequestURI()).thenReturn("/api/v1/users");
+
+        assertResponse(
+                handler.handleRegistrationClosed(request),
+                HttpStatus.FORBIDDEN,
+                "Cadastro indisponível no momento.",
+                "/api/v1/users"
+        );
+    }
+
     private void assertResponse(
             ResponseEntity<ApiErrorResponse> response,
             HttpStatus status,

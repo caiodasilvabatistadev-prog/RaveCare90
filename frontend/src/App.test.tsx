@@ -18,4 +18,15 @@ describe('App', () => {
     expect(screen.getByText(/não promessa de resultado/i)).toBeInTheDocument()
     expect(screen.getByText(/não substitui consulta ou prescrição/i)).toBeInTheDocument()
   })
+
+  it('não expõe rotas internas de usuários na landing page', () => {
+    render(<App />)
+
+    const destinations = screen
+      .getAllByRole('link')
+      .map((link) => link.getAttribute('href'))
+
+    expect(destinations).toContain('/login')
+    expect(destinations).not.toContain('/api/v1/users')
+  })
 })

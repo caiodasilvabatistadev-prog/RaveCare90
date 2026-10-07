@@ -3,14 +3,11 @@ import { Link, useSearchParams } from 'react-router-dom'
 
 export function ConfirmEmail() {
   const [searchParams] = useSearchParams()
-  const [message, setMessage] = useState('Confirmando seu e-mail...')
-  const [success, setSuccess] = useState(false)
+  const token = searchParams.get('token')
+  const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading')
 
   useEffect(() => {
-    const token = searchParams.get('token')
-
     if (!token) {
-      setMessage('Link de confirmação inválido.')
       return
     }
 
@@ -33,22 +30,29 @@ export function ConfirmEmail() {
           throw new Error()
         }
 
-        setSuccess(true)
-        setMessage('E-mail confirmado com sucesso. Agora você pode entrar.')
+        setStatus('success')
       } catch {
-        setMessage('Este link é inválido, expirou ou já foi utilizado.')
+        setStatus('error')
       }
     }
 
     confirmEmail()
-  }, [searchParams])
+  }, [token])
+
+  const message = !token
+    ? 'Link de confirmação inválido.'
+    : status === 'success'
+      ? 'E-mail confirmado com sucesso. Agora você pode entrar.'
+      : status === 'error'
+        ? 'Este link é inválido, expirou ou já foi utilizado.'
+        : 'Confirmando seu e-mail...'
 
   return (
     <main>
       <h1>Confirmação de e-mail</h1>
       <p>{message}</p>
 
-      {success && <Link to="/login">Ir para o login</Link>}
+      {status === 'success' && <Link to="/login">Ir para o login</Link>}
     </main>
   )
 }

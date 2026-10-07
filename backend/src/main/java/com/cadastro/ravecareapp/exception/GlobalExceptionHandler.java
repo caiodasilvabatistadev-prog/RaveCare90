@@ -47,6 +47,15 @@ public class GlobalExceptionHandler {
         );
     }
 
+    @ExceptionHandler(RegistrationClosedException.class)
+    ResponseEntity<ApiErrorResponse> handleRegistrationClosed(HttpServletRequest request) {
+        return response(
+                HttpStatus.FORBIDDEN,
+                "Cadastro indisponível no momento.",
+                request
+        );
+    }
+
     @ExceptionHandler(Exception.class)
     ResponseEntity<ApiErrorResponse> handleUnexpected(HttpServletRequest request) {
         return response(HttpStatus.INTERNAL_SERVER_ERROR, "Ocorreu um erro interno.", request);
