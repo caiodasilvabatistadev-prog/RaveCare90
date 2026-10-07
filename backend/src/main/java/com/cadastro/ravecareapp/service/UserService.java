@@ -1,10 +1,8 @@
 package com.cadastro.ravecareapp.service;
 
 import com.cadastro.ravecareapp.dto.request.CreateUserRequest;
-import com.cadastro.ravecareapp.dto.response.UserResponse;
 import com.cadastro.ravecareapp.entity.User;
 import com.cadastro.ravecareapp.enums.UserRole;
-import com.cadastro.ravecareapp.exception.BusinessException;
 import com.cadastro.ravecareapp.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -28,12 +26,18 @@ public class UserService {
     }
 
     @Transactional
-    public UserResponse create(CreateUserRequest request) {
+    public void requestRegistration(CreateUserRequest request) {
 
         String email = normalizeEmail(request.email());
 
-        if (userRepository.existsByEmailIgnoreCase(email)) {
-            throw new BusinessException("Email already registered");
+        User existingUser = userRepository.findByEmailIgnoreCase(email)
+                .orElse(null);
+
+        if (existingUser != null) {
+            if (!existingUser.isEmailVerified()) {
+                emailVerificationService.sendFor(existingUser);
+            }
+            return;
         }
 
         User user = new User(
@@ -43,24 +47,12 @@ public class UserService {
                 UserRole.PATIENT
         );
 
-        User savedUser = userRepository.save(user);
+        User savedUser = userRepository.saveAndFlush(user);
         emailVerificationService.sendFor(savedUser);
-        return toResponse(savedUser);
     }
 
     private String normalizeEmail(String email) {
         return email.trim().toLowerCase();
     }
 
-    private UserResponse toResponse(User user) {
-        return new UserResponse(
-                user.getId(),
-                user.getName(),
-                user.getEmail(),
-                user.getRole(),
-                user.isActive(),
-                user.getCreatedAt(),
-                user.getUpdatedAt()
-        );
-    }
 }

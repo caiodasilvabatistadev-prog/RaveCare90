@@ -1,7 +1,5 @@
 import {
   useCallback,
-  useEffect,
-  useRef,
   useState,
 } from 'react'
 import type { FormEvent } from 'react'
@@ -11,10 +9,6 @@ import { useAuth } from '../auth/UseAuth'
 import { BrandLogo } from '../components/BrandLogo'
 import raveCareLoginBg from '../assets/ravecare-login-bg.png'
 import '../styles/login.css'
-
-type GoogleCredentialResponse = {
-  credential: string
-}
 
 type LoginResponse = {
   accessToken: string
@@ -29,40 +23,9 @@ type LoginResponse = {
   }
 }
 
-declare global {
-  interface Window {
-    google?: {
-      accounts: {
-        id: {
-          initialize: (config: {
-            client_id: string
-            callback: (
-              response: GoogleCredentialResponse
-            ) => void
-          }) => void
-
-          renderButton: (
-            element: HTMLElement,
-            options: {
-              theme?: string
-              size?: string
-              text?: string
-              shape?: string
-              width?: number
-            }
-          ) => void
-        }
-      }
-    }
-  }
-}
-
 export function Login() {
   const navigate = useNavigate()
   const { login } = useAuth()
-
-  const googleButtonRef =
-    useRef<HTMLDivElement>(null)
 
   const [email, setEmail] = useState('')
   const [password, setPassword] =
@@ -73,9 +36,6 @@ export function Login() {
 
   const [error, setError] =
     useState('')
-
-  const googleClientId =
-    import.meta.env.VITE_GOOGLE_CLIENT_ID
 
   const apiUrl =
     import.meta.env.VITE_API_URL ??
@@ -144,102 +104,6 @@ export function Login() {
       setLoading(false)
     }
   }
-
-  useEffect(() => {
-    const initializeGoogle = () => {
-      if (
-        !window.google ||
-        !googleButtonRef.current
-      ) {
-        return false
-      }
-
-      if (!googleClientId) {
-        setError(
-          'Google Client ID não configurado.'
-        )
-
-        return true
-      }
-
-      window.google.accounts.id.initialize({
-        client_id: googleClientId,
-
-        callback: async (response) => {
-          try {
-            setLoading(true)
-            setError('')
-
-            const result = await fetch(
-              `${apiUrl}/api/v1/auth/google`,
-              {
-                method: 'POST',
-
-                headers: {
-                  'Content-Type':
-                    'application/json',
-                },
-
-                body: JSON.stringify({
-                  idToken:
-                    response.credential,
-                }),
-              }
-            )
-
-            if (!result.ok) {
-              throw new Error(
-                'Não foi possível entrar com o Google.'
-              )
-            }
-
-            const data: LoginResponse =
-              await result.json()
-
-            saveSession(data)
-          } catch (exception) {
-            console.error(exception)
-
-            setError(
-              'Não foi possível entrar com o Google.'
-            )
-          } finally {
-            setLoading(false)
-          }
-        },
-      })
-
-      googleButtonRef.current.innerHTML = ''
-
-      window.google.accounts.id.renderButton(
-        googleButtonRef.current,
-        {
-          theme: 'outline',
-          size: 'large',
-          text: 'continue_with',
-          shape: 'rectangular',
-          width: 360,
-        }
-      )
-
-      return true
-    }
-
-    if (initializeGoogle()) {
-      return
-    }
-
-    const interval =
-      window.setInterval(() => {
-        if (initializeGoogle()) {
-          window.clearInterval(interval)
-        }
-      }, 250)
-
-    return () => {
-      window.clearInterval(interval)
-    }
-  }, [apiUrl, googleClientId, saveSession])
 
   return (
     <main className="login-page">
@@ -340,17 +204,6 @@ export function Login() {
                 : 'Entrar'}
             </button>
           </form>
-
-          <div className="login-divider">
-            <span>
-              ou continue com
-            </span>
-          </div>
-
-          <div
-            className="google-login"
-            ref={googleButtonRef}
-          />
 
           <p className="login-register">
             Ainda não possui uma conta?{' '}

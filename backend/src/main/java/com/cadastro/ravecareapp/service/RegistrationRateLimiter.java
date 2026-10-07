@@ -16,9 +16,10 @@ public class RegistrationRateLimiter {
     private static final Duration WINDOW = Duration.ofMinutes(15);
     private final ConcurrentHashMap<String, Deque<Instant>> attempts = new ConcurrentHashMap<>();
 
-    public void check(String clientAddress) {
+    public void check(String scope, String clientAddress) {
+        String key = scope + ":" + clientAddress;
         Deque<Instant> clientAttempts = attempts.computeIfAbsent(
-                clientAddress,
+                key,
                 ignored -> new ArrayDeque<>()
         );
 
@@ -35,5 +36,9 @@ public class RegistrationRateLimiter {
 
             clientAttempts.addLast(Instant.now());
         }
+    }
+
+    public void check(String clientAddress) {
+        check("registration", clientAddress);
     }
 }

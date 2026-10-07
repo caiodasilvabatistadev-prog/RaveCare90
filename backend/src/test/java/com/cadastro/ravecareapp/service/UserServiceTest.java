@@ -1,10 +1,8 @@
 package com.cadastro.ravecareapp.service;
 
 import com.cadastro.ravecareapp.dto.request.CreateUserRequest;
-import com.cadastro.ravecareapp.dto.response.UserResponse;
 import com.cadastro.ravecareapp.entity.User;
 import com.cadastro.ravecareapp.enums.UserRole;
-import com.cadastro.ravecareapp.exception.BusinessException;
 import com.cadastro.ravecareapp.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -44,25 +42,19 @@ class UserServiceTest {
         ArgumentCaptor<User> savedUser =
                 ArgumentCaptor.forClass(User.class);
 
-        when(userRepository.existsByEmailIgnoreCase("vinicius@example.com"))
-                .thenReturn(false);
+        when(userRepository.findByEmailIgnoreCase("vinicius@example.com"))
+                .thenReturn(java.util.Optional.empty());
 
         when(passwordEncoder.encode("12345678"))
                 .thenReturn("encoded-password");
 
-        when(userRepository.save(any(User.class)))
+        when(userRepository.saveAndFlush(any(User.class)))
                 .thenAnswer(invocation -> invocation.getArgument(0));
 
-        UserResponse response = userService.create(request);
-
-        assertNotNull(response);
-        assertEquals("Vinicius", response.name());
-        assertEquals("vinicius@example.com", response.email());
-        assertEquals(UserRole.PATIENT, response.role());
-        assertFalse(response.active());
+        userService.requestRegistration(request);
 
         verify(passwordEncoder).encode("12345678");
-        verify(userRepository).save(savedUser.capture());
+        verify(userRepository).saveAndFlush(savedUser.capture());
         verify(emailVerificationService).sendFor(savedUser.getValue());
 
         assertFalse(savedUser.getValue().isEmailVerified());
@@ -76,37 +68,61 @@ class UserServiceTest {
                 "12345678"
         );
 
-        when(userRepository.existsByEmailIgnoreCase("vinicius@example.com"))
-                .thenReturn(false);
+        when(userRepository.findByEmailIgnoreCase("vinicius@example.com"))
+                .thenReturn(java.util.Optional.empty());
         when(passwordEncoder.encode("12345678"))
                 .thenReturn("encoded-password");
-        when(userRepository.save(any(User.class)))
+        when(userRepository.saveAndFlush(any(User.class)))
                 .thenAnswer(invocation -> invocation.getArgument(0));
 
-        UserResponse response = userService.create(request);
+        userService.requestRegistration(request);
 
-        assertEquals(UserRole.PATIENT, response.role());
+        ArgumentCaptor<User> savedUser = ArgumentCaptor.forClass(User.class);
+        verify(userRepository).saveAndFlush(savedUser.capture());
+        assertEquals(UserRole.PATIENT, savedUser.getValue().getRole());
     }
 
     @Test
-    void shouldThrowExceptionWhenEmailAlreadyExists() {
+    void shouldResendVerificationWithoutRevealingExistingUnverifiedEmail() {
         CreateUserRequest request = new CreateUserRequest(
                 "Vinicius",
                 "vinicius@example.com",
                 "12345678"
         );
 
-        when(userRepository.existsByEmailIgnoreCase("vinicius@example.com"))
-                .thenReturn(true);
-
-        BusinessException exception = assertThrows(
-                BusinessException.class,
-                () -> userService.create(request)
+        User existingUser = new User(
+                "Vinicius", "vinicius@example.com", "encoded-password", UserRole.PATIENT
         );
+        when(userRepository.findByEmailIgnoreCase("vinicius@example.com"))
+                .thenReturn(java.util.Optional.of(existingUser));
 
-        assertEquals("Email already registered", exception.getMessage());
+        userService.requestRegistration(request);
 
-        verify(userRepository, never()).save(any(User.class));
+        verify(emailVerificationService).sendFor(existingUser);
+        verify(userRepository, never()).saveAndFlush(any(User.class));
+        verify(passwordEncoder, never()).encode(anyString());
+    }
+
+    @Test
+    void shouldNotSendEmailWhenExistingEmailIsAlreadyVerified() {
+        CreateUserRequest request = new CreateUserRequest(
+                "Vinicius",
+                "vinicius@example.com",
+                "12345678"
+        );
+        User existingUser = new User(
+                "Vinicius", "vinicius@example.com", "encoded-password", UserRole.PATIENT
+        );
+        existingUser.setEmailVerified(true);
+        existingUser.setActive(true);
+
+        when(userRepository.findByEmailIgnoreCase("vinicius@example.com"))
+                .thenReturn(java.util.Optional.of(existingUser));
+
+        userService.requestRegistration(request);
+
+        verify(userRepository, never()).saveAndFlush(any(User.class));
+        verifyNoInteractions(emailVerificationService);
         verify(passwordEncoder, never()).encode(anyString());
     }
 

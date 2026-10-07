@@ -63,10 +63,6 @@ export function Register() {
       if (!response.ok) {
         let message = 'Não foi possível criar sua conta.'
 
-        if (response.status === 409) {
-          message = 'Já existe uma conta com este e-mail.'
-        }
-
         if (response.status === 400) {
           message = 'Verifique os dados informados.'
         }
@@ -77,7 +73,6 @@ export function Register() {
       navigate('/login', {
         state: {
           accountCreated: true,
-          email: email.trim().toLowerCase(),
         },
       })
     } catch (exception) {

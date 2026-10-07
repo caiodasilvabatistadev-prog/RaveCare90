@@ -24,6 +24,13 @@ Enquanto essa chave estiver desligada, `POST /api/v1/users` responde `403` e
 nenhuma conta nova é criada. O valor padrão é `true`, para manter o cadastro
 local disponível.
 
+### Limites de tentativas atrás de proxy
+
+Localmente, use `FORWARD_HEADERS_STRATEGY=none`. Em um serviço publicado
+atrás de um proxy confiável, configure `FORWARD_HEADERS_STRATEGY=framework`
+para que os limites de tentativas enxerguem o endereço encaminhado pelo proxy.
+Nunca ative essa opção em um servidor acessível diretamente pela internet.
+
 ## Testes
 
 - Frontend: `npm run lint`, `npm run test:coverage` e `npm run build` dentro de `frontend/`.
@@ -47,4 +54,4 @@ Variáveis do serviço web:
 
 Somente o serviço web recebe domínio público. O banco permanece na rede privada do projeto.
 
-Além das variáveis de banco, configure no serviço web: `JWT_SECRET`, `GOOGLE_CLIENT_ID`, `APP_PUBLIC_URL`, `APP_CORS_ALLOWED_ORIGINS`, `MAIL_HOST`, `MAIL_PORT`, `MAIL_USERNAME`, `MAIL_PASSWORD`, `MAIL_SMTP_AUTH` e `MAIL_SMTP_STARTTLS_ENABLE`. Nunca copie valores reais para o Git.
+Além das variáveis de banco, configure no serviço web: `JWT_SECRET`, `APP_PUBLIC_URL`, `APP_CORS_ALLOWED_ORIGINS`, `MAIL_HOST`, `MAIL_PORT`, `MAIL_USERNAME`, `MAIL_PASSWORD`, `MAIL_SMTP_AUTH` e `MAIL_SMTP_STARTTLS_ENABLE`. Nunca copie valores reais para o Git.

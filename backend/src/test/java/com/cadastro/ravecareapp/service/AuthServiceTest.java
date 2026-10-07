@@ -31,9 +31,6 @@ class AuthServiceTest {
     @Mock
     private JwtService jwtService;
 
-    @Mock
-    private GoogleTokenVerifier googleTokenVerifier;
-
     private AuthService authService;
 
     @BeforeEach
@@ -41,8 +38,7 @@ class AuthServiceTest {
         authService = new AuthService(
                 userRepository,
                 passwordEncoder,
-                jwtService,
-                googleTokenVerifier
+                jwtService
         );
     }
 
@@ -54,9 +50,9 @@ class AuthServiceTest {
                 "encoded-password",
                 UserRole.PATIENT
         );
+        unverifiedUser.setActive(true);
         when(userRepository.findByEmailIgnoreCase("vinicius@example.com"))
                 .thenReturn(Optional.of(unverifiedUser));
-
         assertThrows(
                 BusinessException.class,
                 () -> authService.login(new LoginRequest(
@@ -66,5 +62,25 @@ class AuthServiceTest {
         );
 
         verify(userRepository).findByEmailIgnoreCase("vinicius@example.com");
+    }
+
+    @Test
+    void shouldRejectPasswordLoginForInactiveVerifiedAccount() {
+        User inactiveUser = new User(
+                "Vinicius",
+                "vinicius@example.com",
+                "encoded-password",
+                UserRole.PATIENT
+        );
+        inactiveUser.setEmailVerified(true);
+        when(userRepository.findByEmailIgnoreCase("vinicius@example.com"))
+                .thenReturn(Optional.of(inactiveUser));
+        assertThrows(
+                BusinessException.class,
+                () -> authService.login(new LoginRequest(
+                        "vinicius@example.com",
+                        "password"
+                ))
+        );
     }
 }

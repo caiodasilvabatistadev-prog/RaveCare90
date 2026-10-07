@@ -1,7 +1,6 @@
 package com.cadastro.ravecareapp.controller;
 
 import com.cadastro.ravecareapp.dto.request.CreateUserRequest;
-import com.cadastro.ravecareapp.dto.response.UserResponse;
 import com.cadastro.ravecareapp.exception.RegistrationClosedException;
 import com.cadastro.ravecareapp.service.UserService;
 import com.cadastro.ravecareapp.service.RegistrationRateLimiter;
@@ -31,7 +30,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponse> create(
+    public ResponseEntity<Void> create(
             @Valid @RequestBody CreateUserRequest request,
             HttpServletRequest servletRequest
     ) {
@@ -39,11 +38,11 @@ public class UserController {
             throw new RegistrationClosedException();
         }
 
-        registrationRateLimiter.check(servletRequest.getRemoteAddr());
-        UserResponse response = userService.create(request);
+        registrationRateLimiter.check("registration", servletRequest.getRemoteAddr());
+        userService.requestRegistration(request);
 
         return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(response);
+                .status(HttpStatus.ACCEPTED)
+                .build();
     }
 }
