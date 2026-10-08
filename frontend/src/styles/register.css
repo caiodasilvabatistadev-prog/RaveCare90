@@ -1,0 +1,291 @@
+.register-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #ffffff;
+  padding: 20px;
+  gap: 20px;
+}
+
+.register-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.register-content {
+  width: 100%;
+  max-width: 490px;
+}
+
+.register-logo {
+  display: inline-flex;
+  margin-bottom: 48px;
+  text-decoration: none;
+}
+
+.register-heading {
+  margin-bottom: 32px;
+}
+
+.register-eyebrow {
+  display: block;
+  margin-bottom: 16px;
+
+  color: #7026b9;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.register-heading h1 {
+  margin: 0 0 12px;
+
+  color: #352078;
+  font-size: clamp(36px, 4vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.register-heading p {
+  max-width: 430px;
+  margin: 0;
+
+  color: #746b82;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.register-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.register-field label {
+  color: #24183d;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.register-field input {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 16px 18px;
+
+  border: 1px solid #ddd6e7;
+  border-radius: 14px;
+
+  background: #ffffff;
+  color: #24183d;
+
+  font: inherit;
+  font-size: 16px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.register-field input::placeholder {
+  color: #a59dac;
+}
+
+.register-field input:focus {
+  border-color: #8a2be2;
+
+  box-shadow:
+    0 0 0 4px rgba(138, 43, 226, 0.1);
+}
+
+.register-submit {
+  width: 100%;
+
+  margin-top: 6px;
+  padding: 17px 24px;
+
+  border: 0;
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #7026b9,
+      #9228e8
+    );
+
+  color: #ffffff;
+
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.register-submit:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.register-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.register-error {
+  padding: 12px 14px;
+
+  border-radius: 10px;
+
+  background: #fff0f0;
+  color: #b42318;
+
+  font-size: 14px;
+}
+
+.register-login {
+  margin: 28px 0 0;
+
+  color: #746b82;
+  text-align: center;
+}
+
+.register-login a {
+  color: #7026b9;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.register-login a:hover {
+  text-decoration: underline;
+}
+
+.register-back {
+  display: block;
+
+  margin-top: 24px;
+
+  color: #746b82;
+  text-align: center;
+  text-decoration: none;
+}
+
+.register-back:hover {
+  color: #7026b9;
+}
+
+.register-visual {
+  position: relative;
+
+  min-height: calc(100vh - 40px);
+
+  overflow: hidden;
+
+  border-radius: 32px;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.register-visual-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(60, 20, 120, 0.18) 0%,
+      rgba(55, 22, 110, 0.22) 45%,
+      rgba(40, 16, 85, 0.55) 100%
+    );
+}
+
+.register-visual-content {
+  position: relative;
+  z-index: 1;
+
+  max-width: 520px;
+
+  padding: 64px 56px;
+
+  color: #ffffff;
+}
+
+.register-visual-content span {
+  display: block;
+  margin-bottom: 22px;
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.register-visual-content h2 {
+  margin: 0;
+
+  font-size: clamp(42px, 5vw, 64px);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.register-visual-content p {
+  max-width: 430px;
+
+  margin: 26px 0 0;
+
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .register-page {
+    display: block;
+    padding: 0;
+  }
+
+  .register-panel {
+    min-height: 100vh;
+    padding: 40px 24px;
+  }
+
+  .register-content {
+    max-width: 520px;
+  }
+
+  .register-visual {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .register-panel {
+    padding: 28px 20px;
+  }
+
+  .register-logo {
+    margin-bottom: 36px;
+  }
+
+  .register-heading h1 {
+    font-size: 36px;
+  }
+
+  .register-heading p {
+    font-size: 16px;
+  }
+}
