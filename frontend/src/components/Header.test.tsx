@@ -32,8 +32,9 @@ describe('Header', () => {
 
   it('exibe os principais caminhos da página', () => {
     renderHeader()
+    expect(screen.getByRole('link', { name: 'Se isso é pra você' })).toHaveAttribute('href', '#dores')
     expect(screen.getByRole('link', { name: 'Tratamento' })).toHaveAttribute('href', '#acompanhamento')
-    expect(screen.getByRole('link', { name: 'Cannabis medicinal' })).toHaveAttribute('href', '#conteudo')
+    expect(screen.getByRole('link', { name: 'Dúvidas' })).toHaveAttribute('href', '#conteudo')
     expect(screen.getByRole('link', { name: 'Depoimentos' })).toHaveAttribute('href', '#depoimentos')
     expect(screen.getByRole('link', { name: 'Quero conversar' })).toHaveAttribute('href', '#comece')
   })

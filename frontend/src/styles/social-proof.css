@@ -100,11 +100,33 @@ section.guidance#conteudo .article-card { color:var(--color-text); border-color:
 .instagram-content .instagram-button:focus-visible svg { color:#fff; }
 .instagram-content .instagram-button:focus-visible { outline:3px solid rgba(23,200,222,.34); outline-offset:3px; }
 
-/* Retrato profissional: uma foto distinta da imagem utilizada na hero. */
-.professional .professional-portrait.professional-portrait--photo { min-height:470px; justify-content:center; padding:28px; border-radius:34px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.22); overflow:hidden; }
-.professional .professional-profile-image { position:relative; z-index:2; width:100%; height:380px; display:block; object-fit:cover; object-position:center 28%; border:1px solid rgba(255,255,255,.52); border-radius:26px; box-shadow:0 22px 44px rgba(24,11,67,.26); }
-.professional .professional-portrait.professional-portrait--photo p { position:relative; z-index:2; margin:18px 0 0; }
-@media (max-width:500px) { .professional .professional-portrait.professional-portrait--photo { min-height:390px; padding:18px; }.professional .professional-profile-image { height:310px; border-radius:21px; } }
+/* Retrato profissional: foto de jaleco (fora da hero), cabelo natural, alinhado à esquerda. */
+.professional .professional-portrait.professional-portrait--photo {
+  min-height:420px;
+  margin:0;
+  padding:0;
+  border-radius:28px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.22);
+  overflow:hidden;
+}
+.professional .professional-profile-image {
+  position:relative;
+  z-index:1;
+  width:100%;
+  height:100%;
+  min-height:420px;
+  display:block;
+  object-fit:cover;
+  object-position:center 18%;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+}
+@media (max-width:500px) {
+  .professional .professional-portrait.professional-portrait--photo { min-height:340px; }
+  .professional .professional-profile-image { min-height:340px; }
+}
 
 /* Ajuste pontual: hero e tratamento. */
 .hero { padding-bottom:0; }.hero-grid { align-items:stretch; }.hero-copy { align-self:center; padding-bottom:70px; }.hero-visual { align-self:stretch; height:auto; min-height:590px; }.hero-sun { top:auto; bottom:42px; }.hero-person--cutout { inset:0 0 0 20px; }.hero-doctor-info { bottom:20px; }

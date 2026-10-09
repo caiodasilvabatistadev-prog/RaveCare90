@@ -5,9 +5,10 @@ import { useAuth } from '../auth/UseAuth'
 import { BrandLogo } from './BrandLogo'
 
 const links = [
-  { href: '#como-funciona', label: 'Como funciona' },
+  { href: '#dores', label: 'Se isso é pra você' },
   { href: '#acompanhamento', label: 'Tratamento' },
-  { href: '#conteudo', label: 'Cannabis medicinal' },
+  { href: '#como-funciona', label: 'Como funciona' },
+  { href: '#conteudo', label: 'Dúvidas' },
   { href: '#depoimentos', label: 'Depoimentos' },
 ]
 

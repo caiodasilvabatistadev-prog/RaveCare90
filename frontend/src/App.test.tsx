@@ -5,18 +5,20 @@ import App from './App'
 describe('App', () => {
   it('renderiza as seções centrais da landing page', () => {
     render(<App />)
-    expect(screen.getByRole('heading', { level: 1, name: /seu cuidado continua/i })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /pra acompanhar cada fase/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1, name: /chega de cuidar da saúde/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /acompanhamento contínuo com uma médica/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: 'Dra. Bianca Rohsner' })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /90 dias com alguém do outro lado/i })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /bora cuidar da sua saúde/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /90 dias\. alguém do outro lado/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /ravecare cuida de você quando a festa acaba/i })).toBeInTheDocument()
   })
 
   it('mantém identificação profissional e avisos responsáveis', () => {
     render(<App />)
     expect(screen.getAllByText(/CREMEC 21295/).length).toBeGreaterThan(0)
-    expect(screen.getByText(/não promessa de resultado/i)).toBeInTheDocument()
-    expect(screen.getByText(/não substitui consulta ou prescrição/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/Médica emergencista/i).length).toBeGreaterThan(0)
+    expect(screen.getByText(/também raver/i)).toBeInTheDocument()
+    expect(screen.getByText(/não promete milagre/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/não substitui consulta ou prescrição/i).length).toBeGreaterThan(0)
   })
 
   it('não expõe rotas internas de usuários na landing page', () => {

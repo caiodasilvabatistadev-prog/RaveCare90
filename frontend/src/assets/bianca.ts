@@ -1,4 +1,20 @@
-import biancaHeroCutoutImage from './generated/bianca-hero-embroidered-v2.png'
+import biancaRavePrimaryDisplay from './generated/bianca-rave-primary.png'
+import biancaLabcoatSecondaryImage from './bianca-labcoat-secondary.png'
 
-export const biancaProfilePhoto = 'https://s3-sa-east-1.amazonaws.com/doctoralia.com.br/doctor/43c6b5/43c6b5578479caa206749435783b21ef_large.jpg'
-export const biancaHeroCutout = biancaHeroCutoutImage
+/**
+ * Rave / neon / sunglasses — PRIMARY visual (hero + finale).
+ * Guided by @medicaraver YouTube energy (festival night, purple neon, raver look).
+ * Hi-res full-bleed — never the 160×160 thumb.
+ */
+export const biancaRavePrimary = biancaRavePrimaryDisplay
+
+/** Lab coat / RaveCareApp — SECONDARY, Professional section only (outside hero). */
+export const biancaLabcoatSecondary = biancaLabcoatSecondaryImage
+
+/** @deprecated Prefer biancaRavePrimary — hero is the rave photo. */
+export const biancaHeroCutout = biancaRavePrimaryDisplay
+
+export const biancaRaveFinale = biancaRavePrimaryDisplay
+
+/** Professional portrait — lab coat secondary (not Doctoralia). */
+export const biancaProfilePhoto = biancaLabcoatSecondaryImage

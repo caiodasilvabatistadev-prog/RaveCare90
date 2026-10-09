@@ -1,15 +1,15 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { ConfirmEmail } from './pages/ConfirmEmail'
 import { Header } from './components/Header'
-import { About } from './sections/About'
+import { Faq } from './sections/Faq'
 import { FinalCta } from './sections/FinalCta'
 import { Footer } from './sections/Footer'
 import { Hero } from './sections/Hero'
-import { Journey } from './sections/Journey'
-import { Professional } from './sections/Professional'
-import { Resources } from './sections/Resources'
-import { Guidance } from './sections/Guidance'
 import { InstagramContent } from './sections/InstagramContent'
+import { Journey } from './sections/Journey'
+import { Method } from './sections/Method'
+import { PainPoints } from './sections/PainPoints'
+import { Professional } from './sections/Professional'
 import { Testimonials } from './sections/Testimonials'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
@@ -22,12 +22,12 @@ function LandingPage() {
 
       <main>
         <Hero />
-        <Resources />
-        <Professional />
+        <PainPoints />
+        <Method />
         <Journey />
-        <About />
+        <Professional />
         <Testimonials />
-        <Guidance />
+        <Faq />
         <InstagramContent />
         <FinalCta />
       </main>
@@ -38,14 +38,14 @@ function LandingPage() {
 }
 
 export default function App() {
- return (
-   <BrowserRouter>
-     <Routes>
-       <Route path="/" element={<LandingPage />} />
-       <Route path="/login" element={<Login />} />
-       <Route path="/cadastro" element={<Register />} />
-       <Route path="/confirmar-email" element={<ConfirmEmail />} />
-     </Routes>
-   </BrowserRouter>
- )
- }
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/cadastro" element={<Register />} />
+        <Route path="/confirmar-email" element={<ConfirmEmail />} />
+      </Routes>
+    </BrowserRouter>
+  )
+}
