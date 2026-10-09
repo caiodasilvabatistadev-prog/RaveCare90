@@ -4,19 +4,19 @@ import { Button } from '../components/Button'
 
 export function Professional() {
   return (
-    <section className="section professional" aria-labelledby="professional-title">
+    <section className="section professional" id="profissional" aria-labelledby="professional-title">
       <div className="container professional-grid">
         <div className="professional-portrait professional-portrait--photo">
           <img className="professional-profile-image" src={biancaProfilePhoto} alt="Dra. Bianca Rohsner" />
           <p><Sparkles size={14} /> escuta real, zero julgamento</p>
         </div>
         <div className="professional-copy">
-          <p className="eyebrow">medicina que entende a vida real</p>
+          <p className="eyebrow">quem está do outro lado</p>
           <h2 id="professional-title">Dra. Bianca Rohsner</h2>
           <p className="professional-role"><Ambulance size={19} aria-hidden="true" /> médica emergencista <span aria-hidden="true">•</span> <Headphones size={19} aria-hidden="true" /> raver</p>
           <p className="professional-registration">CREMEC 21295 <span aria-hidden="true">|</span> RQE 13733</p>
           <blockquote><Quote size={24} aria-hidden="true" />Saúde se conversa sem tabu. Cada pessoa tem uma história, um corpo e um ritmo — o cuidado precisa acompanhar isso.</blockquote>
-          <p>Sou médica emergencista e raver, com atuação em drogas, cannabis medicinal e redução de danos. As consultas são online e o acompanhamento continua com o RAVECARE 90.</p>
+          <p>Eu não entrego um protocolo genérico e sumo. Sou médica emergencista e raver, com atuação em drogas, cannabis medicinal e redução de danos. As consultas são online e o acompanhamento continua com o RAVECARE 90 — porque o cuidado precisa existir também entre um encontro e outro.</p>
           <div className="professional-services">
             <span><Video size={17} aria-hidden="true" /> consultas online</span>
             <span><HeartHandshake size={17} aria-hidden="true" /> RAVECARE 90</span>

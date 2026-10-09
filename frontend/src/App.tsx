@@ -14,18 +14,19 @@ import { Testimonials } from './sections/Testimonials'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import './styles/social-proof.css'
+import './styles/landing.css'
 
 function LandingPage() {
   return (
-    <>
+    <div className="landing-page">
       <Header />
 
       <main>
         <Hero />
         <Resources />
-        <Professional />
-        <Journey />
         <About />
+        <Journey />
+        <Professional />
         <Testimonials />
         <Guidance />
         <InstagramContent />
@@ -33,7 +34,7 @@ function LandingPage() {
       </main>
 
       <Footer />
-    </>
+    </div>
   )
 }
 

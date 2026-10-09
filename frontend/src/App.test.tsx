@@ -5,11 +5,11 @@ import App from './App'
 describe('App', () => {
   it('renderiza as seções centrais da landing page', () => {
     render(<App />)
-    expect(screen.getByRole('heading', { level: 1, name: /seu cuidado continua/i })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /pra acompanhar cada fase/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1, name: /Chega de cuidar/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /Cuidar de você não pode/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: 'Dra. Bianca Rohsner' })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /90 dias com alguém do outro lado/i })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /bora cuidar da sua saúde/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /90 dias. Alguém/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /quando a festa acaba/i })).toBeInTheDocument()
   })
 
   it('mantém identificação profissional e avisos responsáveis', () => {
