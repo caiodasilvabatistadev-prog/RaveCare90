@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, codex/reference-ui-footer]
   pull_request:
     branches: [main]
 

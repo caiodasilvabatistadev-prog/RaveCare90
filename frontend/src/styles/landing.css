@@ -56,7 +56,7 @@
 .landing-page .faq-list summary span { color: #7252bd; font-size: 1.4rem; line-height: 1; }
 .landing-page .faq-list details[open] summary span { transform: rotate(45deg); }
 .landing-page .faq-list details p { max-width: 700px; font-size: .98rem; line-height: 1.7; color: #665c73; margin: 18px 0 0; }
-.landing-page .final-cta { text-align: left; background: linear-gradient(90deg, #31204fe8, #694494aa), url('../assets/reference-cta.jpg') center/cover; padding: 105px 0; }
+.landing-page .final-cta { text-align: left; background: linear-gradient(90deg, #211633cc, #21163308), url('../assets/reference-cta.jpg') center/cover; padding: 105px 0; }
 .landing-page .final-cta-inner { max-width: 1120px; display: block; }
 .landing-page .final-cta .brand-logo, .landing-page .site-footer .brand-logo { filter: brightness(0) invert(1); width: 210px; height: auto; }
 .landing-page .final-cta .eyebrow { color: var(--reference-cyan); margin-top: 35px; }
