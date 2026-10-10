@@ -2,12 +2,15 @@ import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth/UseAuth'
+import { features } from '../config/features'
 import { BrandLogo } from './BrandLogo'
 
 const links = [
   { href: '#dores', label: 'Se isso é pra você' },
   { href: '#acompanhamento', label: 'Tratamento' },
-  { href: '#receita-anvisa', label: 'Recebi minha receita' },
+  ...(features.showAnvisaGuide
+    ? [{ href: '#receita-anvisa', label: 'Recebi minha receita' }]
+    : []),
   { href: '#como-funciona', label: 'Como funciona' },
   { href: '#conteudo', label: 'Dúvidas' },
   { href: '#depoimentos', label: 'Depoimentos' },

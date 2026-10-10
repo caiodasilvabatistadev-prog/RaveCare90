@@ -1,5 +1,6 @@
 import { AtSign, Mail } from 'lucide-react'
 import { BrandLogo } from '../components/BrandLogo'
+import { features } from '../config/features'
 
 export function Footer() {
   return (
@@ -13,8 +14,12 @@ export function Footer() {
           <p className="footer-label">navegue</p>
           <a href="#dores">Se isso é pra você</a>
           <a href="#acompanhamento">Acompanhamento</a>
-          <a href="#receita-anvisa">Recebi minha receita</a>
-          <a href="/recebi-minha-receita">Guia Anvisa</a>
+          {features.showAnvisaGuide ? (
+            <>
+              <a href="#receita-anvisa">Recebi minha receita</a>
+              <a href="/recebi-minha-receita">Guia Anvisa</a>
+            </>
+          ) : null}
           <a href="#como-funciona">Como funciona</a>
           <a href="#conteudo">Dúvidas</a>
         </div>

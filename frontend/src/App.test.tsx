@@ -9,17 +9,14 @@ describe('App', () => {
     expect(screen.getByRole('heading', { name: /acompanhamento contínuo com uma médica/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: 'Dra. Bianca Rohsner' })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: /90 dias\. alguém do outro lado/i })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /recebi minha receita e agora/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: /ravecare cuida de você quando a festa acaba/i })).toBeInTheDocument()
   })
 
-  it('expõe o guia Anvisa pós-receita', () => {
+  it('mantém o guia Anvisa fora da UI (flag off)', () => {
     render(<App />)
-    expect(screen.getByRole('link', { name: /ver o passo a passo completo/i })).toHaveAttribute(
-      'href',
-      '/recebi-minha-receita',
-    )
-    expect(screen.getByText(/não é aconselhamento jurídico/i)).toBeInTheDocument()
+    expect(screen.queryByRole('heading', { name: /recebi minha receita e agora/i })).not.toBeInTheDocument()
+    expect(screen.queryByRole('link', { name: /ver o passo a passo completo/i })).not.toBeInTheDocument()
+    expect(screen.queryByRole('link', { name: /guia anvisa/i })).not.toBeInTheDocument()
   })
 
   it('mantém identificação profissional e avisos responsáveis', () => {

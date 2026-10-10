@@ -12,6 +12,7 @@ import { PainPoints } from './sections/PainPoints'
 import { Professional } from './sections/Professional'
 import { ReceitaAnvisa } from './sections/ReceitaAnvisa'
 import { Testimonials } from './sections/Testimonials'
+import { features } from './config/features'
 import { Login } from './pages/Login'
 import { RecebiMinhaReceita } from './pages/RecebiMinhaReceita'
 import { Register } from './pages/Register'
@@ -28,7 +29,7 @@ function LandingPage() {
         <PainPoints />
         <Method />
         <Journey />
-        <ReceitaAnvisa />
+        {features.showAnvisaGuide ? <ReceitaAnvisa /> : null}
         <Professional />
         <Testimonials />
         <Faq />
