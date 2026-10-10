@@ -60,7 +60,7 @@ test('carrega a landing page e seus conteúdos principais', async ({ page }) => 
   await page.goto('/')
 
   await expect(
-    page.getByRole('heading', { name: /seu cuidado continua depois da consulta/i }),
+    page.getByRole('heading', { name: /chega de cuidar da saúde só/i }),
   ).toBeVisible()
   await expect(page.locator('video')).toHaveCount(3)
   await expect(page.getByRole('link', { name: /quero o rave care/i }).first()).toBeVisible()
