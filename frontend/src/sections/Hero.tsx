@@ -14,30 +14,32 @@ export function Hero() {
         />
         <div className="hero-scrim" />
       </div>
+      <div className="hero-glow" aria-hidden="true" />
       <div className="hero-beam" aria-hidden="true" />
       <div className="container hero-grid">
         <div className="hero-copy">
-          <p className="hero-brand">RaveCare</p>
-          <h1 id="hero-title">
-            Chega de cuidar da saúde só <em>depois</em> que o corpo grita.
+          <p className="hero-brand hero-reveal">RaveCare</p>
+          <h1 id="hero-title" className="hero-reveal hero-reveal--title">
+            Chega de cuidar da saúde só{' '}
+            <em className="hero-depois">depois</em> que o corpo grita.
           </h1>
-          <p className="hero-description">
+          <p className="hero-description hero-reveal hero-reveal--body">
             Acompanhamento médico contínuo com a Dra. Bianca Rohsner: cannabis medicinal,
             redução de danos e aftercare pra quem vive o rolê sem abrir mão da saúde.
             Antes, durante e depois, com presença real entre uma consulta e outra.
           </p>
-          <ul className="hero-signals" aria-label="Sinais do RaveCare">
+          <ul className="hero-signals hero-reveal hero-reveal--signals" aria-label="Sinais do RaveCare">
             <li>
               <Leaf size={16} aria-hidden="true" />
               cannabis medicinal
             </li>
             <li>
               <MessageCircle size={16} aria-hidden="true" />
-              chat e WhatsApp conforme disponibilidade
+              contato diário
             </li>
           </ul>
-          <div className="hero-actions">
-            <Button href={whatsappHref()} variant="light" target="_blank" rel="noreferrer">
+          <div className="hero-actions hero-reveal hero-reveal--cta">
+            <Button href={whatsappHref()} variant="light" className="hero-cta" target="_blank" rel="noreferrer">
               Quero o RaveCare <ArrowRight size={18} aria-hidden="true" />
             </Button>
             <a className="text-link text-link--light" href="#dores">

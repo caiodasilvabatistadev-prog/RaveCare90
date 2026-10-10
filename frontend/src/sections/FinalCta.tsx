@@ -27,11 +27,7 @@ export function FinalCta() {
           <p className="finale-promise">
             Redução de danos, cannabis medicinal e acompanhamento contínuo com a Dra. Bianca,
             pra saúde não sumir no dia seguinte, nem no intervalo entre um retorno e outro.
-            Antes, durante e depois, com nutrição e educador físico no time.
-          </p>
-          <p className="finale-disclaimer">
-            Resultados variam. Conversa no chat e no WhatsApp 24h conforme a disponibilidade
-            da Dra. Bianca: presença real, sem falsa promessa de resposta imediata.
+            Antes e depois do rolê, com nutrição, educador físico e contato diário no time.
           </p>
           <div className="finale-actions">
             <Button href={whatsappHref()} variant="light" target="_blank" rel="noreferrer">

@@ -65,7 +65,7 @@ export function Method() {
           <div className="modules-copy">
             <p className="modules-badge">Não é protocolo genérico.</p>
             <h2 id="method-title">
-              É acompanhamento contínuo com uma médica que entende a sua vida, inclusive depois do rolê.
+              É acompanhamento contínuo com uma médica que entende a sua vida, antes e depois do rolê.
             </h2>
             <p className="modules-lead">
               Antes, durante e depois: consulta, cannabis medicinal, redução de danos,
@@ -101,9 +101,6 @@ export function Method() {
           </div>
         </div>
 
-        <p className="method-disclaimer">
-          Cada corpo responde de um jeito. O RaveCare organiza o cuidado, não promete milagre.
-        </p>
       </div>
     </section>
   )

@@ -35,9 +35,8 @@ export function Journey() {
           <p className="eyebrow">antes · durante · depois</p>
           <h2 id="journey-title">90 dias. Alguém do outro lado. Sem sumiço.</h2>
           <p className="section-description">
-            Você observa as mudanças, registra o que importa e conversa com a Dra. Bianca
-            no chat ou WhatsApp conforme a disponibilidade dela. Nutrição e educador físico
-            entram no mesmo acompanhamento.
+            Você observa as mudanças, registra o que importa e mantém contato diário com a
+            Dra. Bianca no acompanhamento. Nutrição e educador físico entram no mesmo cuidado.
           </p>
         </div>
         <ol className="timeline">

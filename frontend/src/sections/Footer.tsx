@@ -1,7 +1,7 @@
 import { AtSign, Mail, MessageCircle } from 'lucide-react'
 import { BrandLogo } from '../components/BrandLogo'
 import { features } from '../config/features'
-import { contact, whatsappHref } from '../config/contact'
+import { contact } from '../config/contact'
 
 export function Footer() {
   return (
@@ -11,7 +11,7 @@ export function Footer() {
           <BrandLogo />
           <p>
             Cannabis medicinal, redução de danos e acompanhamento contínuo com a Dra. Bianca Rohsner,
-            antes, durante e depois do rolê.
+            antes e depois do rolê.
           </p>
         </div>
         <div>
@@ -30,8 +30,8 @@ export function Footer() {
         </div>
         <div>
           <p className="footer-label">contato</p>
-          <a href={whatsappHref()} target="_blank" rel="noreferrer">
-            <MessageCircle size={16} aria-hidden="true" /> WhatsApp (conforme disponibilidade)
+          <a href="#comece">
+            <MessageCircle size={16} aria-hidden="true" /> Contato diário
           </a>
           <a href={`mailto:${contact.email}`}>
             <Mail size={16} aria-hidden="true" /> {contact.email}

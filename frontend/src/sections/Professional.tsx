@@ -57,7 +57,7 @@ export function Professional() {
             </p>
             <p>
               As consultas são online. O cuidado continua com o RAVECARE 90, porque saúde
-              também acontece entre um encontro e outro: antes, durante e depois do rolê,
+              também acontece entre um encontro e outro: antes e depois do rolê,
               com nutrição e educador físico na plataforma.
             </p>
             <p>
@@ -77,14 +77,14 @@ export function Professional() {
             </li>
             <li>
               <MessageCircle size={16} aria-hidden="true" />
-              Chat e WhatsApp 24h conforme disponibilidade
+              Contato diário no acompanhamento
             </li>
           </ul>
 
           <div className="professional-services">
             <span><Video size={17} aria-hidden="true" /> consultas online</span>
             <span><HeartHandshake size={17} aria-hidden="true" /> RAVECARE 90</span>
-            <span><MessageCircle size={17} aria-hidden="true" /> chat / WhatsApp</span>
+            <span><MessageCircle size={17} aria-hidden="true" /> contato diário</span>
           </div>
 
           <Button href={whatsappHref()} variant="secondary" target="_blank" rel="noreferrer">

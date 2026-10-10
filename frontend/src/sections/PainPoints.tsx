@@ -13,18 +13,13 @@ const wins = [
   'Registrar sono, sintomas e qualidade de vida sem pressão de performance',
   'Entender cannabis medicinal com evidência, sem terrorismo nem romantização',
   'Praticar redução de danos com escuta real e zero julgamento',
-  'Manter o fio do cuidado antes, durante e depois do rolê, com equipe no app',
+  'Manter o fio do cuidado antes e depois do rolê, com equipe no app',
 ]
 
 export function PainPoints() {
   return (
     <section className="section pain-points" id="dores" aria-labelledby="pain-title">
       <div className="container pain-layout">
-        <p className="pain-disclaimer">
-          Resultados variam. O RaveCare organiza acompanhamento médico contínuo com a Dra. Bianca,
-          não é promessa de milagre.
-        </p>
-
         <div className="myth-block">
           <h2 id="pain-title" className="myth-title">
             Você não vai ser tratada como protocolo.
@@ -35,7 +30,7 @@ export function PainPoints() {
           </h2>
           <aside className="myth-callout" aria-label="Promessa RaveCare">
             Cuidado com presença real: cannabis medicinal, redução de danos e aftercare
-            com médica que entende a sua vida, inclusive depois do rolê.
+            com médica que entende a sua vida, antes e depois do rolê.
           </aside>
         </div>
 
@@ -47,10 +42,14 @@ export function PainPoints() {
 
         <div className="pain-solution">
           <article className="contrast-card contrast-card--pain">
-            <div className="question-box" aria-hidden="true">
-              <p className="question-box__label">Caixinha de pergunta</p>
-              <p className="question-box__text">
-                Bianca, depois do rolê eu fico dias mal e não sei por onde começar
+            <div className="qa-box">
+              <p className="qa-box__label">Pergunta</p>
+              <p className="qa-box__question">
+                Bianca, depois do rolê eu fico dias mal e não sei por onde começar.
+              </p>
+              <p className="qa-box__label qa-box__label--answer">Resposta</p>
+              <p className="qa-box__answer">
+                Você não precisa resolver sozinha. A gente organiza o cuidado antes e depois do rolê.
               </p>
             </div>
             <h3>Se você não aguenta mais…</h3>
@@ -65,10 +64,14 @@ export function PainPoints() {
           </article>
 
           <article className="contrast-card contrast-card--win">
-            <div className="question-box question-box--win" aria-hidden="true">
-              <p className="question-box__label">Caixinha de pergunta</p>
-              <p className="question-box__text">
-                Pela primeira vez senti que alguém entende minha rotina e minha saúde
+            <div className="qa-box qa-box--win">
+              <p className="qa-box__label">Pergunta</p>
+              <p className="qa-box__question">
+                Dá pra ter acompanhamento que entende minha rotina e minha saúde?
+              </p>
+              <p className="qa-box__label qa-box__label--answer">Resposta</p>
+              <p className="qa-box__answer">
+                Sim. Contato diário com a médica, escuta de verdade e cuidado que encaixa na sua vida.
               </p>
             </div>
             <h3>Com o RaveCare 90, você vai conseguir:</h3>

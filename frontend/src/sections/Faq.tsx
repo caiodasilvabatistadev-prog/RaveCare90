@@ -5,11 +5,11 @@ import { SectionHeading } from '../components/SectionHeading'
 const faqs = [
   {
     q: 'O RaveCare é acompanhamento médico de verdade?',
-    a: 'Sim. O RaveCare 90 é o acompanhamento contínuo com a Dra. Bianca: consultas online, presença entre os encontros e equipe na plataforma (nutrição e educador físico). Resultados variam; cada corpo responde de um jeito.',
+    a: 'Sim. O RaveCare 90 é o acompanhamento contínuo com a Dra. Bianca: consultas online, presença entre os encontros e equipe na plataforma (nutrição e educador físico).',
   },
   {
     q: 'Cannabis medicinal é pra qualquer pessoa?',
-    a: 'Não. Cada corpo é um corpo. A indicação depende de avaliação profissional, história clínica e acompanhamento, sem receita única e sem promessa de resultado.',
+    a: 'Não. Cada corpo é um corpo. A indicação depende de avaliação profissional, história clínica e acompanhamento, sem receita única.',
   },
   {
     q: 'E se eu já tentei cuidar sozinha e não deu certo?',
@@ -20,12 +20,12 @@ const faqs = [
     a: 'Não. Significa informação segura, escuta real e estratégias pra diminuir riscos, com responsabilidade, sem romantizar e sem moralismo.',
   },
   {
-    q: 'Consigo falar com a Dra. Bianca no chat ou WhatsApp?',
-    a: 'Sim. Você pode chamar no chat e no WhatsApp. O retorno é 24h conforme a disponibilidade dela: presença real, sem falsa promessa de resposta imediata a qualquer hora.',
+    q: 'Como é o contato com a Dra. Bianca no dia a dia?',
+    a: 'O acompanhamento inclui contato diário com a médica: presença real no ritmo do cuidado.',
   },
   {
     q: 'Como começo?',
-    a: 'Chama no WhatsApp ou no chat pelo contato da página. Se fizer sentido pra você, a conversa segue com a Dra. Bianca e o fluxo do acompanhamento de 90 dias: antes, durante e depois do rolê.',
+    a: 'Toque em Quero o RaveCare na página. Se fizer sentido pra você, a conversa segue com a Dra. Bianca e o fluxo do acompanhamento de 90 dias: antes e depois do rolê.',
   },
 ]
 
