@@ -1,6 +1,6 @@
 # Conta demo — Entrar (canonical, matches live)
 
-**Canonical tip `9a59175` (Rave Care + motion; fixes v68 regression).** **Live:** https://ravecare90-20261009.deed.page/login
+**Canonical tip `72fdd12` / v71 (Rave Care + motion; fixes v68 regression).** **Live:** https://ravecare90-20261009.deed.page/login
 
 | Campo | Valor |
 |-------|--------|

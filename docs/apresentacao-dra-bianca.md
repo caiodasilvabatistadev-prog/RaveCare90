@@ -1,7 +1,7 @@
 # Rave Care — brief de apresentação (Dra. Bianca)
 
-**Baseline ao vivo:** [ravecare90-20261009.deed.page](https://ravecare90-20261009.deed.page/) (marca **Rave Care** + motion · tip `9a59175`)  
-**Pin verificado:** [v69--ravecare90-20261009.deed.page](https://v69--ravecare90-20261009.deed.page/) (`RaveCareApp` = 0)  
+**Baseline ao vivo:** [ravecare90-20261009.deed.page](https://ravecare90-20261009.deed.page/) (marca **Rave Care** + motion · tip `72fdd12` / v71)  
+**Pin verificado:** [v71--ravecare90-20261009.deed.page](https://v71--ravecare90-20261009.deed.page/) (logo Rave Care · `RaveCareApp` = 0)  
 **Não usar:** [ravecare-ui.pages.dev](https://ravecare-ui.pages.dev/) — ainda com marca antiga (sem CF token)  
 **PR em curso:** [#4](https://github.com/caiodasilvabatistadev-prog/RaveCare90/pull/4)
 
@@ -133,7 +133,7 @@ Mock no frontend (sem API Java nesta baseline).
 | Cadastro | https://ravecare90-20261009.deed.page/cadastro |
 | Confirmar e-mail | https://ravecare90-20261009.deed.page/confirmar-email |
 | Anvisa (oculto) | https://ravecare90-20261009.deed.page/recebi-minha-receita |
-| Pin v69 (rebrand fix) | https://v69--ravecare90-20261009.deed.page/ |
+| Pin v69 (rebrand fix) | https://v71--ravecare90-20261009.deed.page/ |
 
 ```
 Landing: https://ravecare90-20261009.deed.page/
@@ -141,6 +141,6 @@ Login: https://ravecare90-20261009.deed.page/login
 Cadastro: https://ravecare90-20261009.deed.page/cadastro
 Confirmar e-mail: https://ravecare90-20261009.deed.page/confirmar-email
 Anvisa (oculto): https://ravecare90-20261009.deed.page/recebi-minha-receita
-Pin v69: https://v69--ravecare90-20261009.deed.page/
+Pin v69: https://v71--ravecare90-20261009.deed.page/
 ```
 
