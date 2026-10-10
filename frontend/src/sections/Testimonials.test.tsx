@@ -1,9 +1,28 @@
-import { render, screen } from '@testing-library/react'
+import { act, fireEvent, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import { Testimonials } from './Testimonials'
 
 describe('Testimonials', () => {
+  it('troca após cinco segundos e permite pausar', () => {
+    vi.useFakeTimers()
+    try {
+      render(<Testimonials />)
+      act(() => vi.advanceTimersByTime(4999))
+      expect(screen.getByRole('button', { name: 'Depoimento 1, em destaque' })).toBeInTheDocument()
+      act(() => vi.advanceTimersByTime(1))
+      expect(screen.getByRole('button', { name: 'Depoimento 2, em destaque' })).toBeInTheDocument()
+      fireEvent.click(screen.getByRole('button', { name: 'Pausar troca automática' }))
+      act(() => vi.advanceTimersByTime(10000))
+      expect(screen.getByRole('button', { name: 'Depoimento 2, em destaque' })).toBeInTheDocument()
+      fireEvent.click(screen.getByRole('button', { name: 'Retomar troca automática' }))
+      act(() => vi.advanceTimersByTime(5000))
+      expect(screen.getByRole('button', { name: 'Depoimento 3, em destaque' })).toBeInTheDocument()
+    } finally {
+      vi.useRealTimers()
+    }
+  })
+
   it('inicia com o primeiro depoimento em destaque', () => {
     render(<Testimonials />)
     expect(screen.getByRole('button', { name: 'Depoimento 1, em destaque' })).toHaveAttribute('aria-current', 'true')

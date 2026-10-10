@@ -8,7 +8,7 @@ export function Hero() {
       <div className="container hero-grid">
         <div className="hero-copy">
           <p className="hero-brand">RaveCare</p>
-          <h1 id="hero-title">Chega de cuidar da saúde só <em>depois</em> que o corpo grita.</h1>
+          <h1 id="hero-title"><span>Chega de cuidar</span>{' '}<span>da saúde só</span>{' '}<span><em>depois</em> que o</span>{' '}<span>corpo grita.</span></h1>
           <p className="hero-description">Acompanhamento com a Dra. Bianca Rohsner: cannabis medicinal, redução de danos e presença entre uma consulta e outra — sem tabu.</p>
           <div className="hero-actions">
             <Button href="#comece" variant="light">Quero começar <ArrowRight size={18} aria-hidden="true" /></Button>

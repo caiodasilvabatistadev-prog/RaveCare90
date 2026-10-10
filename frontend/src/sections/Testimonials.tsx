@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight, Heart, MessageCircleHeart } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import testimonialOne from '../assets/testimonials/testimonial-01.jfif'
 import testimonialThree from '../assets/testimonials/testimonial-03.jfif'
 import testimonialFour from '../assets/testimonials/testimonial-04.jfif'
@@ -21,6 +21,30 @@ const testimonials = [
 
 export function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [paused, setPaused] = useState(false)
+  const [hovered, setHovered] = useState(false)
+  const [pageHidden, setPageHidden] = useState(() => document.hidden)
+  const [reducedMotion, setReducedMotion] = useState(() => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false)
+
+  useEffect(() => {
+    const preference = window.matchMedia?.('(prefers-reduced-motion: reduce)')
+    const onVisibility = () => setPageHidden(document.hidden)
+    const onPreference = () => setReducedMotion(preference?.matches ?? false)
+    document.addEventListener('visibilitychange', onVisibility)
+    preference?.addEventListener('change', onPreference)
+    return () => {
+      document.removeEventListener('visibilitychange', onVisibility)
+      preference?.removeEventListener('change', onPreference)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (paused || hovered || pageHidden || reducedMotion) return
+    const timer = window.setTimeout(() => {
+      setActiveIndex(current => (current + 1) % testimonials.length)
+    }, 5000)
+    return () => window.clearTimeout(timer)
+  }, [activeIndex, paused, hovered, pageHidden, reducedMotion])
 
   const goToPrevious = () => setActiveIndex((current) => (current - 1 + testimonials.length) % testimonials.length)
   const goToNext = () => setActiveIndex((current) => (current + 1) % testimonials.length)
@@ -39,8 +63,10 @@ export function Testimonials() {
           title="Quando o cuidado encaixa na vida."
           description="Mensagens de pessoas acompanhadas pela Dra. Bianca — sem nomes, sem exposição e com muito afeto."
         />
-        <div className="testimonial-carousel" aria-roledescription="carrossel" aria-label="Depoimentos anonimizados de pacientes">
-          <div className="testimonial-stage">
+        <div className="testimonial-carousel" aria-roledescription="carrossel" aria-label="Depoimentos anonimizados de pacientes" onFocusCapture={event => {
+          if (!(event.target as HTMLElement).closest('[data-autoplay-control]')) setPaused(true)
+        }}>
+          <div className="testimonial-stage" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
             {testimonials.map((testimonial, index) => (
               <button
                 className={`testimonial-panel ${getSlidePosition(index)}`}
@@ -77,6 +103,9 @@ export function Testimonials() {
               />
             ))}
           </div>
+          {!reducedMotion && <button className="testimonial-autoplay" data-autoplay-control type="button" onClick={() => setPaused(current => !current)} aria-label={paused ? 'Retomar troca automática' : 'Pausar troca automática'}>
+            {paused ? 'Retomar troca automática' : 'Pausar troca automática'}
+          </button>}
         </div>
         <div className="testimonial-note">
           <MessageCircleHeart size={20} aria-hidden="true" />
