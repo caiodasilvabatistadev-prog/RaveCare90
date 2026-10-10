@@ -7,7 +7,7 @@ export function Footer() {
       <div className="container footer-grid">
         <div>
           <BrandLogo />
-          <p>Cannabis medicinal, cuidado de verdade e conversa sem tabu — com a Dra. Bianca Rohsner.</p>
+          <p>Cannabis medicinal, cuidado de verdade e conversa sem tabu, com a Dra. Bianca Rohsner.</p>
         </div>
         <div>
           <p className="footer-label">navegue</p>

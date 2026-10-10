@@ -95,7 +95,7 @@ export function Register() {
           <Link
             to="/"
             className="register-logo"
-            aria-label="RaveCareApp — início"
+            aria-label="RaveCareApp, início"
           >
             <BrandLogo />
           </Link>

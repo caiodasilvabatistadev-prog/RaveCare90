@@ -113,7 +113,7 @@ export function Login() {
           <Link
             to="/"
             className="login-logo"
-            aria-label="RaveCareApp — início"
+            aria-label="RaveCareApp, início"
           >
             <BrandLogo />
           </Link>

@@ -18,7 +18,7 @@ export function InstagramContent() {
           <SectionHeading
             eyebrow="dá o play nesse papo"
             title="Saúde, cannabis e rave sem discurso engessado."
-            description="Vídeos da Dra. Bianca sobre drogas, cuidado, cannabis medicinal e redução de danos — com leveza, evidência e responsabilidade."
+            description="Vídeos da Dra. Bianca sobre drogas, cuidado, cannabis medicinal e redução de danos, com leveza, evidência e responsabilidade."
           />
           <a className="instagram-button" href="https://www.instagram.com/biancarohsner/" target="_blank" rel="noreferrer">
             <svg className="instagram-flat-icon" width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">

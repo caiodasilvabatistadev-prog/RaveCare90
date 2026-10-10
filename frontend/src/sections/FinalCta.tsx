@@ -24,11 +24,11 @@ export function FinalCta() {
           <p className="eyebrow eyebrow--light">depois da noite · entre as consultas</p>
           <h2 id="cta-title">RaveCare cuida de você quando a festa acaba.</h2>
           <p className="finale-promise">
-            Redução de danos, cannabis medicinal e acompanhamento contínuo com a Dra. Bianca —
+            Redução de danos, cannabis medicinal e acompanhamento contínuo com a Dra. Bianca,
             pra saúde não sumir no dia seguinte, nem no intervalo entre um retorno e outro.
           </p>
           <p className="finale-disclaimer">
-            Acompanhamento responsável — não é promessa de resultado e não substitui consulta ou prescrição.
+            Acompanhamento responsável: não é promessa de resultado e não substitui consulta ou prescrição.
           </p>
           <div className="finale-actions">
             <Button href="mailto:contato@ravecareapp.com" variant="light">

@@ -37,7 +37,7 @@ export function Testimonials() {
         <SectionHeading
           eyebrow="quem viveu, conta"
           title="Quando o cuidado encaixa na vida."
-          description="Mensagens de pessoas acompanhadas pela Dra. Bianca — sem nomes, sem exposição e com muito afeto."
+          description="Mensagens de pessoas acompanhadas pela Dra. Bianca, sem nomes, sem exposição e com muito afeto."
         />
         <div className="testimonial-carousel" aria-roledescription="carrossel" aria-label="Depoimentos anonimizados de pacientes">
           <div className="testimonial-stage">

@@ -1,8 +1,8 @@
 const modules = [
   { n: '01', title: 'Consulta com escuta', text: 'História clínica, objetivos e o que importa de verdade pro seu corpo.' },
-  { n: '02', title: 'Cannabis com evidência', text: 'Indicação responsável — sem terrorismo, sem romantização, sem receita única.' },
+  { n: '02', title: 'Cannabis com evidência', text: 'Indicação responsável, sem terrorismo, sem romantização, sem receita única.' },
   { n: '03', title: 'Redução de danos', text: 'Estratégias pra diminuir risco quando a noite acontece. Zero julgamento.' },
-  { n: '04', title: 'Entre as consultas', text: 'Sono, sintomas e rotina no mesmo lugar — pra você não se perder no meio do caminho.' },
+  { n: '04', title: 'Entre as consultas', text: 'Sono, sintomas e rotina no mesmo lugar, pra você não se perder no meio do caminho.' },
   { n: '05', title: 'Retorno dos 90 dias', text: 'Padrões claros e próximos passos com mais segurança.' },
 ]
 
@@ -21,7 +21,7 @@ export function Method() {
           <div className="modules-copy">
             <p className="modules-badge">Não é protocolo genérico.</p>
             <h2 id="method-title">
-              É acompanhamento contínuo com uma médica que entende a sua vida — inclusive depois do rolê.
+              É acompanhamento contínuo com uma médica que entende a sua vida, inclusive depois do rolê.
             </h2>
             <p className="modules-lead">
               São pilares práticos pra organizar o cuidado: consulta, cannabis medicinal,
@@ -52,7 +52,7 @@ export function Method() {
         </div>
 
         <p className="method-disclaimer">
-          Cada corpo responde de um jeito. O RaveCare organiza o cuidado — não promete milagre.
+          Cada corpo responde de um jeito. O RaveCare organiza o cuidado, não promete milagre.
         </p>
       </div>
     </section>

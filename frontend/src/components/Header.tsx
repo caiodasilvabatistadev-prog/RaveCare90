@@ -30,7 +30,7 @@ export function Header() {
 
         <a
           href="#inicio"
-          aria-label="RaveCareApp — início"
+          aria-label="RaveCareApp, início"
           onClick={closeMenu}
         >
           <BrandLogo />
@@ -75,7 +75,7 @@ export function Header() {
           ))}
 
           {isAuthenticated ? (
-            <div className="header-session">
+            <div className="header-session header-actions">
               <span className="header-user">
                 Olá, {user?.name.split(' ')[0]}
               </span>
@@ -84,12 +84,14 @@ export function Header() {
               </button>
             </div>
           ) : (
-            <>
-              <Link to="/login" onClick={closeMenu}>Entrar</Link>
-              <a href="#comece" className="button button--primary header-cta" onClick={closeMenu}>
+            <div className="header-actions">
+              <Link to="/login" className="header-btn header-btn--secondary" onClick={closeMenu}>
+                Entrar
+              </Link>
+              <a href="#comece" className="header-btn header-btn--primary header-cta" onClick={closeMenu}>
                 Quero conversar
               </a>
-            </>
+            </div>
           )}
         </nav>
       </div>

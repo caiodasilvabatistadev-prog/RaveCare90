@@ -23,7 +23,7 @@ export function Hero() {
           <p className="hero-description">
             Você não precisa escolher entre viver a noite e ser ouvida de verdade.
             Acompanhamento com a Dra. Bianca Rohsner: cannabis medicinal, redução de danos
-            e presença entre uma consulta e outra — sem tabu.
+            e presença entre uma consulta e outra, sem tabu.
           </p>
           <div className="hero-actions">
             <Button href="#comece" variant="light">

@@ -39,12 +39,12 @@ export function Professional() {
 
           <div className="professional-story">
             <p>
-              Eu não sou só o jaleco do consultório — e também não sou só a vibe da pista.
+              Eu não sou só o jaleco do consultório, e também não sou só a vibe da pista.
               Sou médica primeiro: escuta clínica, responsabilidade e acompanhamento de verdade.
             </p>
             <p>
               Conheço a noite por dentro. Por isso falo de drogas, cannabis medicinal e redução
-              de danos sem moralismo — e sem romantizar risco.
+              de danos sem moralismo, e sem romantizar risco.
             </p>
             <p>
               As consultas são online. O cuidado continua com o RAVECARE 90, porque saúde

@@ -9,7 +9,7 @@ const faqs = [
   },
   {
     q: 'Cannabis medicinal é pra qualquer pessoa?',
-    a: 'Não. Cada corpo é um corpo. A indicação depende de avaliação profissional, história clínica e acompanhamento — sem receita única e sem promessa de resultado.',
+    a: 'Não. Cada corpo é um corpo. A indicação depende de avaliação profissional, história clínica e acompanhamento, sem receita única e sem promessa de resultado.',
   },
   {
     q: 'E se eu já tentei cuidar sozinha e não deu certo?',
@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: 'Redução de danos significa incentivar uso?',
-    a: 'Não. Significa informação segura, escuta real e estratégias pra diminuir riscos — com responsabilidade, sem romantizar e sem moralismo.',
+    a: 'Não. Significa informação segura, escuta real e estratégias pra diminuir riscos, com responsabilidade, sem romantizar e sem moralismo.',
   },
   {
     q: 'Como começo?',
@@ -35,7 +35,7 @@ export function Faq() {
           eyebrow="dúvidas que travam o cuidado"
           titleId="faq-title"
           title="O que te impede de cuidar disso hoje?"
-          description="Respostas diretas — sem enrolação e sem pressão. Prepare-se pra esclarecer o que talvez você nem soubesse que precisava perguntar."
+          description="Respostas diretas, sem enrolação e sem pressão. Prepare-se pra esclarecer o que talvez você nem soubesse que precisava perguntar."
         />
         <div className="faq-list">
           {faqs.map((item, index) => {

@@ -56,7 +56,8 @@ img { max-width: 100%; }
   width: min(var(--page-max), calc(100% - var(--page-gutter) - clamp(12px, 1.5vw, 20px)));
 }
 .hero .container.hero-grid {
-  margin-left: clamp(12px, 1.8vw, 22px);
+  /* Nudge copy off the left edge (Vini) — still left-biased, not centered */
+  margin-left: clamp(28px, 4.5vw, 56px);
 }
 
 /* Header */
@@ -923,15 +924,63 @@ img { max-width: 100%; }
 
 .header-session { display: flex; align-items: center; gap: 12px; }
 .header-user { color: #584d69; white-space: nowrap; }
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 6px;
+}
+.header-btn {
+  min-height: 44px;
+  min-width: 96px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  border-radius: 12px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+  border: 0;
+  box-sizing: border-box;
+}
+.header-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(53, 32, 120, 0.18);
+}
+.header-btn--secondary {
+  color: var(--color-primary-dark);
+  background: #efe6f8;
+}
+.header-btn--secondary:hover {
+  background: #e4d6f5;
+  color: var(--color-primary-dark);
+}
+.header-btn--primary {
+  color: #fff;
+  background: var(--color-primary-dark);
+}
+.header-btn--primary:hover {
+  background: #2a185f;
+  color: #fff;
+}
 .header-logout {
-  border: 1px solid var(--color-primary);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--color-primary);
+  min-height: 44px;
+  min-width: 96px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 12px;
+  background: #efe6f8;
+  color: var(--color-primary-dark);
   cursor: pointer;
   font: inherit;
   font-weight: 700;
-  padding: 8px 13px;
+  padding: 0 18px;
 }
 .header-logout:hover { background: var(--color-primary); color: #fff; }
 
@@ -971,7 +1020,14 @@ img { max-width: 100%; }
     flex-direction: column;
     padding-top: 13px;
   }
-  .header-logout { text-align: left; }
+  .header-logout { text-align: center; width: 100%; }
+  .header-actions {
+    flex-direction: column;
+    align-items: stretch;
+    margin: 10px 0 0;
+    width: 100%;
+  }
+  .header-btn { width: 100%; }
   .section { padding: 80px 0; }
   .section-heading { margin-bottom: 34px; }
   .hero { min-height: min(100svh, 780px); padding: 48px 0 0; }

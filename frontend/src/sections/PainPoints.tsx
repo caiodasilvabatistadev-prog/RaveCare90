@@ -11,7 +11,7 @@ const pains = [
 const wins = [
   'Organizar histórico, objetivos e o que realmente importa pro tratamento',
   'Registrar sono, sintomas e qualidade de vida sem pressão de performance',
-  'Entender cannabis medicinal com evidência — sem terrorismo nem romantização',
+  'Entender cannabis medicinal com evidência, sem terrorismo nem romantização',
   'Praticar redução de danos com escuta real e zero julgamento',
   'Manter o fio do cuidado mesmo quando a vida (e a noite) acontece',
 ]
@@ -21,7 +21,7 @@ export function PainPoints() {
     <section className="section pain-points" id="dores" aria-labelledby="pain-title">
       <div className="container pain-layout">
         <p className="pain-disclaimer">
-          Resultados variam. O RaveCare organiza o acompanhamento — não é promessa de milagre,
+          Resultados variam. O RaveCare organiza o acompanhamento, não é promessa de milagre,
           nem substitui consulta ou prescrição.
         </p>
 
@@ -34,7 +34,7 @@ export function PainPoints() {
             E não vai mais se sabotar achando que “depois da festa eu resolvo”.
           </h2>
           <aside className="myth-callout" aria-label="Promessa RaveCare">
-            Cuidado com presença real — cannabis medicinal e redução de danos
+            Cuidado com presença real: cannabis medicinal e redução de danos
             com médica do outro lado. O básico que funciona.
           </aside>
         </div>
