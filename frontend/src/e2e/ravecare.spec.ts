@@ -60,10 +60,13 @@ test('carrega a landing page e seus conteúdos principais', async ({ page }) => 
   await page.goto('/')
 
   await expect(
-    page.getByRole('heading', { name: /seu cuidado continua depois da consulta/i }),
+    page.getByRole('heading', { name: /chega de cuidar da saúde só .* que o corpo grita/i }),
   ).toBeVisible()
   await expect(page.locator('video')).toHaveCount(3)
-  await expect(page.getByRole('link', { name: /quero começar/i }).first()).toBeVisible()
+  await expect(page.getByRole('link', { name: /quero o rave care/i }).first()).toBeVisible()
+  await expect(
+    page.getByRole('link', { name: /quero o rave care/i }).first(),
+  ).toHaveAttribute('href', /wa\.me\/5521920405871/)
 })
 
 test('cadastro exige confirmação de e-mail antes do login', async ({ page, request }) => {

@@ -32,10 +32,16 @@ describe('Header', () => {
 
   it('exibe os principais caminhos da página', () => {
     renderHeader()
+    expect(screen.getByRole('link', { name: 'Se isso é pra você' })).toHaveAttribute('href', '#dores')
     expect(screen.getByRole('link', { name: 'Tratamento' })).toHaveAttribute('href', '#acompanhamento')
-    expect(screen.getByRole('link', { name: 'Cannabis medicinal' })).toHaveAttribute('href', '#conteudo')
+    expect(screen.queryByRole('link', { name: 'Recebi minha receita' })).not.toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Dúvidas' })).toHaveAttribute('href', '#conteudo')
     expect(screen.getByRole('link', { name: 'Depoimentos' })).toHaveAttribute('href', '#depoimentos')
-    expect(screen.getByRole('link', { name: 'Quero conversar' })).toHaveAttribute('href', '#comece')
+    expect(screen.getByRole('link', { name: 'Quero conversar' })).toHaveAttribute(
+      'href',
+      expect.stringContaining('wa.me/5521920405871'),
+    )
+    expect(screen.getByRole('link', { name: 'Entrar' })).toHaveAttribute('href', '/login')
   })
 
   it('mostra a sessão e permite sair na home', async () => {

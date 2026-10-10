@@ -5,6 +5,7 @@ import {
 import type { FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
+import { matchesDemoAccount, DEMO_ACCOUNT } from '../auth/demoAccount'
 import { useAuth } from '../auth/UseAuth'
 import { BrandLogo } from '../components/BrandLogo'
 import raveCareLoginBg from '../assets/ravecare-login-bg.png'
@@ -55,6 +56,19 @@ export function Login() {
       setLoading(true)
       setError('')
 
+      const trimmedEmail = email.trim()
+
+      // Local demo account — no backend required (preview / Vinicius QA).
+      if (matchesDemoAccount(trimmedEmail, password)) {
+        saveSession({
+          accessToken: DEMO_ACCOUNT.accessToken,
+          tokenType: 'Bearer',
+          expiresIn: 60 * 60 * 24 * 30,
+          user: { ...DEMO_ACCOUNT.user },
+        })
+        return
+      }
+
       const response = await fetch(
         `${apiUrl}/api/v1/auth/login`,
         {
@@ -65,7 +79,7 @@ export function Login() {
           },
 
           body: JSON.stringify({
-            email: email.trim(),
+            email: trimmedEmail,
             password,
           }),
         }
@@ -113,7 +127,7 @@ export function Login() {
           <Link
             to="/"
             className="login-logo"
-            aria-label="RaveCareApp — início"
+            aria-label="Rave Care, início"
           >
             <BrandLogo />
           </Link>
@@ -234,7 +248,7 @@ export function Login() {
 
         <div className="login-visual-content">
           <span>
-            RAVECARE
+            Rave Care
           </span>
 
           <h2>

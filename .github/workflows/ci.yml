@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main]
 
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
@@ -13,24 +17,67 @@ jobs:
   frontend:
     name: Frontend
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     defaults:
       run:
         working-directory: frontend
     steps:
       - uses: actions/checkout@v5
+
       - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
           cache-dependency-path: frontend/package-lock.json
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run test:coverage
-      - run: npm run build
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Unit tests
+        run: npm run test:coverage
+
+      - name: Production build
+        run: npm run build
+
+      - name: Verify Anvisa route and reel videos in dist
+        run: |
+          set -euo pipefail
+          if ! grep -R -q 'recebi-minha-receita' dist; then
+            echo "::error::Expected /recebi-minha-receita to appear in frontend/dist (Anvisa guide)."
+            exit 1
+          fi
+          count=$(find dist -type f -name 'reel-*.mp4' | wc -l)
+          echo "Found $count reel video asset(s) in dist/"
+          if [ "$count" -lt 3 ]; then
+            echo "::error::Expected at least 3 reel-*.mp4 files in frontend/dist (Instagram section)."
+            find dist -type f \( -name '*.mp4' -o -name 'reel-*' \) || true
+            exit 1
+          fi
+          while IFS= read -r f; do
+            size=$(wc -c < "$f")
+            echo "$f => $size bytes"
+            if [ "$size" -gt 12000000 ]; then
+              echo "::error::$f is larger than 12MB; compress before merge so durable/static deploys keep videos."
+              exit 1
+            fi
+          done < <(find dist -type f -name 'reel-*.mp4')
+
+      - name: Upload frontend dist
+        if: success()
+        uses: actions/upload-artifact@v6
+        with:
+          name: frontend-dist
+          path: frontend/dist
+          if-no-files-found: error
+          retention-days: 7
 
   backend:
     name: Backend
     runs-on: ubuntu-latest
+    timeout-minutes: 25
     defaults:
       run:
         working-directory: backend
@@ -48,6 +95,7 @@ jobs:
     name: Docker E2E
     needs: [frontend, backend]
     runs-on: ubuntu-latest
+    timeout-minutes: 35
     env:
       POSTGRES_DB: ravecare_ci
       POSTGRES_USER: ravecare_ci

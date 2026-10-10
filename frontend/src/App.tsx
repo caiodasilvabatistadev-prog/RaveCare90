@@ -1,19 +1,23 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { ConfirmEmail } from './pages/ConfirmEmail'
 import { Header } from './components/Header'
-import { About } from './sections/About'
+import { Faq } from './sections/Faq'
 import { FinalCta } from './sections/FinalCta'
 import { Footer } from './sections/Footer'
 import { Hero } from './sections/Hero'
-import { Journey } from './sections/Journey'
-import { Professional } from './sections/Professional'
-import { Resources } from './sections/Resources'
-import { Guidance } from './sections/Guidance'
 import { InstagramContent } from './sections/InstagramContent'
+import { Journey } from './sections/Journey'
+import { Method } from './sections/Method'
+import { PainPoints } from './sections/PainPoints'
+import { Professional } from './sections/Professional'
+import { ReceitaAnvisa } from './sections/ReceitaAnvisa'
 import { Testimonials } from './sections/Testimonials'
+import { features } from './config/features'
 import { Login } from './pages/Login'
+import { RecebiMinhaReceita } from './pages/RecebiMinhaReceita'
 import { Register } from './pages/Register'
 import './styles/social-proof.css'
+import './styles/receita-anvisa.css'
 
 function LandingPage() {
   return (
@@ -22,12 +26,13 @@ function LandingPage() {
 
       <main>
         <Hero />
-        <Resources />
-        <Professional />
+        <PainPoints />
+        <Method />
         <Journey />
-        <About />
+        {features.showAnvisaGuide ? <ReceitaAnvisa /> : null}
+        <Professional />
         <Testimonials />
-        <Guidance />
+        <Faq />
         <InstagramContent />
         <FinalCta />
       </main>
@@ -38,14 +43,15 @@ function LandingPage() {
 }
 
 export default function App() {
- return (
-   <BrowserRouter>
-     <Routes>
-       <Route path="/" element={<LandingPage />} />
-       <Route path="/login" element={<Login />} />
-       <Route path="/cadastro" element={<Register />} />
-       <Route path="/confirmar-email" element={<ConfirmEmail />} />
-     </Routes>
-   </BrowserRouter>
- )
- }
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/recebi-minha-receita" element={<RecebiMinhaReceita />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/cadastro" element={<Register />} />
+        <Route path="/confirmar-email" element={<ConfirmEmail />} />
+      </Routes>
+    </BrowserRouter>
+  )
+}

@@ -2,12 +2,18 @@ import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth/UseAuth'
+import { whatsappHref } from '../config/contact'
+import { features } from '../config/features'
 import { BrandLogo } from './BrandLogo'
 
 const links = [
-  { href: '#como-funciona', label: 'Como funciona' },
+  { href: '#dores', label: 'Se isso é pra você' },
   { href: '#acompanhamento', label: 'Tratamento' },
-  { href: '#conteudo', label: 'Cannabis medicinal' },
+  ...(features.showAnvisaGuide
+    ? [{ href: '#receita-anvisa', label: 'Recebi minha receita' }]
+    : []),
+  { href: '#como-funciona', label: 'Como funciona' },
+  { href: '#conteudo', label: 'Dúvidas' },
   { href: '#depoimentos', label: 'Depoimentos' },
 ]
 
@@ -29,7 +35,7 @@ export function Header() {
 
         <a
           href="#inicio"
-          aria-label="RaveCareApp — início"
+          aria-label="Rave Care, início"
           onClick={closeMenu}
         >
           <BrandLogo />
@@ -74,7 +80,7 @@ export function Header() {
           ))}
 
           {isAuthenticated ? (
-            <div className="header-session">
+            <div className="header-session header-actions">
               <span className="header-user">
                 Olá, {user?.name.split(' ')[0]}
               </span>
@@ -83,12 +89,20 @@ export function Header() {
               </button>
             </div>
           ) : (
-            <>
-              <Link to="/login" onClick={closeMenu}>Entrar</Link>
-              <a href="#comece" className="button button--primary header-cta" onClick={closeMenu}>
+            <div className="header-actions">
+              <Link to="/login" className="header-btn header-btn--secondary" onClick={closeMenu}>
+                Entrar
+              </Link>
+              <a
+                href={whatsappHref()}
+                className="header-btn header-btn--primary header-cta"
+                onClick={closeMenu}
+                target="_blank"
+                rel="noreferrer"
+              >
                 Quero conversar
               </a>
-            </>
+            </div>
           )}
         </nav>
       </div>

@@ -14,7 +14,7 @@ export function Resources() {
   return (
     <section className="section resources" id="acompanhamento" aria-labelledby="resources-title">
       <div className="container">
-        <SectionHeading eyebrow="seu tratamento em um só lugar" title="Pra acompanhar cada fase sem se perder no caminho." description="Registre como você está, entenda sua evolução e chegue às consultas com assunto — e informação." inverse />
+        <SectionHeading eyebrow="seu tratamento em um só lugar" title="Pra acompanhar cada fase sem se perder no caminho." description="Registre como você está, entenda sua evolução e chegue às consultas com assunto, e informação." inverse />
         <div className="resource-grid">{resources.map(({ icon: Icon, title, text }) => <article className="resource-card" key={title}><Icon aria-hidden="true" /><h3>{title}</h3><p>{text}</p></article>)}</div>
       </div>
     </section>
