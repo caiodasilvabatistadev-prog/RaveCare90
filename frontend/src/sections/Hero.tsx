@@ -37,8 +37,8 @@ export function Hero() {
             </li>
           </ul>
           <div className="hero-actions">
-            <Button href={whatsappHref()} variant="light">
-              Quero conversar <ArrowRight size={18} aria-hidden="true" />
+            <Button href={whatsappHref()} variant="light" target="_blank" rel="noreferrer">
+              Quero o RaveCare <ArrowRight size={18} aria-hidden="true" />
             </Button>
             <a className="text-link text-link--light" href="#dores">
               Se isso é pra você <ArrowDownRight size={18} aria-hidden="true" />

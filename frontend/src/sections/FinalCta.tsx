@@ -1,4 +1,4 @@
-import { ArrowRight, MessageCircle } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { biancaRavePrimary } from '../assets/bianca'
 import { Button } from '../components/Button'
 import { whatsappHref } from '../config/contact'
@@ -34,9 +34,8 @@ export function FinalCta() {
             da Dra. Bianca: presença real, sem falsa promessa de resposta imediata.
           </p>
           <div className="finale-actions">
-            <Button href={whatsappHref()} variant="light">
-              <MessageCircle size={18} aria-hidden="true" />
-              Falar no WhatsApp <ArrowRight size={18} aria-hidden="true" />
+            <Button href={whatsappHref()} variant="light" target="_blank" rel="noreferrer">
+              Quero o RaveCare <ArrowRight size={18} aria-hidden="true" />
             </Button>
             <a className="text-link text-link--light" href="#bianca">
               Conhecer a Dra. Bianca

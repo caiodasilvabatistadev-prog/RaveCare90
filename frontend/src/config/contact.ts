@@ -5,7 +5,7 @@ export const contact = {
   /** Doctoralia-listed mobile; replies based on availability (not always-online). */
   whatsappE164: '5521920405871',
   whatsappMessage:
-    'Oi Dra. Bianca! Quero saber mais sobre o acompanhamento RaveCare 90 (antes, durante e depois do rolê).',
+    'Oi Dra. Bianca! Quero o RaveCare: acompanhamento médico contínuo (antes, durante e depois do rolê).',
 } as const
 
 export function whatsappHref(message = contact.whatsappMessage): string {

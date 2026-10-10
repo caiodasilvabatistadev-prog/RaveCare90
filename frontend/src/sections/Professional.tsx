@@ -87,8 +87,8 @@ export function Professional() {
             <span><MessageCircle size={17} aria-hidden="true" /> chat / WhatsApp</span>
           </div>
 
-          <Button href={whatsappHref()} variant="secondary">
-            Quero conhecer <ArrowRight size={18} aria-hidden="true" />
+          <Button href={whatsappHref()} variant="secondary" target="_blank" rel="noreferrer">
+            Quero o RaveCare <ArrowRight size={18} aria-hidden="true" />
           </Button>
         </div>
       </div>
