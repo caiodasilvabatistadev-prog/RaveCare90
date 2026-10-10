@@ -3,7 +3,7 @@ import { SectionHeading } from '../components/SectionHeading'
 
 const articles = [
   { icon: BookOpen, label: 'cannabis medicinal', title: 'O que é, como funciona e onde entra o acompanhamento médico.' },
-  { icon: Leaf, label: 'cada corpo é um corpo', title: 'Não existe receita igual pra todo mundo — e tudo bem.' },
+  { icon: Leaf, label: 'cada corpo é um corpo', title: 'Não existe receita igual pra todo mundo, e tudo bem.' },
   { icon: ShieldCheck, label: 'redução de danos', title: 'Informação boa ajuda você a fazer escolhas mais seguras.' },
 ]
 

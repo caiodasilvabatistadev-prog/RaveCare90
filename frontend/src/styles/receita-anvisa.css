@@ -1,0 +1,423 @@
+/* ANVISA / pós-receita — neon-violeta Médica Raver, sem cards “dashboard” */
+
+.receita-anvisa {
+  position: relative;
+  overflow: hidden;
+  color: #f4ecff;
+  background:
+    radial-gradient(circle at 12% 20%, rgba(164, 61, 225, 0.45), transparent 32%),
+    radial-gradient(circle at 88% 70%, rgba(23, 200, 222, 0.28), transparent 30%),
+    linear-gradient(145deg, #21143f 0%, #352078 48%, #4a1f8c 100%);
+}
+
+.receita-anvisa .section-heading h2,
+.receita-anvisa .section-description {
+  color: #fff;
+}
+
+.receita-anvisa .eyebrow {
+  color: #9cecf3;
+}
+
+.receita-preview-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.receita-preview-card {
+  position: relative;
+  padding: 22px 18px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  animation: receita-fade-up 0.7s ease both;
+}
+
+.receita-preview-card:nth-child(2) { animation-delay: 0.08s; }
+.receita-preview-card:nth-child(3) { animation-delay: 0.16s; }
+.receita-preview-card:nth-child(4) { animation-delay: 0.24s; }
+
+.receita-preview-number {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: #9cecf3;
+  font: 800 0.78rem/1 'Manrope', sans-serif;
+  letter-spacing: 0.16em;
+}
+
+.receita-preview-card h3 {
+  margin: 0 0 10px;
+  font: 700 1.15rem/1.2 'Manrope', sans-serif;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.receita-preview-card p {
+  margin: 0;
+  color: rgba(244, 236, 255, 0.82);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.receita-preview-footer {
+  margin-top: 36px;
+  display: grid;
+  gap: 22px;
+}
+
+.receita-disclaimer {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 0;
+  padding: 14px 16px;
+  border-left: 3px solid #9cecf3;
+  color: rgba(244, 236, 255, 0.88);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.receita-disclaimer svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: #9cecf3;
+}
+
+.receita-preview-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+}
+
+.receita-preview-actions .text-link {
+  color: #fff;
+}
+
+/* Página dedicada */
+.receita-page {
+  min-height: 100vh;
+  background: #120a24;
+}
+
+.receita-page-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(18, 10, 36, 0.9);
+  backdrop-filter: blur(14px);
+}
+
+.receita-page-header-inner {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.receita-page-header .brand-logo {
+  filter: brightness(0) invert(1);
+  opacity: 0.96;
+}
+
+.receita-page-header .text-link {
+  color: #eee6fc;
+}
+
+.receita-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 72px 0 48px;
+  color: #fff;
+}
+
+.receita-hero-glow {
+  position: absolute;
+  inset: -20% 20% auto -10%;
+  height: 420px;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(164, 61, 225, 0.55), transparent 45%),
+    radial-gradient(circle at 70% 30%, rgba(23, 200, 222, 0.35), transparent 40%);
+  filter: blur(8px);
+  animation: receita-pulse 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.receita-hero-inner {
+  position: relative;
+  max-width: 760px;
+}
+
+.receita-hero h1 {
+  margin: 0;
+  font: 700 clamp(2.6rem, 6vw, 4.6rem)/0.98 'Manrope', sans-serif;
+  letter-spacing: -0.06em;
+}
+
+.receita-hero-lead {
+  margin: 22px 0 0;
+  max-width: 640px;
+  color: #ddd3ea;
+  font-size: 1.12rem;
+  line-height: 1.65;
+}
+
+.receita-hero-note {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+  padding: 16px 18px;
+  border: 1px solid rgba(156, 236, 243, 0.35);
+  border-radius: 16px;
+  background: rgba(156, 236, 243, 0.08);
+  animation: receita-fade-up 0.8s ease both;
+}
+
+.receita-hero-note svg {
+  flex: 0 0 auto;
+  color: #9cecf3;
+  margin-top: 2px;
+}
+
+.receita-hero-note p {
+  margin: 0;
+  color: #eee6fc;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.receita-steps {
+  background: #f8f5fc;
+  color: var(--color-text);
+  border-radius: 36px 36px 0 0;
+}
+
+.receita-steps-heading {
+  margin: 0;
+  font: 700 clamp(2rem, 4vw, 3.2rem)/1.05 'Manrope', sans-serif;
+  letter-spacing: -0.05em;
+}
+
+.receita-step-list {
+  list-style: none;
+  margin: 42px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+
+.receita-page-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.receita-page-header-actions .button--light {
+  color: var(--color-primary-dark);
+  background: #fff;
+}
+
+.receita-step {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 18px;
+  padding: 28px 0;
+  border-top: 1px solid var(--color-line);
+  animation: receita-fade-up 0.65s ease both;
+}
+
+.receita-step-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(240px, 0.95fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.receita-step-print {
+  margin: 0;
+}
+
+.receita-step-print-frame {
+  border: 1px solid var(--color-line);
+  border-radius: 18px;
+  overflow: hidden;
+  background: #1a1230;
+  box-shadow: 0 16px 36px rgba(53, 32, 120, 0.14);
+}
+
+.receita-step-print-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.receita-step-print figcaption {
+  margin-top: 8px;
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.receita-step:nth-child(odd) { animation-delay: 0.05s; }
+.receita-step:nth-child(even) { animation-delay: 0.12s; }
+
+.receita-step-badge {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  color: #fff;
+  font: 800 0.85rem/1 'Manrope', sans-serif;
+  letter-spacing: 0.08em;
+  background: linear-gradient(145deg, #7026b9, #456ce2);
+  box-shadow: 0 10px 24px rgba(53, 32, 120, 0.28);
+}
+
+.receita-step-body h3 {
+  margin: 0 0 10px;
+  font: 700 1.45rem/1.15 'Manrope', sans-serif;
+  letter-spacing: -0.035em;
+  color: var(--color-primary-dark);
+}
+
+.receita-step-summary {
+  margin: 0 0 14px;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  font-size: 1.02rem;
+}
+
+.receita-step-body ul {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 8px;
+  color: #3d3154;
+  line-height: 1.55;
+}
+
+.receita-step-tip {
+  margin: 16px 0 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #efe6fb;
+  color: var(--color-primary-dark);
+  font-weight: 600;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.receita-official {
+  background: #21163b;
+  color: #fff;
+}
+
+.receita-official-inner {
+  max-width: 760px;
+}
+
+.receita-official h2 {
+  margin: 0;
+  font: 700 clamp(1.9rem, 4vw, 2.8rem)/1.1 'Manrope', sans-serif;
+  letter-spacing: -0.045em;
+}
+
+.receita-official .section-description {
+  color: #cfc3e4;
+}
+
+.receita-official-links {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.receita-official-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #9cecf3;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.receita-official-links a:hover {
+  color: #fff;
+}
+
+.receita-official-cta {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@keyframes receita-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes receita-pulse {
+  0%,
+  100% {
+    opacity: 0.75;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+@media (max-width: 900px) {
+  .receita-preview-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .receita-step-main {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .receita-preview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .receita-step {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .receita-hero {
+    padding: 56px 0 36px;
+  }
+
+  .receita-steps {
+    border-radius: 28px 28px 0 0;
+  }
+}

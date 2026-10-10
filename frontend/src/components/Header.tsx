@@ -7,6 +7,7 @@ import { BrandLogo } from './BrandLogo'
 const links = [
   { href: '#dores', label: 'Se isso é pra você' },
   { href: '#acompanhamento', label: 'Tratamento' },
+  { href: '#receita-anvisa', label: 'Recebi minha receita' },
   { href: '#como-funciona', label: 'Como funciona' },
   { href: '#conteudo', label: 'Dúvidas' },
   { href: '#depoimentos', label: 'Depoimentos' },

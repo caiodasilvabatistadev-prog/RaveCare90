@@ -34,6 +34,7 @@ describe('Header', () => {
     renderHeader()
     expect(screen.getByRole('link', { name: 'Se isso é pra você' })).toHaveAttribute('href', '#dores')
     expect(screen.getByRole('link', { name: 'Tratamento' })).toHaveAttribute('href', '#acompanhamento')
+    expect(screen.getByRole('link', { name: 'Recebi minha receita' })).toHaveAttribute('href', '#receita-anvisa')
     expect(screen.getByRole('link', { name: 'Dúvidas' })).toHaveAttribute('href', '#conteudo')
     expect(screen.getByRole('link', { name: 'Depoimentos' })).toHaveAttribute('href', '#depoimentos')
     expect(screen.getByRole('link', { name: 'Quero conversar' })).toHaveAttribute('href', '#comece')

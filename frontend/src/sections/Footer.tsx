@@ -13,6 +13,8 @@ export function Footer() {
           <p className="footer-label">navegue</p>
           <a href="#dores">Se isso é pra você</a>
           <a href="#acompanhamento">Acompanhamento</a>
+          <a href="#receita-anvisa">Recebi minha receita</a>
+          <a href="/recebi-minha-receita">Guia Anvisa</a>
           <a href="#como-funciona">Como funciona</a>
           <a href="#conteudo">Dúvidas</a>
         </div>
@@ -24,6 +26,7 @@ export function Footer() {
           <a href="https://www.instagram.com/biancarohsner/" target="_blank" rel="noreferrer">
             <AtSign size={16} aria-hidden="true" /> Instagram
           </a>
+          <a href="/login">Entrar na conta</a>
         </div>
       </div>
       <div className="container footer-bottom">
@@ -31,6 +34,7 @@ export function Footer() {
         <span>
           <a href="#inicio">Privacidade</a>
           <a href="#inicio">Termos</a>
+          <a href="/login">Entrar</a>
         </span>
       </div>
     </footer>
