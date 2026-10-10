@@ -179,6 +179,10 @@ img { max-width: 100%; }
   transform: scale(1.05);
   animation: hero-ken 16s ease-in-out infinite alternate;
   filter: saturate(1.12) contrast(1.04);
+  border-radius: 0;
+  clip-path: none;
+  mask-image: none;
+  -webkit-mask-image: none;
 }
 @keyframes hero-ken {
   from { transform: scale(1.05) translate3d(0, 0, 0); }
