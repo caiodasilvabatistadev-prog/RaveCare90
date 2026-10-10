@@ -1,6 +1,6 @@
 import { ArrowUpRight, PlayCircle } from 'lucide-react'
 import { SectionHeading } from '../components/SectionHeading'
-import reelCannabis from '../assets/videos/reel-DZD-Wd6M3fK.mp4'
+import reelCannabis from '../assets/videos/reel-cannabis-web.mp4'
 import reelBiancaContent from '../assets/videos/reel-DXIA_y7OZ6h.mp4'
 import reelSaudeRave from '../assets/videos/reel-DVqZX2QBhnD.mp4'
 import cannabisPoster from '../assets/reel-cannabis-poster.jpg'
