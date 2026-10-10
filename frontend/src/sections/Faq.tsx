@@ -4,8 +4,8 @@ import { SectionHeading } from '../components/SectionHeading'
 
 const faqs = [
   {
-    q: 'O RaveCare é acompanhamento médico de verdade?',
-    a: 'Sim. O RaveCare 90 é o acompanhamento contínuo com a Dra. Bianca: consultas online, presença entre os encontros e equipe na plataforma (nutrição e educador físico).',
+    q: 'O Rave Care é acompanhamento médico de verdade?',
+    a: 'Sim. O Rave Care 90 é o acompanhamento contínuo com a Dra. Bianca: consultas online, presença entre os encontros e equipe na plataforma (nutrição e educador físico).',
   },
   {
     q: 'Cannabis medicinal é pra qualquer pessoa?',
@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     q: 'E se eu já tentei cuidar sozinha e não deu certo?',
-    a: 'Muita gente chega cansada de informação solta e de julgamento. O ponto do RAVECARE 90 é presença contínua: registrar o que importa, entender padrões e chegar ao retorno com mais clareza.',
+    a: 'Muita gente chega cansada de informação solta e de julgamento. O ponto do Rave Care 90 é presença contínua: registrar o que importa, entender padrões e chegar ao retorno com mais clareza.',
   },
   {
     q: 'Redução de danos significa incentivar uso?',
@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     q: 'Como começo?',
-    a: 'Toque em Quero o RaveCare na página. Se fizer sentido pra você, a conversa segue com a Dra. Bianca e o fluxo do acompanhamento de 90 dias: antes e depois do rolê.',
+    a: 'Toque em Quero o Rave Care na página. Se fizer sentido pra você, a conversa segue com a Dra. Bianca e o fluxo do acompanhamento de 90 dias: antes e depois do rolê.',
   },
 ]
 

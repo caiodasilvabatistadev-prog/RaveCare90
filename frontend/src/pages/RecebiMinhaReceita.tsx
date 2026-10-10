@@ -11,7 +11,7 @@ export function RecebiMinhaReceita() {
     <div className="receita-page">
       <header className="receita-page-header">
         <div className="container receita-page-header-inner">
-          <Link to="/" aria-label="RaveCareApp, início">
+          <Link to="/" aria-label="Rave Care, início">
             <BrandLogo />
           </Link>
           <div className="receita-page-header-actions">
@@ -30,7 +30,7 @@ export function RecebiMinhaReceita() {
           <div className="receita-hero-glow" aria-hidden="true" />
           <div className="container receita-hero-inner">
             <p className="eyebrow eyebrow--light">
-              <HeartPulse size={15} aria-hidden="true" /> Dra. Bianca · Médica Raver · RaveCare
+              <HeartPulse size={15} aria-hidden="true" /> Dra. Bianca · Médica Raver · Rave Care
             </p>
             <h1 id="receita-page-title">Recebi minha receita e agora?</h1>
             <p className="receita-hero-lead">
@@ -113,7 +113,7 @@ export function RecebiMinhaReceita() {
             </ul>
             <div className="receita-official-cta">
               <Button href="/#comece" variant="primary">
-                Quero acompanhamento RaveCare
+                Quero acompanhamento Rave Care
               </Button>
               <Button href="/login" variant="secondary">
                 Entrar na conta

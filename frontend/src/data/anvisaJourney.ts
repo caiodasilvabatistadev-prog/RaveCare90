@@ -114,7 +114,7 @@ export const anvisaSteps: AnvisaStep[] = [
     details: [
       'Siga a posologia prescrita; não ajuste dose por conta própria.',
       'Anote efeitos, sono, humor e rotina para os retornos.',
-      'No RaveCare, o acompanhamento ajuda a não ficar sozinha(o) entre uma consulta e outra.',
+      'No Rave Care, o acompanhamento ajuda a não ficar sozinha(o) entre uma consulta e outra.',
     ],
     tip: 'Dúvida de processo ou de sintoma? Fala com a Dra. Bianca, e confirma sempre no site oficial da Anvisa.',
     printKey: 'tratamento',

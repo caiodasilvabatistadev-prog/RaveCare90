@@ -28,13 +28,13 @@ export function PainPoints() {
             <br />
             E não vai mais se sabotar achando que “depois da festa eu resolvo”.
           </h2>
-          <aside className="myth-callout" aria-label="Promessa RaveCare">
+          <aside className="myth-callout" aria-label="Promessa Rave Care">
             Cuidado com presença real: cannabis medicinal, redução de danos e aftercare
             com médica que entende a sua vida, antes e depois do rolê.
           </aside>
         </div>
 
-        <ul className="audience-chips" aria-label="Pra quem é o RaveCare">
+        <ul className="audience-chips" aria-label="Pra quem é o Rave Care">
           <li><Leaf size={15} aria-hidden="true" /> cannabis medicinal com evidência</li>
           <li><Headphones size={15} aria-hidden="true" /> energia de festival, escuta de consultório</li>
           <li><Moon size={15} aria-hidden="true" /> aftercare quando a festa acaba</li>
@@ -74,7 +74,7 @@ export function PainPoints() {
                 Sim. Contato diário com a médica, escuta de verdade e cuidado que encaixa na sua vida.
               </p>
             </div>
-            <h3>Com o RaveCare 90, você vai conseguir:</h3>
+            <h3>Com o Rave Care 90, você vai conseguir:</h3>
             <ul>
               {wins.map((item) => (
                 <li key={item}>

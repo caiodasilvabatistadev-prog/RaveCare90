@@ -13,7 +13,7 @@ export function About() {
           <div className="about-content">
             <p className="eyebrow">ciência, presença e troca</p>
             <h3>Você no centro. De verdade.</h3>
-            <p>O RaveCareApp aproxima você da médica e reúne o que importa para acompanhar o uso prescrito de cannabis medicinal entre uma consulta e outra.</p>
+            <p>O Rave Care aproxima você da médica e reúne o que importa para acompanhar o uso prescrito de cannabis medicinal entre uma consulta e outra.</p>
             <ul className="check-list">{benefits.map((benefit) => <li key={benefit}><Check size={18} aria-hidden="true" />{benefit}</li>)}</ul>
           </div>
         </div>

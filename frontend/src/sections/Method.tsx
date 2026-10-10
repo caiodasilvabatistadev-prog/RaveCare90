@@ -84,7 +84,7 @@ export function Method() {
             </div>
           </div>
 
-          <div className="modules-grid" aria-label="Pilares do RaveCare 90">
+          <div className="modules-grid" aria-label="Pilares do Rave Care 90">
             {modules.map((mod) => {
               const Icon = mod.icon
               return (

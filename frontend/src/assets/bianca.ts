@@ -8,7 +8,7 @@ import biancaLabcoatSecondaryImage from './bianca-labcoat-secondary.png'
  */
 export const biancaRavePrimary = biancaRavePrimaryDisplay
 
-/** Lab coat / RaveCareApp — SECONDARY, Professional section only (outside hero). */
+/** Lab coat / Rave Care — SECONDARY, Professional section only (outside hero). */
 export const biancaLabcoatSecondary = biancaLabcoatSecondaryImage
 
 /** @deprecated Prefer biancaRavePrimary — hero is the rave photo. */

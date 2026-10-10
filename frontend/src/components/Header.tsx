@@ -35,7 +35,7 @@ export function Header() {
 
         <a
           href="#inicio"
-          aria-label="RaveCareApp, início"
+          aria-label="Rave Care, início"
           onClick={closeMenu}
         >
           <BrandLogo />

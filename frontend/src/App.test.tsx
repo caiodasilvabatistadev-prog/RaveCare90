@@ -9,7 +9,7 @@ describe('App', () => {
     expect(screen.getByRole('heading', { name: /acompanhamento contínuo com uma médica/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: 'Dra. Bianca Rohsner' })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: /90 dias\. alguém do outro lado/i })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /ravecare cuida de você quando a festa acaba/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /rave care cuida de você quando a festa acaba/i })).toBeInTheDocument()
   })
 
   it('mantém o guia Anvisa fora da UI (flag off)', () => {
@@ -48,9 +48,9 @@ describe('App', () => {
 
     expect(waLinks.length).toBeGreaterThan(0)
     expect(
-      waLinks.every((link) => /quero o ravecare|quero conversar/i.test(link.textContent ?? '')),
+      waLinks.every((link) => /quero o rave care|quero conversar/i.test(link.textContent ?? '')),
     ).toBe(true)
-    expect(screen.getAllByRole('link', { name: /quero o ravecare/i }).length).toBeGreaterThan(0)
+    expect(screen.getAllByRole('link', { name: /quero o rave care/i }).length).toBeGreaterThan(0)
     expect(destinations).toContain('/login')
     expect(destinations).not.toContain('/api/v1/users')
   })

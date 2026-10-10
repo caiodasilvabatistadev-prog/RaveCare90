@@ -95,7 +95,7 @@ export function Register() {
           <Link
             to="/"
             className="register-logo"
-            aria-label="RaveCareApp, início"
+            aria-label="Rave Care, início"
           >
             <BrandLogo />
           </Link>
@@ -109,7 +109,7 @@ export function Register() {
 
             <p>
               Comece sua jornada de cuidado e acompanhamento
-              com a RaveCare.
+              com a Rave Care.
             </p>
           </div>
 
@@ -212,7 +212,7 @@ export function Register() {
         <div className="register-visual-overlay" />
 
         <div className="register-visual-content">
-          <span>RAVECARE</span>
+          <span>Rave Care</span>
 
           <h2>
             Seu cuidado

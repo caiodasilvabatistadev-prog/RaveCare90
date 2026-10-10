@@ -43,7 +43,7 @@ export function Footer() {
         </div>
       </div>
       <div className="container footer-bottom">
-        <span>© {new Date().getFullYear()} RaveCareApp</span>
+        <span>© {new Date().getFullYear()} Rave Care</span>
         <span>
           <a href="#inicio">Privacidade</a>
           <a href="#inicio">Termos</a>

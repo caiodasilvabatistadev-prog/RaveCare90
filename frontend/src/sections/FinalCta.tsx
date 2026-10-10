@@ -20,10 +20,10 @@ export function FinalCta() {
           <img
             className="finale-wordmark"
             src={wordmark}
-            alt="RaveCare"
+            alt="Rave Care"
           />
           <p className="eyebrow eyebrow--light">depois da noite · entre as consultas</p>
-          <h2 id="cta-title">RaveCare cuida de você quando a festa acaba.</h2>
+          <h2 id="cta-title">Rave Care cuida de você quando a festa acaba.</h2>
           <p className="finale-promise">
             Redução de danos, cannabis medicinal e acompanhamento contínuo com a Dra. Bianca,
             pra saúde não sumir no dia seguinte, nem no intervalo entre um retorno e outro.
@@ -31,7 +31,7 @@ export function FinalCta() {
           </p>
           <div className="finale-actions">
             <Button href={whatsappHref()} variant="light" target="_blank" rel="noreferrer">
-              Quero o RaveCare <ArrowRight size={18} aria-hidden="true" />
+              Quero o Rave Care <ArrowRight size={18} aria-hidden="true" />
             </Button>
             <a className="text-link text-link--light" href="#bianca">
               Conhecer a Dra. Bianca

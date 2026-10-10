@@ -40,7 +40,7 @@ export const anvisaStepPrints: Record<string, { src: string; alt: string; captio
   },
   tratamento: {
     src: mock07,
-    alt: 'Ilustração do acompanhamento RaveCare após o produto chegar',
+    alt: 'Ilustração do acompanhamento Rave Care após o produto chegar',
     caption: 'Ilustração · acompanhamento contínuo',
   },
 }

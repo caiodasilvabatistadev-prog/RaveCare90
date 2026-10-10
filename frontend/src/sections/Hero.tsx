@@ -18,7 +18,7 @@ export function Hero() {
       <div className="hero-beam" aria-hidden="true" />
       <div className="container hero-grid">
         <div className="hero-copy">
-          <p className="hero-brand hero-reveal">RaveCare</p>
+          <p className="hero-brand hero-reveal">Rave Care</p>
           <h1 id="hero-title" className="hero-reveal hero-reveal--title">
             Chega de cuidar da saúde só{' '}
             <em className="hero-depois">depois</em> que o corpo grita.
@@ -28,7 +28,7 @@ export function Hero() {
             redução de danos e aftercare pra quem vive o rolê sem abrir mão da saúde.
             Antes, durante e depois, com presença real entre uma consulta e outra.
           </p>
-          <ul className="hero-signals hero-reveal hero-reveal--signals" aria-label="Sinais do RaveCare">
+          <ul className="hero-signals hero-reveal hero-reveal--signals" aria-label="Sinais do Rave Care">
             <li>
               <Leaf size={16} aria-hidden="true" />
               cannabis medicinal
@@ -40,7 +40,7 @@ export function Hero() {
           </ul>
           <div className="hero-actions hero-reveal hero-reveal--cta">
             <Button href={whatsappHref()} variant="light" className="hero-cta" target="_blank" rel="noreferrer">
-              Quero o RaveCare <ArrowRight size={18} aria-hidden="true" />
+              Quero o Rave Care <ArrowRight size={18} aria-hidden="true" />
             </Button>
             <a className="text-link text-link--light" href="#dores">
               Se isso é pra você <ArrowDownRight size={18} aria-hidden="true" />
