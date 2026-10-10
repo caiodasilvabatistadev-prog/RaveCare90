@@ -1,6 +1,7 @@
-import { AtSign, Mail } from 'lucide-react'
+import { AtSign, Mail, MessageCircle } from 'lucide-react'
 import { BrandLogo } from '../components/BrandLogo'
 import { features } from '../config/features'
+import { contact, whatsappHref } from '../config/contact'
 
 export function Footer() {
   return (
@@ -8,7 +9,10 @@ export function Footer() {
       <div className="container footer-grid">
         <div>
           <BrandLogo />
-          <p>Cannabis medicinal, cuidado de verdade e conversa sem tabu, com a Dra. Bianca Rohsner.</p>
+          <p>
+            Cannabis medicinal, redução de danos e acompanhamento contínuo com a Dra. Bianca Rohsner,
+            antes, durante e depois do rolê.
+          </p>
         </div>
         <div>
           <p className="footer-label">navegue</p>
@@ -22,13 +26,17 @@ export function Footer() {
           ) : null}
           <a href="#como-funciona">Como funciona</a>
           <a href="#conteudo">Dúvidas</a>
+          <a href="#depoimentos">Relatos</a>
         </div>
         <div>
           <p className="footer-label">contato</p>
-          <a href="mailto:contato@ravecareapp.com">
-            <Mail size={16} aria-hidden="true" /> contato@ravecareapp.com
+          <a href={whatsappHref()} target="_blank" rel="noreferrer">
+            <MessageCircle size={16} aria-hidden="true" /> WhatsApp (conforme disponibilidade)
           </a>
-          <a href="https://www.instagram.com/biancarohsner/" target="_blank" rel="noreferrer">
+          <a href={`mailto:${contact.email}`}>
+            <Mail size={16} aria-hidden="true" /> {contact.email}
+          </a>
+          <a href={contact.instagram} target="_blank" rel="noreferrer">
             <AtSign size={16} aria-hidden="true" /> Instagram
           </a>
           <a href="/login">Entrar na conta</a>

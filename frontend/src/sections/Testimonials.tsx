@@ -35,11 +35,15 @@ export function Testimonials() {
     <section className="section testimonials" id="depoimentos" aria-labelledby="testimonials-title">
       <div className="container">
         <SectionHeading
-          eyebrow="quem viveu, conta"
-          title="Quando o cuidado encaixa na vida."
-          description="Mensagens de pessoas acompanhadas pela Dra. Bianca, sem nomes, sem exposição e com muito afeto."
+          eyebrow="relatos de pacientes"
+          title="Relatos de quem é acompanhada pela Dra. Bianca."
+          description="Contas reais de pacientes em acompanhamento, sem nomes, sem exposição de rostos e com afeto. Não são quotes de influenciador."
         />
-        <div className="testimonial-carousel" aria-roledescription="carrossel" aria-label="Depoimentos anonimizados de pacientes">
+        <div
+          className="testimonial-carousel"
+          aria-roledescription="carrossel"
+          aria-label="Relatos anonimizados de pacientes acompanhados pela Dra. Bianca"
+        >
           <div className="testimonial-stage">
             {testimonials.map((testimonial, index) => (
               <button
@@ -47,31 +51,46 @@ export function Testimonials() {
                 type="button"
                 key={testimonial.image}
                 onClick={() => setActiveIndex(index)}
-                aria-label={index === activeIndex ? `Depoimento ${index + 1}, em destaque` : `Ver depoimento ${index + 1}`}
+                aria-label={
+                  index === activeIndex
+                    ? `Relato de paciente ${index + 1}, em destaque`
+                    : `Ver relato de paciente ${index + 1}`
+                }
                 aria-current={index === activeIndex ? 'true' : undefined}
               >
                 <figure className={`testimonial-card testimonial-card--${testimonial.crop}`}>
                   <img
                     src={testimonial.image}
-                    alt={index === activeIndex ? `Relato anonimizado de paciente ${index + 1}` : ''}
+                    alt={
+                      index === activeIndex
+                        ? `Relato anonimizado de paciente acompanhado pela Dra. Bianca, ${index + 1}`
+                        : ''
+                    }
                   />
                 </figure>
               </button>
             ))}
           </div>
           <div className="testimonial-controls">
-            <button type="button" onClick={goToPrevious} aria-label="Ver depoimento anterior"><ChevronLeft aria-hidden="true" /></button>
-            <p><strong>{String(activeIndex + 1).padStart(2, '0')}</strong> <span>/ {String(testimonials.length).padStart(2, '0')}</span></p>
-            <button type="button" onClick={goToNext} aria-label="Ver próximo depoimento"><ChevronRight aria-hidden="true" /></button>
+            <button type="button" onClick={goToPrevious} aria-label="Ver relato anterior">
+              <ChevronLeft aria-hidden="true" />
+            </button>
+            <p>
+              <strong>{String(activeIndex + 1).padStart(2, '0')}</strong>{' '}
+              <span>/ {String(testimonials.length).padStart(2, '0')}</span>
+            </p>
+            <button type="button" onClick={goToNext} aria-label="Ver próximo relato">
+              <ChevronRight aria-hidden="true" />
+            </button>
           </div>
-          <div className="testimonial-dots" role="tablist" aria-label="Selecionar depoimento">
+          <div className="testimonial-dots" role="tablist" aria-label="Selecionar relato de paciente">
             {testimonials.map((testimonial, index) => (
               <button
                 type="button"
                 key={testimonial.image}
                 className={index === activeIndex ? 'is-active' : ''}
                 onClick={() => setActiveIndex(index)}
-                aria-label={`Ver depoimento ${index + 1}`}
+                aria-label={`Ver relato de paciente ${index + 1}`}
                 aria-selected={index === activeIndex}
                 role="tab"
               />
@@ -80,7 +99,10 @@ export function Testimonials() {
         </div>
         <div className="testimonial-note">
           <MessageCircleHeart size={20} aria-hidden="true" />
-          <p>Cada corpo responde de um jeito. Estes relatos são experiências individuais, não promessa de resultado. Todo tratamento precisa de avaliação e acompanhamento profissional.</p>
+          <p>
+            Relatos de pacientes acompanhados pela Dra. Bianca. Cada corpo responde de um jeito:
+            experiências individuais, não promessa de resultado.
+          </p>
           <Heart size={20} aria-hidden="true" />
         </div>
       </div>

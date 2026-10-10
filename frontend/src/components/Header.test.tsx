@@ -37,7 +37,10 @@ describe('Header', () => {
     expect(screen.queryByRole('link', { name: 'Recebi minha receita' })).not.toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Dúvidas' })).toHaveAttribute('href', '#conteudo')
     expect(screen.getByRole('link', { name: 'Depoimentos' })).toHaveAttribute('href', '#depoimentos')
-    expect(screen.getByRole('link', { name: 'Quero conversar' })).toHaveAttribute('href', '#comece')
+    expect(screen.getByRole('link', { name: 'Quero conversar' })).toHaveAttribute(
+      'href',
+      expect.stringContaining('wa.me/5521920405871'),
+    )
     expect(screen.getByRole('link', { name: 'Entrar' })).toHaveAttribute('href', '/login')
   })
 

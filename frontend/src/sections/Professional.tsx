@@ -1,25 +1,34 @@
-import { ArrowRight, HeartHandshake, Stethoscope, Video } from 'lucide-react'
+import {
+  ArrowRight,
+  GraduationCap,
+  HeartHandshake,
+  Leaf,
+  MessageCircle,
+  Stethoscope,
+  Video,
+} from 'lucide-react'
 import { biancaLabcoatSecondary } from '../assets/bianca'
 import { Button } from '../components/Button'
+import { whatsappHref } from '../config/contact'
 
 export function Professional() {
   return (
     <section className="section professional" id="bianca" aria-labelledby="professional-title">
       <div className="container professional-grid">
-        <div className="professional-portrait professional-portrait--photo">
+        <figure className="professional-portrait professional-portrait--photo professional-portrait--framed">
           <img
             className="professional-profile-image"
             src={biancaLabcoatSecondary}
             alt="Dra. Bianca Rohsner de jaleco RaveCareApp"
           />
-          <div className="professional-photo-badge">
+          <figcaption className="professional-photo-badge">
             <img src={biancaLabcoatSecondary} alt="" aria-hidden="true" />
             <div>
               <strong>Dra. Bianca Rohsner</strong>
               <span>Médica emergencista</span>
             </div>
-          </div>
-        </div>
+          </figcaption>
+        </figure>
 
         <div className="professional-copy">
           <p className="eyebrow eyebrow--pill">Quem vai te ajudar?</p>
@@ -48,16 +57,37 @@ export function Professional() {
             </p>
             <p>
               As consultas são online. O cuidado continua com o RAVECARE 90, porque saúde
-              também acontece entre um encontro e outro.
+              também acontece entre um encontro e outro: antes, durante e depois do rolê,
+              com nutrição e educador físico na plataforma.
+            </p>
+            <p>
+              Minha capacitação é clínica. O acompanhamento vai além da noite: sono, sintomas,
+              rotina e decisões de saúde com presença contínua.
             </p>
           </div>
+
+          <ul className="professional-creds" aria-label="Capacitação">
+            <li>
+              <GraduationCap size={16} aria-hidden="true" />
+              Graduação UECE · residência em Medicina de Emergência (ESP-CE)
+            </li>
+            <li>
+              <Leaf size={16} aria-hidden="true" />
+              Atuação em cannabis medicinal e redução de danos
+            </li>
+            <li>
+              <MessageCircle size={16} aria-hidden="true" />
+              Chat e WhatsApp 24h conforme disponibilidade
+            </li>
+          </ul>
 
           <div className="professional-services">
             <span><Video size={17} aria-hidden="true" /> consultas online</span>
             <span><HeartHandshake size={17} aria-hidden="true" /> RAVECARE 90</span>
+            <span><MessageCircle size={17} aria-hidden="true" /> chat / WhatsApp</span>
           </div>
 
-          <Button href="#comece" variant="secondary">
+          <Button href={whatsappHref()} variant="secondary">
             Quero conhecer <ArrowRight size={18} aria-hidden="true" />
           </Button>
         </div>

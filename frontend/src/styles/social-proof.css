@@ -133,3 +133,16 @@ section.guidance#conteudo .article-card { color:var(--color-text); border-color:
 .professional-orbit--two { display: none !important; }
 .hero .hero-media,
 .hero .hero-photo { display: block; border-radius: 0; clip-path: none; mask: none; }
+
+
+/* Framed Professional photo: full portrait in context, not floating cutout */
+.professional .professional-portrait.professional-portrait--framed {
+  background: #5a2d96;
+  overflow: hidden;
+}
+.professional .professional-portrait.professional-portrait--framed .professional-profile-image {
+  object-fit: cover;
+  object-position: center 16%;
+  transform: none;
+  filter: none;
+}

@@ -1,4 +1,4 @@
-import { CheckCircle2, X } from 'lucide-react'
+import { CheckCircle2, Headphones, Leaf, Moon, X } from 'lucide-react'
 
 const pains = [
   'Sair da consulta e não saber o que observar no dia a dia',
@@ -13,7 +13,7 @@ const wins = [
   'Registrar sono, sintomas e qualidade de vida sem pressão de performance',
   'Entender cannabis medicinal com evidência, sem terrorismo nem romantização',
   'Praticar redução de danos com escuta real e zero julgamento',
-  'Manter o fio do cuidado mesmo quando a vida (e a noite) acontece',
+  'Manter o fio do cuidado antes, durante e depois do rolê, com equipe no app',
 ]
 
 export function PainPoints() {
@@ -21,8 +21,8 @@ export function PainPoints() {
     <section className="section pain-points" id="dores" aria-labelledby="pain-title">
       <div className="container pain-layout">
         <p className="pain-disclaimer">
-          Resultados variam. O RaveCare organiza o acompanhamento, não é promessa de milagre,
-          nem substitui consulta ou prescrição.
+          Resultados variam. O RaveCare organiza acompanhamento médico contínuo com a Dra. Bianca,
+          não é promessa de milagre.
         </p>
 
         <div className="myth-block">
@@ -34,17 +34,23 @@ export function PainPoints() {
             E não vai mais se sabotar achando que “depois da festa eu resolvo”.
           </h2>
           <aside className="myth-callout" aria-label="Promessa RaveCare">
-            Cuidado com presença real: cannabis medicinal e redução de danos
-            com médica do outro lado. O básico que funciona.
+            Cuidado com presença real: cannabis medicinal, redução de danos e aftercare
+            com médica que entende a sua vida, inclusive depois do rolê.
           </aside>
         </div>
+
+        <ul className="audience-chips" aria-label="Pra quem é o RaveCare">
+          <li><Leaf size={15} aria-hidden="true" /> cannabis medicinal com evidência</li>
+          <li><Headphones size={15} aria-hidden="true" /> energia de festival, escuta de consultório</li>
+          <li><Moon size={15} aria-hidden="true" /> aftercare quando a festa acaba</li>
+        </ul>
 
         <div className="pain-solution">
           <article className="contrast-card contrast-card--pain">
             <div className="question-box" aria-hidden="true">
               <p className="question-box__label">Caixinha de pergunta</p>
               <p className="question-box__text">
-                Bianca, depois do rolê eu fico dias mal e não sei por onde começar 😩
+                Bianca, depois do rolê eu fico dias mal e não sei por onde começar
               </p>
             </div>
             <h3>Se você não aguenta mais…</h3>
@@ -62,7 +68,7 @@ export function PainPoints() {
             <div className="question-box question-box--win" aria-hidden="true">
               <p className="question-box__label">Caixinha de pergunta</p>
               <p className="question-box__text">
-                Pela primeira vez senti que alguém entende minha rotina e minha saúde 💜
+                Pela primeira vez senti que alguém entende minha rotina e minha saúde
               </p>
             </div>
             <h3>Com o RaveCare 90, você vai conseguir:</h3>

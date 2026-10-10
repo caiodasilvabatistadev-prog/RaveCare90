@@ -2,6 +2,7 @@ import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth/UseAuth'
+import { whatsappHref } from '../config/contact'
 import { features } from '../config/features'
 import { BrandLogo } from './BrandLogo'
 
@@ -92,7 +93,13 @@ export function Header() {
               <Link to="/login" className="header-btn header-btn--secondary" onClick={closeMenu}>
                 Entrar
               </Link>
-              <a href="#comece" className="header-btn header-btn--primary header-cta" onClick={closeMenu}>
+              <a
+                href={whatsappHref()}
+                className="header-btn header-btn--primary header-cta"
+                onClick={closeMenu}
+                target="_blank"
+                rel="noreferrer"
+              >
                 Quero conversar
               </a>
             </div>
