@@ -3,11 +3,29 @@ import { SectionHeading } from '../components/SectionHeading'
 import reelCannabis from '../assets/videos/reel-DZD-Wd6M3fK.mp4'
 import reelBiancaContent from '../assets/videos/reel-DXIA_y7OZ6h.mp4'
 import reelSaudeRave from '../assets/videos/reel-DVqZX2QBhnD.mp4'
+import posterCannabis from '../assets/videos/reel-DZD-Wd6M3fK-poster.jpg'
+import posterBianca from '../assets/videos/reel-DXIA_y7OZ6h-poster.jpg'
+import posterSaude from '../assets/videos/reel-DVqZX2QBhnD-poster.jpg'
 
 const topics = [
-  { title: 'Cannabis sem tabu', url: 'https://www.instagram.com/reel/DZD-Wd6M3fK/', video: reelCannabis },
-  { title: 'Papo reto com a Dra. Bianca', url: 'https://www.instagram.com/reel/DXIA_y7OZ6h/', video: reelBiancaContent },
-  { title: 'Saúde também vai pro rolê', url: 'https://www.instagram.com/reel/DVqZX2QBhnD/', video: reelSaudeRave },
+  {
+    title: 'Cannabis sem tabu',
+    url: 'https://www.instagram.com/reel/DZD-Wd6M3fK/',
+    video: reelCannabis,
+    poster: posterCannabis,
+  },
+  {
+    title: 'Papo reto com a Dra. Bianca',
+    url: 'https://www.instagram.com/reel/DXIA_y7OZ6h/',
+    video: reelBiancaContent,
+    poster: posterBianca,
+  },
+  {
+    title: 'Saúde também vai pro rolê',
+    url: 'https://www.instagram.com/reel/DVqZX2QBhnD/',
+    video: reelSaudeRave,
+    poster: posterSaude,
+  },
 ]
 
 export function InstagramContent() {
@@ -32,7 +50,13 @@ export function InstagramContent() {
         <div className="instagram-reels" aria-label="Temas disponíveis no Instagram da Dra. Bianca">
           {topics.map((topic, index) => topic.video ? (
             <article key={topic.title} className="reel-card reel-card--native">
-              <video controls playsInline preload="metadata" aria-label={`Vídeo da Dra. Bianca sobre ${topic.title}`}>
+              <video
+                controls
+                playsInline
+                preload="metadata"
+                poster={topic.poster}
+                aria-label={`Vídeo da Dra. Bianca sobre ${topic.title}`}
+              >
                 <source src={topic.video} type="video/mp4" />
                 Seu navegador não oferece suporte à reprodução de vídeo.
               </video>
