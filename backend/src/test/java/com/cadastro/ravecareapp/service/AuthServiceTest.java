@@ -151,4 +151,21 @@ class AuthServiceTest {
         );
 
     }
+
+    @Test
+    void shouldRejectLoginWhenEmailDoesNotExist() {
+        when(userRepository.findByEmailIgnoreCase("nao-existe@example.com"))
+                .thenReturn(Optional.empty());
+
+        LoginRequest request = new LoginRequest(
+                "nao-existe@example.com",
+                "senha-qualquer"
+        );
+
+        assertThrows(
+                BusinessException.class,
+                () -> authService.login(request)
+        );
+    }
 }
+
