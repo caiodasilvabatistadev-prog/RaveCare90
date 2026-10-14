@@ -167,5 +167,36 @@ class AuthServiceTest {
                 () -> authService.login(request)
         );
     }
+
+    @Test
+    void shouldNormalizeEmailBeforeLookingUpUser() {
+        LoginRequest request = new LoginRequest(
+                "  VINICIUS@EXAMPLE.COM  ",
+                "senha-correta"
+        );
+
+        User user = new User(
+                "Vinicius",
+                "vinicius@example.com",
+                "encoded-password",
+                UserRole.PATIENT
+        );
+        user.setActive(true);
+        user.setEmailVerified(true);
+
+        when(userRepository.findByEmailIgnoreCase("vinicius@example.com"))
+                .thenReturn(Optional.of(user));
+        when(passwordEncoder.matches("senha-correta", "encoded-password"))
+                .thenReturn(true);
+        when(jwtService.issue(user))
+                .thenReturn("token-de-teste");
+        when(jwtService.expiresIn())
+                .thenReturn(3600L);
+
+        LoginResponse response = authService.login(request);
+
+        assertNotNull(response);
+        verify(userRepository).findByEmailIgnoreCase("vinicius@example.com");
+    }
 }
 
