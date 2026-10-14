@@ -75,4 +75,25 @@ class RegistrationRateLimiterTest {
                 () -> rateLimiter.check(scope, clientAddress)
         );
     }
+
+    @Test
+    void shouldAllowAttemptsWhenWindowExpiresExactlyAfter15Minutes() {
+        Clock clock = mock(Clock.class);
+        Instant start = Instant.parse("2026-10-14T12:00:00Z");
+        when(clock.instant()).thenReturn(start);
+
+        RegistrationRateLimiter rateLimiter = new RegistrationRateLimiter(clock);
+        String scope = "registration";
+        String clientAddress = "203.0.113.10";
+
+        for (int attempt = 0; attempt < 5; attempt++) {
+            rateLimiter.check(scope, clientAddress);
+        }
+
+        when(clock.instant()).thenReturn(start.plus(Duration.ofMinutes(15)));
+
+        assertDoesNotThrow(
+                () -> rateLimiter.check(scope, clientAddress)
+        );
+    }
 }
