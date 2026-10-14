@@ -22,6 +22,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -88,6 +89,19 @@ class EmailVerificationServiceTest {
 
         verify(tokenRepository).save(org.mockito.ArgumentMatchers.any(EmailVerificationToken.class));
         verify(mailSender).send(org.mockito.ArgumentMatchers.any(SimpleMailMessage.class));
+    }
+
+    @Test
+    void shouldRejectUnknownVerificationToken() {
+        String rawToken = "token-inexistente";
+
+        when(tokenRepository.findByTokenHash(anyString()))
+                .thenReturn(Optional.empty());
+
+        assertThrows(
+                BusinessException.class,
+                () -> service.verify(rawToken)
+        );
     }
 
     private String hash(String value) throws Exception {
