@@ -32,4 +32,20 @@ class RegistrationRateLimiterTest {
 
         assertDoesNotThrow(() -> rateLimiter.check("203.0.113.11"));
     }
+
+    @Test
+    void shouldTrackDifferentScopesIndependentlyForSameAddress() {
+        RegistrationRateLimiter rateLimiter = new RegistrationRateLimiter();
+        String clientAddress = "203.0.113.10";
+        String firstScope = "registration";
+        String secondScope = "password-reset";
+
+        for (int attempt = 0; attempt < 5; attempt++) {
+            rateLimiter.check(firstScope, clientAddress);
+        }
+
+        assertDoesNotThrow(
+                () -> rateLimiter.check(secondScope, clientAddress)
+        );
+    }
 }
