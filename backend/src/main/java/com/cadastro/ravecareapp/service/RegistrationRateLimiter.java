@@ -37,7 +37,7 @@ public class RegistrationRateLimiter {
             Instant now = Instant.now(clock);
             Instant threshold = now.minus(WINDOW);
             while (!clientAttempts.isEmpty()
-                    && clientAttempts.peekFirst().isBefore(threshold)) {
+                    && !clientAttempts.peekFirst().isAfter(threshold)) {
                 clientAttempts.removeFirst();
             }
 
