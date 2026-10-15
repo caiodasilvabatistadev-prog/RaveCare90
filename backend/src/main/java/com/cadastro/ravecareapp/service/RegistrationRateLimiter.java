@@ -15,7 +15,9 @@ public class RegistrationRateLimiter {
 
     private static final int MAX_ATTEMPTS = 5;
     private static final Duration WINDOW = Duration.ofMinutes(15);
+
     private final ConcurrentHashMap<String, Deque<Instant>> attempts = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, Instant> blockedUntil = new ConcurrentHashMap<>();
     private final Clock clock;
 
     public RegistrationRateLimiter() {
@@ -35,6 +37,17 @@ public class RegistrationRateLimiter {
 
         synchronized (clientAttempts) {
             Instant now = Instant.now(clock);
+            Instant lockExpiration = blockedUntil.get(key);
+
+            if (lockExpiration != null) {
+                if (now.isBefore(lockExpiration)) {
+                    throw new RateLimitExceededException();
+                }
+
+                blockedUntil.remove(key);
+                clientAttempts.clear();
+            }
+
             Instant threshold = now.minus(WINDOW);
             while (!clientAttempts.isEmpty()
                     && !clientAttempts.peekFirst().isAfter(threshold)) {
@@ -42,6 +55,7 @@ public class RegistrationRateLimiter {
             }
 
             if (clientAttempts.size() >= MAX_ATTEMPTS) {
+                blockedUntil.put(key, now.plus(WINDOW));
                 throw new RateLimitExceededException();
             }
 
