@@ -732,7 +732,7 @@ img { max-width: 100%; }
 .professional-grid {
   display: grid;
   grid-template-columns: minmax(260px, 360px) minmax(0, 1fr);
-  align-items: center;
+  align-items: stretch;
   justify-content: start;
   gap: 40px;
 }
@@ -1320,7 +1320,7 @@ img { max-width: 100%; }
       linear-gradient(180deg, rgba(26, 13, 61, 0.72) 0%, rgba(53, 32, 120, 0.88) 45%, rgba(26, 13, 61, 0.96) 100%),
       radial-gradient(ellipse 70% 50% at 50% 0%, rgba(164, 61, 225, 0.4), transparent 55%);
   }
-  .professional-grid { grid-template-columns: 1fr; gap: 28px; }
+  .professional-grid { grid-template-columns: 1fr; align-items: start; gap: 28px; }
   .professional-portrait { max-width: 320px; }
   .professional-portrait,
   .professional-profile-image { min-height: 340px; }
