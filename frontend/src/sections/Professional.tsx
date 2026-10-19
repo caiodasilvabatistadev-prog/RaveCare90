@@ -22,7 +22,6 @@ export function Professional() {
             alt="Dra. Bianca Rohsner de jaleco Rave Care"
           />
           <figcaption className="professional-photo-badge">
-            <img src={biancaLabcoatSecondary} alt="" aria-hidden="true" />
             <div>
               <strong>Dra. Bianca Rohsner</strong>
               <span>Médica emergencista</span>
