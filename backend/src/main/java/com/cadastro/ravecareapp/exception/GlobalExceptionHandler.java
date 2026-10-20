@@ -2,6 +2,8 @@ package com.cadastro.ravecareapp.exception;
 
 import com.cadastro.ravecareapp.dto.response.ApiErrorResponse;
 import jakarta.servlet.http.HttpServletRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -12,9 +14,12 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.time.Instant;
+import java.util.UUID;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler({
             ResourceNotFoundException.class,
@@ -57,8 +62,50 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    ResponseEntity<ApiErrorResponse> handleUnexpected(HttpServletRequest request) {
-        return response(HttpStatus.INTERNAL_SERVER_ERROR, "Ocorreu um erro interno.", request);
+    ResponseEntity<ApiErrorResponse> handleUnexpected(Exception exception, HttpServletRequest request) {
+        String errorId = UUID.randomUUID().toString();
+        Throwable rootCause = rootCauseOf(exception);
+        String applicationFrame = firstApplicationFrame(exception);
+
+        // Log only exception types and code location: provider responses and request data can contain secrets/PII.
+        LOGGER.error(
+                "Unhandled request failure errorId={} method={} path={} exceptionType={} rootCauseType={} applicationFrame={}",
+                errorId,
+                request.getMethod(),
+                request.getRequestURI(),
+                exception.getClass().getName(),
+                rootCause.getClass().getName(),
+                applicationFrame
+        );
+        ResponseEntity<ApiErrorResponse> errorResponse = response(
+                HttpStatus.INTERNAL_SERVER_ERROR,
+                "Ocorreu um erro interno.",
+                request
+        );
+        return ResponseEntity.status(errorResponse.getStatusCode())
+                .header("X-Error-Id", errorId)
+                .body(errorResponse.getBody());
+    }
+
+    private Throwable rootCauseOf(Throwable exception) {
+        Throwable current = exception;
+        while (current.getCause() != null && current.getCause() != current) {
+            current = current.getCause();
+        }
+        return current;
+    }
+
+    private String firstApplicationFrame(Throwable exception) {
+        Throwable current = exception;
+        while (current != null) {
+            for (StackTraceElement frame : current.getStackTrace()) {
+                if (frame.getClassName().startsWith("com.cadastro.ravecareapp.")) {
+                    return frame.getClassName() + "." + frame.getMethodName() + ":" + frame.getLineNumber();
+                }
+            }
+            current = current.getCause();
+        }
+        return "unavailable";
     }
 
     private ResponseEntity<ApiErrorResponse> response(
