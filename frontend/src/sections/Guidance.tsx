@@ -22,7 +22,7 @@ export function Guidance() {
               <div className="article-icon"><Icon aria-hidden="true" /></div>
               <p className="article-label">{label}</p>
               <h3>{title}</h3>
-              <a href="#comece" aria-label={`Ler mais sobre ${label}`}>
+              <a href="#bianca" aria-label={`Ler mais sobre ${label}`}>
                 Quero entender <ArrowUpRight size={17} aria-hidden="true" />
               </a>
             </article>

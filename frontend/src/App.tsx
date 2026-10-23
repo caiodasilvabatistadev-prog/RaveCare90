@@ -1,8 +1,8 @@
+import { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { ConfirmEmail } from './pages/ConfirmEmail'
 import { Header } from './components/Header'
 import { Faq } from './sections/Faq'
-import { FinalCta } from './sections/FinalCta'
 import { Footer } from './sections/Footer'
 import { Hero } from './sections/Hero'
 import { InstagramContent } from './sections/InstagramContent'
@@ -20,6 +20,51 @@ import './styles/social-proof.css'
 import './styles/receita-anvisa.css'
 
 function LandingPage() {
+  useEffect(() => {
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return
+
+    const sections = Array.from(document.querySelectorAll<HTMLElement>('main > section'))
+    if (!('IntersectionObserver' in window)) {
+      sections.forEach((section) => section.classList.add('is-scroll-visible'))
+      return
+    }
+
+    document.body.classList.add('landing-scroll-effects')
+    let frame = 0
+    const updateParallax = () => {
+      const scroll = window.scrollY
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(() => {
+        document.body.style.setProperty('--parallax-slow', `${Math.min(scroll * 0.035, 150)}px`)
+        document.body.style.setProperty('--parallax-fast', `${Math.max(scroll * -0.075, -280)}px`)
+        document.body.style.setProperty('--parallax-deep', `${Math.min(scroll * 0.11, 400)}px`)
+      })
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('is-scroll-visible')
+        })
+      },
+      { rootMargin: '-18% 0px -18% 0px', threshold: 0 },
+    )
+
+    sections.forEach((section) => observer.observe(section))
+    updateParallax()
+    window.addEventListener('scroll', updateParallax, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', updateParallax)
+      observer.disconnect()
+      cancelAnimationFrame(frame)
+      document.body.classList.remove('landing-scroll-effects')
+      sections.forEach((section) => section.classList.remove('is-scroll-visible'))
+      document.body.style.removeProperty('--parallax-slow')
+      document.body.style.removeProperty('--parallax-fast')
+      document.body.style.removeProperty('--parallax-deep')
+    }
+  }, [])
+
   return (
     <>
       <Header />
@@ -34,7 +79,6 @@ function LandingPage() {
         <Testimonials />
         <Faq />
         <InstagramContent />
-        <FinalCta />
       </main>
 
       <Footer />

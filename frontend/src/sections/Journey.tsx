@@ -1,33 +1,64 @@
-import { Apple, CheckCircle2, Dumbbell, MessageCircle, Moon, Sun } from 'lucide-react'
+import { useEffect, useRef } from 'react'
+import { CalendarDays, HeartPlus, RefreshCw, Target } from 'lucide-react'
 
 const steps = [
   {
     day: 'antes',
     title: 'Preparar com intenção',
-    text: 'Histórico, objetivos e plano clínico pra entrar no rolê com mais segurança.',
-    icon: Sun,
+    text: 'Organizar rotina, sono, condicionamento e alimentação pra chegar melhor no festival.',
+    icon: CalendarDays,
   },
   {
     day: 'durante',
-    title: 'Redução de danos ativa',
-    text: 'Estratégias pra diminuir risco quando a noite acontece, sem julgamento.',
-    icon: Moon,
+    title: 'Reduzir riscos no mundo real',
+    text: 'Estratégias de redução de danos, hidratação, alimentação e decisões mais conscientes durante o rolê.',
+    icon: Target,
   },
   {
     day: 'depois',
-    title: 'Aftercare e rotina',
-    text: 'Sono, sintomas e recuperação com presença. O cuidado não some no dia seguinte.',
-    icon: MessageCircle,
+    title: 'Recuperar de verdade',
+    text: 'Entender como seu corpo respondeu, cuidar da recuperação e ajustar o que for necessário pro próximo ciclo.',
+    icon: HeartPlus,
   },
   {
     day: 'equipe',
     title: 'Nutri + educador físico',
     text: 'Além da médica: acompanhamento nutricional e educador físico na plataforma.',
-    icon: Apple,
+    icon: RefreshCw,
   },
 ]
 
 export function Journey() {
+  const timelineRef = useRef<HTMLOListElement>(null)
+
+  useEffect(() => {
+    const timeline = timelineRef.current
+    if (!timeline) return
+
+    const items = Array.from(timeline.children) as HTMLElement[]
+    const prefersReducedMotion =
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      items.forEach((item) => item.classList.add('is-visible'))
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('is-visible')
+        })
+      },
+      { rootMargin: '-40% 0px -40% 0px', threshold: 0 },
+    )
+
+    items.forEach((item) => observer.observe(item))
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
   return (
     <section className="section journey" id="como-funciona" aria-labelledby="journey-title">
       <div className="container journey-layout">
@@ -39,7 +70,7 @@ export function Journey() {
             Dra. Bianca no acompanhamento. Nutrição e educador físico entram no mesmo cuidado.
           </p>
         </div>
-        <ol className="timeline">
+        <ol className="timeline timeline--scroll-reveal" ref={timelineRef}>
           {steps.map((step, index) => {
             const Icon = step.icon
             return (
@@ -51,12 +82,6 @@ export function Journey() {
                 </p>
                 <h3>{step.title}</h3>
                 <p>{step.text}</p>
-                {index === steps.length - 1 && (
-                  <span className="timeline-extra" aria-hidden="true">
-                    <Dumbbell size={16} />
-                  </span>
-                )}
-                {index === steps.length - 1 && <CheckCircle2 className="timeline-check" aria-hidden="true" />}
               </li>
             )
           })}

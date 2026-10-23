@@ -112,7 +112,7 @@ export function RecebiMinhaReceita() {
               ))}
             </ul>
             <div className="receita-official-cta">
-              <Button href="/#comece" variant="primary">
+              <Button href="/#bianca" variant="primary">
                 Quero acompanhamento Rave Care
               </Button>
               <Button href="/login" variant="secondary">

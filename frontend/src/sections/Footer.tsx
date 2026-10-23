@@ -31,7 +31,7 @@ export function Footer() {
         </div>
         <div>
           <p className="footer-label">contato</p>
-          <a href="#comece">
+          <a href="#bianca">
             <MessageCircle size={16} aria-hidden="true" /> Contato diário
           </a>
           <a href={`mailto:${contact.email}`}>

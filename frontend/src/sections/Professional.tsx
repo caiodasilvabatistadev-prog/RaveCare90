@@ -4,7 +4,6 @@ import {
   HeartHandshake,
   Leaf,
   MessageCircle,
-  Stethoscope,
   Video,
 } from 'lucide-react'
 import { biancaLabcoatSecondary } from '../assets/bianca'
@@ -34,11 +33,8 @@ export function Professional() {
           <h2 id="professional-title">Dra. Bianca Rohsner</h2>
 
           <p className="professional-role professional-role--primary">
-            <Stethoscope size={20} aria-hidden="true" />
-            Médica emergencista
-          </p>
-          <p className="professional-role professional-role--secondary">
-            também raver · cuidado sem tabu
+            Médica emergencista. Raver. E alguém que acredita que cuidado de verdade começa
+            quando você pode contar a verdade.
           </p>
 
           <p className="professional-registration">
@@ -47,21 +43,27 @@ export function Professional() {
 
           <div className="professional-story">
             <p>
-              Eu não sou só o jaleco do consultório, e também não sou só a vibe da pista.
-              Sou médica primeiro: escuta clínica, responsabilidade e acompanhamento de verdade.
+              Eu passei anos trabalhando em emergência, aprendendo a reconhecer risco, tomar
+              decisão rápida e cuidar de gente em situações limite. Com o tempo, comecei a atender
+              cada vez mais pessoas que vivem a cena eletrônica, usam substâncias, têm dúvidas que
+              nunca tiveram coragem de levar pra outro médico e querem cuidar melhor da saúde sem
+              precisar esconder parte da própria vida. Foi daí que nasceu o Rave Care.
             </p>
             <p>
-              Conheço a noite por dentro. Por isso falo de drogas, cannabis medicinal e redução
-              de danos sem moralismo, e sem romantizar risco.
+              Aqui a conversa pode incluir uso de substâncias, redução de danos, cannabis medicinal
+              quando indicado, sono, humor, rotina, medicamentos, exames, alimentação,
+              condicionamento físico e recuperação.
             </p>
             <p>
-              As consultas são online. O cuidado continua com o Rave Care 90, porque saúde
-              também acontece entre um encontro e outro: antes e depois do rolê,
-              com nutrição e educador físico na plataforma.
+              Sem moralismo. Sem romantizar risco. Sem fingir que sua vida cabe num protocolo pronto.
             </p>
             <p>
-              Minha capacitação é clínica. O acompanhamento vai além da noite: sono, sintomas,
-              rotina e decisões de saúde com presença contínua.
+              Eu não quero ser a médica que só aparece quando alguma coisa dá errado. Quero
+              acompanhar antes, durante e depois, entendendo como você vive, o que você quer
+              melhorar e o que faz sentido pra sua saúde.
+            </p>
+            <p>
+              Quero que sua saúde acompanhe a intensidade da vida que você escolheu viver.
             </p>
           </div>
 

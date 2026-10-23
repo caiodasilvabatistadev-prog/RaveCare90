@@ -1,5 +1,5 @@
 import biancaRavePrimaryDisplay from './generated/bianca-rave-primary.png'
-import biancaLabcoatSecondaryImage from './bianca-labcoat-secondary.png'
+import biancaLabcoatSecondaryImage from './generated/bianca-white-coat-source.png'
 
 /**
  * Rave / neon / sunglasses — PRIMARY visual (hero + finale).
