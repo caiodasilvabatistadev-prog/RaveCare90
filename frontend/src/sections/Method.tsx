@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { Apple, Dumbbell, Leaf, Moon, ShieldCheck, Stethoscope, Sun } from 'lucide-react'
 
 const phases = [
@@ -25,22 +26,55 @@ const phases = [
 ]
 
 const modules = [
-  { n: '01', title: 'Consulta com escuta', text: 'História clínica, objetivos e o que importa de verdade pro seu corpo.', icon: Stethoscope },
-  { n: '02', title: 'Cannabis com evidência', text: 'Indicação responsável, sem terrorismo, sem romantização, sem receita única.', icon: Leaf },
-  { n: '03', title: 'Redução de danos', text: 'Estratégias pra diminuir risco quando a noite acontece. Zero julgamento.', icon: ShieldCheck },
-  { n: '04', title: 'Nutrição no app', text: 'Acompanhamento nutricional na plataforma, alinhado ao seu ritmo e ao tratamento.', icon: Apple },
-  { n: '05', title: 'Educador físico', text: 'Movimento e recuperação com educador físico no time, não só no consultório.', icon: Dumbbell },
-  { n: '06', title: 'Retorno dos 90 dias', text: 'Padrões claros e próximos passos com mais segurança.', icon: Moon },
+  { n: '01', title: 'Consulta individualizada', text: 'História, exames, medicamentos, rotina e objetivos.', icon: Stethoscope },
+  { n: '02', title: 'Redução de danos', text: 'Entender padrões de uso, riscos e formas de reduzir danos.', icon: Leaf },
+  { n: '03', title: 'Cannabis medicinal', text: 'Avaliação individualizada, baseada em evidência.', icon: ShieldCheck },
+  { n: '04', title: 'Sono, humor e rotina', text: 'Acompanhar como você dorme, funciona e se recupera.', icon: Apple },
+  { n: '05', title: 'Condicionamento físico', text: 'Treino voltado pra saúde, disposição e resistência.', icon: Dumbbell },
+  { n: '06', title: 'Acompanhamento contínuo', text: 'Ajustar o cuidado conforme sua saúde e sua rotina mudam.', icon: Moon },
 ]
 
 const evenIf = [
-  'Você já tentou se cuidar sozinha e cansou da informação solta',
-  'Tem vergonha de falar de rolê, substâncias ou cannabis na consulta',
-  'Acha que médica “séria” não entende a sua vida',
-  'Só lembra da saúde quando o corpo grita',
+  'Você não esteja “doente”, só queira se cuidar melhor',
+  'Você ainda não consiga reduzir algum uso como gostaria',
+  'Você tenha vergonha de falar sobre substâncias em consulta',
+  'Você já faça terapia, treino ou acompanhamento com outros profissionais',
+  'Você queira melhorar a saúde sem transformar sua vida numa lista de proibições',
 ]
 
 export function Method() {
+  const modulesPanelRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const targets = modulesPanelRef.current?.querySelectorAll<HTMLElement>(
+      '.modules-copy > .modules-badge, .modules-copy > h2, .modules-copy > .modules-lead, .modules-even > p, .modules-even li, .modules-grid > .module-card',
+    )
+    if (!targets?.length) return
+
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+      targets.forEach((target) => target.classList.add('is-visible'))
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { rootMargin: '0px 0px -8% 0px', threshold: 0.15 },
+    )
+
+    targets.forEach((target, index) => {
+      target.style.setProperty('--modules-reveal-delay', `${index * 55}ms`)
+      observer.observe(target)
+    })
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section className="section method" id="acompanhamento" aria-labelledby="method-title">
       <div className="container">
@@ -61,15 +95,14 @@ export function Method() {
           })}
         </div>
 
-        <div className="modules-panel">
+        <div className="modules-panel" ref={modulesPanelRef}>
           <div className="modules-copy">
             <p className="modules-badge">Não é protocolo genérico.</p>
             <h2 id="method-title">
-              É acompanhamento contínuo com uma médica que entende a sua vida, antes e depois do rolê.
+              É acompanhamento contínuo com uma médica que entende a sua vida de verdade.
             </h2>
             <p className="modules-lead">
-              Antes, durante e depois: consulta, cannabis medicinal, redução de danos,
-              nutrição e educador físico no mesmo cuidado, com presença entre um retorno e outro.
+              Pra entender padrões, acompanhar mudanças e construir um cuidado que funcione na sua vida real.
             </p>
             <div className="modules-even">
               <p>Funciona mesmo que:</p>

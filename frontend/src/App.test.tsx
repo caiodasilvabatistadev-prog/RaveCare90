@@ -5,11 +5,12 @@ import App from './App'
 describe('App', () => {
   it('renderiza as seções centrais da landing page', () => {
     render(<App />)
-    expect(screen.getByRole('heading', { level: 1, name: /chega de cuidar da saúde/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1, name: /você não precisa esconder do médico a vida que você realmente leva/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: /acompanhamento contínuo com uma médica/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: 'Dra. Bianca Rohsner' })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: /90 dias\. alguém do outro lado/i })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /rave care cuida de você quando a festa acaba/i })).toBeInTheDocument()
+    expect(screen.queryByRole('heading', { name: /rave care cuida de você quando a festa acaba/i })).not.toBeInTheDocument()
+    expect(document.querySelector('#comece')).not.toBeInTheDocument()
   })
 
   it('mantém o guia Anvisa fora da UI (flag off)', () => {
@@ -23,7 +24,9 @@ describe('App', () => {
     render(<App />)
     expect(screen.getAllByText(/CREMEC 21295/).length).toBeGreaterThan(0)
     expect(screen.getAllByText(/Médica emergencista/i).length).toBeGreaterThan(0)
-    expect(screen.getByText(/também raver/i)).toBeInTheDocument()
+    expect(
+      screen.getByText(/Médica emergencista\. Raver\. E alguém que acredita que cuidado de verdade começa quando você pode contar a verdade/i),
+    ).toBeInTheDocument()
     expect(screen.queryByText(/não promete milagre/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/resultados variam/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/não substitui consulta ou prescrição/i)).not.toBeInTheDocument()

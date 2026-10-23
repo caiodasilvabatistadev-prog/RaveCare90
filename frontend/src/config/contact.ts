@@ -1,6 +1,6 @@
 /** Public contact channels for Dra. Bianca (landing CTAs). */
 export const contact = {
-  email: 'contato@ravecareapp.com',
+  email: 'ravecareapp@gmail.com',
   instagram: 'https://www.instagram.com/biancarohsner/',
   /** Doctoralia-listed mobile; replies based on availability (not always-online). */
   whatsappE164: '5521920405871',
