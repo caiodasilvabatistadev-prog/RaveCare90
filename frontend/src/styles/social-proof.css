@@ -97,6 +97,17 @@ section.guidance#conteudo .section-heading .section-description { color:#fff; }
 section.guidance#conteudo .eyebrow { color:#9cecf3; }
 section.guidance#conteudo .article-card { color:var(--color-text); border-color:rgba(255,255,255,.22); background:rgba(255,255,255,.96); box-shadow:0 16px 34px rgba(35,18,79,.18); }
 
+/* FAQ: use the same Rave Care gradient and high-contrast type as the other feature sections. */
+section.faq#conteudo { color:#fff; background:linear-gradient(135deg,#352078 0%,#7026b9 46%,#456ce2 100%); }
+section.faq#conteudo .section-heading h2,
+section.faq#conteudo .section-heading .section-description { color:#fff; }
+section.faq#conteudo .section-heading .eyebrow { color:#9cecf3; }
+section.faq#conteudo .faq-item { border-color:rgba(255,255,255,.28); }
+section.faq#conteudo .faq-trigger { color:#fff; }
+section.faq#conteudo .faq-trigger svg { color:#9cecf3; }
+section.faq#conteudo .faq-answer { color:rgba(255,255,255,.88); }
+section.faq#conteudo .faq-trigger:focus-visible { outline:2px solid #9cecf3; outline-offset:4px; }
+
 /* Instagram: ícone flat e interação com a paleta da marca. */
 .instagram-content .instagram-button .instagram-flat-icon { fill:none; stroke:currentColor; stroke-width:2; }
 .instagram-content .instagram-button .instagram-flat-icon__dot { fill:currentColor; stroke:none; }
@@ -190,3 +201,9 @@ section.guidance#conteudo .article-card { color:var(--color-text); border-color:
 .testimonials .section-heading .eyebrow { justify-content: center; }
 .testimonials .section-description { margin-inline: auto; text-align: center; }
 .testimonials .testimonial-note { align-items: center; justify-content: center; text-align: center; }
+
+/* Center the Instagram intro and CTA to match the other section headings. */
+.instagram-content .instagram-grid > div:first-child { text-align: center; }
+.instagram-content .section-heading { margin-inline: auto; text-align: center; }
+.instagram-content .section-heading .eyebrow { justify-content: center; }
+.instagram-content .section-description { margin-inline: auto; }

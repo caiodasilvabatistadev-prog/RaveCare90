@@ -1,4 +1,4 @@
-import { AtSign, Mail, MessageCircle } from 'lucide-react'
+import { AtSign, Mail } from 'lucide-react'
 import { features } from '../config/features'
 import { contact } from '../config/contact'
 
@@ -31,9 +31,6 @@ export function Footer() {
         </div>
         <div>
           <p className="footer-label">contato</p>
-          <a href="#bianca">
-            <MessageCircle size={16} aria-hidden="true" /> Contato diário
-          </a>
           <a href={`mailto:${contact.email}`}>
             <Mail size={16} aria-hidden="true" /> {contact.email}
           </a>
