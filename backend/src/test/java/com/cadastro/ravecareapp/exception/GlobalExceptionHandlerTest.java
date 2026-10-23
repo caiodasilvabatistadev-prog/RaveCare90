@@ -55,13 +55,20 @@ class GlobalExceptionHandlerTest {
     @Test
     void shouldReturnInternalErrorWithoutExposingDetails() {
         when(request.getRequestURI()).thenReturn("/api/v1/users");
+        when(request.getMethod()).thenReturn("POST");
+
+        ResponseEntity<ApiErrorResponse> response = handler.handleUnexpected(
+                new IllegalStateException("sensitive provider response"),
+                request
+        );
 
         assertResponse(
-                handler.handleUnexpected(request),
+                response,
                 HttpStatus.INTERNAL_SERVER_ERROR,
                 "Ocorreu um erro interno.",
                 "/api/v1/users"
         );
+        assertNotNull(response.getHeaders().getFirst("X-Error-Id"));
     }
 
     @Test
