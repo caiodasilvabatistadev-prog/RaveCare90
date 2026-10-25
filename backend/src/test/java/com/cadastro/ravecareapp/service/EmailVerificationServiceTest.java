@@ -10,8 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -32,7 +30,7 @@ class EmailVerificationServiceTest {
     private EmailVerificationTokenRepository tokenRepository;
 
     @Mock
-    private JavaMailSender mailSender;
+    private VerificationEmailSender emailSender;
 
     private EmailVerificationService service;
 
@@ -40,7 +38,7 @@ class EmailVerificationServiceTest {
     void setUp() {
         service = new EmailVerificationService(
                 tokenRepository,
-                mailSender,
+                emailSender,
                 "http://localhost:5173"
         );
     }
@@ -87,7 +85,11 @@ class EmailVerificationServiceTest {
         service.sendFor(user);
 
         verify(tokenRepository).save(org.mockito.ArgumentMatchers.any(EmailVerificationToken.class));
-        verify(mailSender).send(org.mockito.ArgumentMatchers.any(SimpleMailMessage.class));
+        verify(emailSender).send(
+                org.mockito.ArgumentMatchers.eq("vinicius@example.com"),
+                org.mockito.ArgumentMatchers.eq("Confirme seu e-mail - RaveCare"),
+                org.mockito.ArgumentMatchers.contains("/confirmar-email?token=")
+        );
     }
 
     private String hash(String value) throws Exception {
