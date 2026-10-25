@@ -14,6 +14,7 @@ export function Hero() {
         />
         <div className="hero-scrim" />
       </div>
+      <div className="hero-blur-zone" aria-hidden="true" />
       <div className="hero-glow" aria-hidden="true" />
       <div className="hero-beam" aria-hidden="true" />
       <div className="container hero-grid">

@@ -56,7 +56,6 @@ img { max-width: 100%; }
 .hero .container,
 .professional .container,
 .pain-points .container,
-.method .container,
 .journey .container,
 .finale .container {
   margin-left: var(--page-gutter);
@@ -179,6 +178,17 @@ img { max-width: 100%; }
   position: absolute;
   inset: 0;
   z-index: -3;
+}
+.hero-blur-zone {
+  position: absolute;
+  z-index: -2;
+  inset: 0 auto 0 -3%;
+  width: 60%;
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  -webkit-mask-image: radial-gradient(ellipse 72% 72% at 18% 50%, #000 0%, #000 48%, transparent 100%);
+  mask-image: radial-gradient(ellipse 72% 72% at 18% 50%, #000 0%, #000 48%, transparent 100%);
 }
 .hero-photo {
   width: 100%;
@@ -649,6 +659,8 @@ body.landing-scroll-effects main > section.is-scroll-visible {
   grid-template-columns: 1.05fr 0.95fr;
   gap: 36px;
   align-items: center;
+  width: min(100%, 1160px);
+  margin-inline: auto;
   padding: 36px 32px;
   border-radius: 32px;
   background:
@@ -1150,47 +1162,40 @@ body.landing-scroll-effects .modules-grid > .module-card.is-visible {
 .faq .section-description { margin-inline: auto; }
 .faq-list {
   display: grid;
-  gap: 0;
+  gap: 16px;
   width: min(100%, 820px);
   margin-inline: auto;
 }
 .faq-item {
-  border-bottom: 1px solid var(--color-line);
+  padding: 20px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 20px;
+  box-shadow: 0 14px 28px rgba(26, 13, 61, 0.16);
 }
 .faq-trigger {
-  position: relative;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  padding: 22px 0;
-  border: 0;
-  background: transparent;
+  margin: 0;
   text-align: center;
-  cursor: pointer;
+  cursor: default;
   color: var(--color-text);
   font: 700 1.15rem / 1.3 var(--font-display);
   letter-spacing: -0.02em;
 }
-.faq-trigger svg {
-  position: absolute;
-  right: 0;
-  flex: 0 0 auto;
-  color: var(--color-primary);
-  transition: transform 0.25s ease;
-}
-.faq-item.is-open .faq-trigger svg { transform: rotate(180deg); }
 .faq-answer {
-  margin: 0 0 22px;
+  margin: 12px auto 0;
   max-width: 640px;
-  margin-inline: auto;
   color: var(--color-text-muted);
   font-size: 1.02rem;
   line-height: 1.65;
   text-align: center;
-  animation: rise-in 0.35s ease both;
 }
+body.landing-scroll-effects .faq-item {
+  opacity: 0;
+  transform: translateX(64px);
+  transition: opacity 600ms ease, transform 650ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+body.landing-scroll-effects .faq-item--left { transform: translateX(-64px); }
+body.landing-scroll-effects .faq-item.is-visible { opacity: 1; transform: translateX(0); }
 
 /* Finale â Rave Care brand close with rave photo */
 .finale {
@@ -1495,3 +1500,12 @@ body.landing-scroll-effects .modules-grid > .module-card.is-visible {
   .footer-bottom { flex-direction: column; gap: 12px; }
   .statement-list li { font-size: 1.08rem; }
 }
+
+/* Center the method content while keeping the numbered list easy to scan. */
+.method .phase-card { text-align: center; }
+.method .modules-copy { text-align: center; }
+.method .modules-badge,
+.method .modules-lead { margin-inline: auto; }
+.method .modules-even ol { width: fit-content; margin-inline: auto; text-align: left; }
+.method .module-card { text-align: center; }
+.method .module-card__n { display: flex; justify-content: center; width: 100%; }

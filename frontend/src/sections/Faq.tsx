@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { useEffect, useRef } from 'react'
 import { SectionHeading } from '../components/SectionHeading'
 
 const faqs = [
@@ -30,7 +29,34 @@ const faqs = [
 ]
 
 export function Faq() {
-  const [openIndex, setOpenIndex] = useState(0)
+  const faqListRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const list = faqListRef.current
+    if (!list) return
+
+    const items = Array.from(list.querySelectorAll<HTMLElement>('.faq-item'))
+    const showAll = () => items.forEach((item) => item.classList.add('is-visible'))
+
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+      showAll()
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return
+          entry.target.classList.add('is-visible')
+          observer.unobserve(entry.target)
+        })
+      },
+      { rootMargin: '0px 0px -12% 0px', threshold: 0.12 },
+    )
+
+    items.forEach((item) => observer.observe(item))
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <section className="section faq" id="conteudo" aria-labelledby="faq-title">
@@ -41,22 +67,13 @@ export function Faq() {
           title="O que te impede de cuidar disso hoje?"
           description="Respostas diretas, sem enrolação e sem pressão. Prepare-se pra esclarecer o que talvez você nem soubesse que precisava perguntar."
         />
-        <div className="faq-list">
+        <div className="faq-list" ref={faqListRef}>
           {faqs.map((item, index) => {
-            const isOpen = openIndex === index
             return (
-              <div className={`faq-item ${isOpen ? 'is-open' : ''}`} key={item.q}>
-                <button
-                  type="button"
-                  className="faq-trigger"
-                  aria-expanded={isOpen}
-                  onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                >
-                  <span>{item.q}</span>
-                  <ChevronDown size={20} aria-hidden="true" />
-                </button>
-                {isOpen && <p className="faq-answer">{item.a}</p>}
-              </div>
+              <article className={`faq-item faq-item--${index % 2 === 0 ? 'right' : 'left'}`} key={item.q}>
+                <h3 className="faq-trigger">{item.q}</h3>
+                <p className="faq-answer">{item.a}</p>
+              </article>
             )
           })}
         </div>
