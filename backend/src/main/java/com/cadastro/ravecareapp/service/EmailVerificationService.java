@@ -5,8 +5,6 @@ import com.cadastro.ravecareapp.entity.User;
 import com.cadastro.ravecareapp.exception.BusinessException;
 import com.cadastro.ravecareapp.repository.EmailVerificationTokenRepository;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,16 +21,16 @@ public class EmailVerificationService {
     private static final SecureRandom RANDOM = new SecureRandom();
 
     private final EmailVerificationTokenRepository tokens;
-    private final JavaMailSender mailSender;
+    private final VerificationEmailSender emailSender;
     private final String publicUrl;
 
     public EmailVerificationService(
             EmailVerificationTokenRepository tokens,
-            JavaMailSender mailSender,
+            VerificationEmailSender emailSender,
             @Value("${app.public-url}") String publicUrl
     ) {
         this.tokens = tokens;
-        this.mailSender = mailSender;
+        this.emailSender = emailSender;
         this.publicUrl = publicUrl;
     }
 
@@ -45,12 +43,11 @@ public class EmailVerificationService {
                 LocalDateTime.now().plusHours(24)
         ));
 
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(user.getEmail());
-        message.setSubject("Confirme seu e-mail - RaveCare");
-        message.setText("Confirme sua conta: " + publicUrl
-                + "/confirmar-email?token=" + rawToken);
-        mailSender.send(message);
+        emailSender.send(
+                user.getEmail(),
+                "Confirme seu e-mail - RaveCare",
+                "Confirme sua conta: " + publicUrl + "/confirmar-email?token=" + rawToken
+        );
     }
 
     @Transactional

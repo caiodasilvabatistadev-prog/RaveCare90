@@ -68,7 +68,24 @@ section.about#como-funciona .about-art { color:#fff; background:rgba(255,255,255
 .instagram-content .instagram-reels .reel-card--video-link small { display:flex; align-items:center; gap:5px; font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.06em; opacity:.86; }
 .instagram-content .instagram-reels .reel-card--native { min-height:0; padding:0; overflow:hidden; color:var(--color-text); background:#fff; }
 .instagram-content .instagram-reels .reel-card--native:hover { transform:none; }
-.instagram-content .instagram-reels .reel-card--native video { width:100%; aspect-ratio:9/16; display:block; object-fit:cover; background:#21163b; }
+.instagram-content .instagram-reels .reel-card--native video { width:100%; height:100%; display:block; object-fit:cover; background:#21163b; }
+.instagram-content .native-video-frame { position:relative; aspect-ratio:9/16; overflow:hidden; background:#21163b; }
+.instagram-content .native-video-thumbnail { position:absolute; inset:0; z-index:1; display:block; width:100%; height:100%; overflow:hidden; padding:0; border:0; color:#fff; background:#21163b; text-align:left; cursor:pointer; font:inherit; }
+.instagram-content .native-video-thumbnail>img:first-child,
+.instagram-content .native-video-thumbnail__shade { position:absolute; inset:0; width:100%; height:100%; }
+.instagram-content .native-video-thumbnail>img:first-child { object-fit:cover; opacity:.28; filter:blur(3px) saturate(.8); transform:scale(1.05); }
+.instagram-content .native-video-thumbnail__shade { z-index:1; background:radial-gradient(ellipse at 50% 62%,rgba(144,55,218,.22),transparent 54%),linear-gradient(155deg,rgba(37,19,77,.97) 0%,rgba(74,34,133,.9) 48%,rgba(31,25,79,.88) 100%); }
+.instagram-content .native-video-thumbnail__doctor { position:absolute; right:-5%; bottom:-2%; z-index:2; width:110%; height:72%; object-fit:contain; object-position:center bottom; filter:drop-shadow(0 10px 18px rgba(17,8,40,.28)); transition:transform .45s ease; }
+.instagram-content .native-video-thumbnail:hover .native-video-thumbnail__doctor { transform:scale(1.035); }
+.instagram-content .native-video-thumbnail:focus-visible { outline:3px solid #9cecf3; outline-offset:-5px; }
+.instagram-content .native-video-thumbnail__brand { position:absolute; top:17px; left:17px; z-index:3; padding:7px 11px; border:1px solid rgba(255,255,255,.4); border-radius:999px; background:rgba(38,21,78,.52); color:#fff; backdrop-filter:blur(10px); font-size:.65rem; font-weight:800; letter-spacing:.045em; }
+.instagram-content .native-video-thumbnail__brand span { color:#cda2ff; padding:0 2px; }
+.instagram-content .native-video-thumbnail__copy { position:absolute; top:68px; right:18px; left:18px; z-index:3; display:grid; justify-items:center; gap:9px; text-align:center; }
+.instagram-content .native-video-thumbnail__copy>span { max-width:100%; padding:6px 10px; border:1px solid rgba(218,185,255,.62); border-radius:999px; background:rgba(115,39,179,.72); color:#f4eaff; font-size:.56rem; font-weight:800; letter-spacing:.075em; line-height:1.25; text-transform:uppercase; text-wrap:balance; }
+.instagram-content .native-video-thumbnail__copy strong { max-width:14ch; color:#fff; font:800 clamp(1.25rem,2vw,1.6rem)/1.06 var(--font-body); letter-spacing:-.035em; text-wrap:balance; text-shadow:0 2px 14px rgba(14,6,35,.46); }
+.instagram-content .native-video-thumbnail__play { position:absolute; top:72%; left:50%; z-index:3; display:grid; width:68px; height:68px; place-items:center; border:1px solid rgba(255,255,255,.82); border-radius:50%; background:linear-gradient(135deg,rgba(112,38,185,.88),rgba(164,61,225,.78)); box-shadow:0 12px 30px rgba(25,8,52,.32); transform:translate(-50%,-50%); transition:transform .2s ease,box-shadow .2s ease; }
+.instagram-content .native-video-thumbnail:hover .native-video-thumbnail__play { transform:translate(-50%,-50%) scale(1.07); box-shadow:0 16px 36px rgba(25,8,52,.42); }
+.instagram-content .native-video-thumbnail__hint { position:absolute; right:20px; bottom:20px; left:20px; z-index:3; color:rgba(255,255,255,.94); font-size:.73rem; font-weight:700; letter-spacing:.04em; text-align:center; text-shadow:0 1px 8px rgba(20,8,44,.7); }
 .instagram-content .native-video-caption { display:flex; flex-direction:column; gap:5px; padding:16px 18px 19px; }
 .instagram-content .native-video-caption span { color:var(--color-primary); }
 .instagram-content .native-video-caption strong { color:var(--color-text); font:700 1rem/1.2 'Manrope'; }
@@ -79,6 +96,23 @@ section.guidance#conteudo .section-heading h2,
 section.guidance#conteudo .section-heading .section-description { color:#fff; }
 section.guidance#conteudo .eyebrow { color:#9cecf3; }
 section.guidance#conteudo .article-card { color:var(--color-text); border-color:rgba(255,255,255,.22); background:rgba(255,255,255,.96); box-shadow:0 16px 34px rgba(35,18,79,.18); }
+
+/* FAQ: use the same Rave Care gradient and high-contrast type as the other feature sections. */
+section.faq#conteudo { color:#fff; background:linear-gradient(135deg,#352078 0%,#7026b9 46%,#456ce2 100%); }
+section.faq#conteudo .section-heading h2,
+section.faq#conteudo .section-heading .section-description { color:#fff; }
+section.faq#conteudo .section-heading .eyebrow { color:#9cecf3; }
+section.faq#conteudo .faq-item { border-color:rgba(255,255,255,.28); }
+section.faq#conteudo .faq-trigger { color:#fff; }
+section.faq#conteudo .faq-answer { color:rgba(255,255,255,.88); }
+section.faq#conteudo .faq-item--right {
+  border-color:rgba(156,236,243,.42);
+  background:linear-gradient(135deg,rgba(164,61,225,.52),rgba(69,108,226,.54));
+}
+section.faq#conteudo .faq-item--left {
+  border-color:rgba(255,255,255,.3);
+  background:linear-gradient(135deg,rgba(53,32,120,.78),rgba(23,200,222,.22));
+}
 
 /* Instagram: ícone flat e interação com a paleta da marca. */
 .instagram-content .instagram-button .instagram-flat-icon { fill:none; stroke:currentColor; stroke-width:2; }
@@ -91,6 +125,8 @@ section.guidance#conteudo .article-card { color:var(--color-text); border-color:
 
 /* Retrato profissional: foto de jaleco (fora da hero), cabelo natural, alinhado à esquerda. */
 .professional .professional-portrait.professional-portrait--photo {
+  position:relative;
+  align-self:stretch;
   min-height:420px;
   margin:0;
   padding:0;
@@ -100,11 +136,12 @@ section.guidance#conteudo .article-card { color:var(--color-text); border-color:
   overflow:hidden;
 }
 .professional .professional-profile-image {
-  position:relative;
+  position:absolute;
+  inset:0;
   z-index:1;
   width:100%;
   height:100%;
-  min-height:420px;
+  min-height:0;
   display:block;
   object-fit:cover;
   object-position:center 18%;
@@ -132,17 +169,59 @@ section.guidance#conteudo .article-card { color:var(--color-text); border-color:
 .professional-orbit--one,
 .professional-orbit--two { display: none !important; }
 .hero .hero-media,
-.hero .hero-photo { display: block; border-radius: 0; clip-path: none; mask: none; }
+.hero .hero-photo { display: block; border-radius: 24px; clip-path: none; mask: none; }
+.hero .hero-media { overflow: hidden; }
 
 
 /* Framed Professional photo: full portrait in context, not floating cutout */
 .professional .professional-portrait.professional-portrait--framed {
+  align-self: flex-start;
+  aspect-ratio: 2 / 3;
   background: #5a2d96;
+  height: auto;
+  margin-top: 133px;
+  max-width: 385px;
+  min-height: 0;
   overflow: hidden;
+  width: min(385px, calc(100vw - 54px));
 }
 .professional .professional-portrait.professional-portrait--framed .professional-profile-image {
-  object-fit: cover;
-  object-position: center 16%;
+  min-height: 0;
+  object-fit: contain;
+  object-position: center;
   transform: none;
   filter: none;
+}
+@media (max-width: 800px) {
+  .professional .professional-portrait.professional-portrait--framed {
+    margin-top: 0;
+    max-width: 360px;
+    width: 100%;
+  }
+}
+
+/* Keep testimonial copy aligned as one centered section. */
+.testimonials .section-heading {
+  margin-inline: auto;
+  text-align: center;
+}
+.testimonials .section-heading .eyebrow { justify-content: center; }
+.testimonials .section-description { margin-inline: auto; text-align: center; }
+.testimonials .testimonial-note { align-items: center; justify-content: center; text-align: center; }
+
+/* Center the Instagram intro and CTA to match the other section headings. */
+.instagram-content .instagram-grid > div:first-child { text-align: center; }
+.instagram-content .section-heading { margin-inline: auto; text-align: center; }
+.instagram-content .section-heading .eyebrow { justify-content: center; }
+.instagram-content .section-description { margin-inline: auto; }
+
+/* Center the professional profile as a balanced two-column section. */
+.professional .container.professional-grid {
+  margin-inline: auto;
+  width: min(var(--page-max), calc(100% - (var(--page-gutter) * 2)));
+}
+.professional-grid { align-items: center; justify-content: center; }
+.professional .professional-portrait.professional-portrait--framed {
+  align-self: center;
+  margin-top: 0;
 }

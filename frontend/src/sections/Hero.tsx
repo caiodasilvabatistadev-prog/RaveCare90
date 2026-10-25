@@ -1,4 +1,4 @@
-import { ArrowDownRight, ArrowRight, Leaf, MessageCircle } from 'lucide-react'
+import { ArrowDownRight, ArrowRight, Dumbbell, HeartHandshake, ShieldCheck } from 'lucide-react'
 import { biancaRavePrimary } from '../assets/bianca'
 import { Button } from '../components/Button'
 import { whatsappHref } from '../config/contact'
@@ -14,28 +14,32 @@ export function Hero() {
         />
         <div className="hero-scrim" />
       </div>
+      <div className="hero-blur-zone" aria-hidden="true" />
       <div className="hero-glow" aria-hidden="true" />
       <div className="hero-beam" aria-hidden="true" />
       <div className="container hero-grid">
         <div className="hero-copy">
           <p className="hero-brand hero-reveal">Rave Care</p>
           <h1 id="hero-title" className="hero-reveal hero-reveal--title">
-            Chega de cuidar da saúde só{' '}
-            <em className="hero-depois">depois</em> que o corpo grita.
+            Você não precisa esconder do médico a vida que você realmente leva.
           </h1>
           <p className="hero-description hero-reveal hero-reveal--body">
-            Acompanhamento médico contínuo com a Dra. Bianca Rohsner: cannabis medicinal,
-            redução de danos e aftercare pra quem vive o rolê sem abrir mão da saúde.
-            Antes, durante e depois, com presença real entre uma consulta e outra.
+            Acompanhamento médico pra quem vive festivais, usa substâncias ou simplesmente quer
+            cuidar melhor da saúde com uma médica que entende esse contexto — sem julgamento e
+            sem romantização.
           </p>
           <ul className="hero-signals hero-reveal hero-reveal--signals" aria-label="Sinais do Rave Care">
             <li>
-              <Leaf size={16} aria-hidden="true" />
-              cannabis medicinal
+              <ShieldCheck size={16} aria-hidden="true" />
+              redução de danos
             </li>
             <li>
-              <MessageCircle size={16} aria-hidden="true" />
-              contato diário
+              <Dumbbell size={16} aria-hidden="true" />
+              condicionamento físico
+            </li>
+            <li>
+              <HeartHandshake size={16} aria-hidden="true" />
+              cuidado sem julgamento
             </li>
           </ul>
           <div className="hero-actions hero-reveal hero-reveal--cta">

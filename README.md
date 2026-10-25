@@ -39,19 +39,20 @@ Nunca ative essa opção em um servidor acessível diretamente pela internet.
 
 O workflow de CI repete essas validações e executa o E2E contra os três serviços em contêineres.
 
-## Railway
+## Staging
 
-No plano com limite reduzido, use dois serviços no mesmo projeto:
+O staging atual separa o frontend do backend:
 
-- PostgreSQL gerenciado, sem domínio público.
-- Serviço web conectado à raiz deste repositório. O `Dockerfile` da raiz compila o React e o inclui no Spring Boot.
+- **Frontend:** Cloudflare Pages, projeto `ravecare-staging`, publicado em `https://ravecare-staging.pages.dev` a partir da branch `staging`.
+- **Backend:** serviço `scintillating-peace` no ambiente `staging` do Railway, publicado em `https://scintillating-peace-staging.up.railway.app`.
+- **Banco:** PostgreSQL gerenciado no Railway, privado e no mesmo ambiente de staging do backend.
 
-Variáveis do serviço web:
+No Cloudflare Pages, use `frontend/` como diretório raiz, `npm run build` como comando e `dist` como saída. Defina `VITE_API_URL` como a URL-base pública do backend Railway, sem `/api/v1`. Esse valor é incorporado ao JavaScript durante o build; é público e não deve conter segredos.
 
-- `DB_URL=jdbc:postgresql://${{Postgres.PGHOST}}:${{Postgres.PGPORT}}/${{Postgres.PGDATABASE}}`
-- `DB_USERNAME=${{Postgres.PGUSER}}`
-- `DB_PASSWORD=${{Postgres.PGPASSWORD}}`
+No serviço backend do Railway, configure `APP_PUBLIC_URL=https://ravecare-staging.pages.dev` e `APP_CORS_ALLOWED_ORIGINS=https://ravecare-staging.pages.dev`. O CORS aceita origens separadas por vírgulas quando necessário. Configure também as referências privadas do PostgreSQL e os segredos `JWT_SECRET` e `MAIL_PASSWORD`, além das demais variáveis SMTP. Não compartilhe nem versione valores secretos.
 
-Somente o serviço web recebe domínio público. O banco permanece na rede privada do projeto.
+O Railway deve manter o PostgreSQL sem domínio público. O endpoint de saúde do backend é `/actuator/health`.
 
-Além das variáveis de banco, configure no serviço web: `JWT_SECRET`, `APP_PUBLIC_URL`, `APP_CORS_ALLOWED_ORIGINS`, `MAIL_HOST`, `MAIL_PORT`, `MAIL_USERNAME`, `MAIL_PASSWORD`, `MAIL_SMTP_AUTH` e `MAIL_SMTP_STARTTLS_ENABLE`. Nunca copie valores reais para o Git.
+O workflow do GitHub Actions valida o código e roda o E2E local em contêineres; ele **não publica** no Cloudflare ou Railway. A publicação do staging é responsabilidade das conexões de deploy configuradas nos provedores. Consulte [docs/staging.md](docs/staging.md) para a configuração, o fluxo e a checklist de validação.
+
+O `Dockerfile` da raiz é uma alternativa de deploy combinado (frontend dentro do Spring Boot), não a arquitetura usada pelo staging atual. O Docker Compose continua sendo o ambiente local/integrado de testes. Nunca use dados ou segredos de produção nos testes.

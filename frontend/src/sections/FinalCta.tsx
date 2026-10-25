@@ -2,7 +2,6 @@ import { ArrowRight } from 'lucide-react'
 import { biancaRavePrimary } from '../assets/bianca'
 import { Button } from '../components/Button'
 import { whatsappHref } from '../config/contact'
-import wordmark from '../assets/ravecareapp-wordmark-transparent.png'
 
 export function FinalCta() {
   return (
@@ -17,11 +16,6 @@ export function FinalCta() {
       </div>
       <div className="container finale-inner">
         <div className="finale-copy">
-          <img
-            className="finale-wordmark"
-            src={wordmark}
-            alt="Rave Care"
-          />
           <p className="eyebrow eyebrow--light">depois da noite · entre as consultas</p>
           <h2 id="cta-title">Rave Care cuida de você quando a festa acaba.</h2>
           <p className="finale-promise">

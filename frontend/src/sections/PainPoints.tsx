@@ -1,19 +1,20 @@
 import { CheckCircle2, Headphones, Leaf, Moon, X } from 'lucide-react'
 
 const pains = [
-  'Sair da consulta e não saber o que observar no dia a dia',
-  'Perder o fio do sono, dos sintomas e da rotina entre um retorno e outro',
-  'Carregar tabu em volta de cannabis medicinal e redução de danos',
-  'Buscar informação em qualquer lugar e sair mais confusa do que entrou',
-  'Sentir que o cuidado some quando a noite (e a vida) acontece de verdade',
+  'Sair da consulta sentindo que não conseguiu contar tudo que realmente precisava',
+  'Ter dúvida sobre interação entre medicamentos e substâncias e acabar procurando resposta solta na internet',
+  'Perceber que seu uso de maconha, álcool ou outras substâncias aumentou e não saber como reduzir',
+  'Passar dias com sono, humor e rotina bagunçados depois dos rolês',
+  'Sentir que sua saúde e seu condicionamento não acompanham a vida que você quer viver',
+  'Só procurar ajuda quando alguma coisa já deu errado',
 ]
 
 const wins = [
-  'Organizar histórico, objetivos e o que realmente importa pro tratamento',
-  'Registrar sono, sintomas e qualidade de vida sem pressão de performance',
-  'Entender cannabis medicinal com evidência, sem terrorismo nem romantização',
-  'Praticar redução de danos com escuta real e zero julgamento',
-  'Manter o fio do cuidado antes e depois do rolê, com equipe no app',
+  'Entender melhor seu padrão de uso e seus riscos',
+  'Organizar sono, humor e rotina',
+  'Tirar dúvidas sobre medicamentos e substâncias com acompanhamento médico',
+  'Melhorar condicionamento e recuperação',
+  'Deixar de esperar alguma coisa dar errado para começar a agir',
 ]
 
 export function PainPoints() {
@@ -22,22 +23,18 @@ export function PainPoints() {
       <div className="container pain-layout">
         <div className="myth-block">
           <h2 id="pain-title" className="myth-title">
-            Você não vai ser tratada como protocolo.
-            <br />
-            Você não vai ficar sozinha entre uma consulta e outra.
-            <br />
-            E não vai mais se sabotar achando que “depois da festa eu resolvo”.
+            Você não precisa esperar alguma coisa dar errado pra começar a se cuidar.
           </h2>
           <aside className="myth-callout" aria-label="Promessa Rave Care">
-            Cuidado com presença real: cannabis medicinal, redução de danos e aftercare
-            com médica que entende a sua vida, antes e depois do rolê.
+            Entender como você vive, seu padrão de uso de substâncias, seu sono, seu humor e o que
+            você quer melhorar na sua saúde.
           </aside>
         </div>
 
         <ul className="audience-chips" aria-label="Pra quem é o Rave Care">
-          <li><Leaf size={15} aria-hidden="true" /> cannabis medicinal com evidência</li>
-          <li><Headphones size={15} aria-hidden="true" /> energia de festival, escuta de consultório</li>
-          <li><Moon size={15} aria-hidden="true" /> aftercare quando a festa acaba</li>
+          <li><Leaf size={15} aria-hidden="true" /> redução de danos baseada em evidência</li>
+          <li><Headphones size={15} aria-hidden="true" /> sono, humor e rotina</li>
+          <li><Moon size={15} aria-hidden="true" /> condicionamento físico e recuperação</li>
         </ul>
 
         <div className="pain-solution">
@@ -45,14 +42,14 @@ export function PainPoints() {
             <div className="qa-box">
               <p className="qa-box__label">Pergunta</p>
               <p className="qa-box__question">
-                Bianca, depois do rolê eu fico dias mal e não sei por onde começar.
+                Bianca, eu uso substâncias e tenho várias dúvidas, mas nunca sei com quem conversar sem ser julgada.
               </p>
               <p className="qa-box__label qa-box__label--answer">Resposta</p>
               <p className="qa-box__answer">
-                Você não precisa resolver sozinha. A gente organiza o cuidado antes e depois do rolê.
+                No RAVECARE, você pode falar sobre uso de substâncias, medicamentos, sono, humor, rotina e saúde com acompanhamento médico e sem precisar esconder parte da sua vida.
               </p>
             </div>
-            <h3>Se você não aguenta mais…</h3>
+            <h3>Se você cansou de…</h3>
             <ul>
               {pains.map((pain) => (
                 <li key={pain}>
@@ -67,14 +64,14 @@ export function PainPoints() {
             <div className="qa-box qa-box--win">
               <p className="qa-box__label">Pergunta</p>
               <p className="qa-box__question">
-                Dá pra ter acompanhamento que entende minha rotina e minha saúde?
+                Cannabis medicinal também pode ser avaliada no RaveCare?
               </p>
               <p className="qa-box__label qa-box__label--answer">Resposta</p>
               <p className="qa-box__answer">
-                Sim. Contato diário com a médica, escuta de verdade e cuidado que encaixa na sua vida.
+                Pode. A indicação é avaliada individualmente, considerando seu histórico, sintomas, objetivos e evidências disponíveis.
               </p>
             </div>
-            <h3>Com o Rave Care 90, você vai conseguir:</h3>
+            <h3>O que muda quando você para de cuidar da saúde no improviso?</h3>
             <ul>
               {wins.map((item) => (
                 <li key={item}>

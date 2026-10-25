@@ -1,5 +1,4 @@
-import { AtSign, Mail, MessageCircle } from 'lucide-react'
-import { BrandLogo } from '../components/BrandLogo'
+import { AtSign, Mail } from 'lucide-react'
 import { features } from '../config/features'
 import { contact } from '../config/contact'
 
@@ -8,7 +7,9 @@ export function Footer() {
     <footer className="site-footer">
       <div className="container footer-grid">
         <div>
-          <BrandLogo />
+          <div className="footer-brand">
+            <span className="footer-brand-name">Rave Care</span>
+          </div>
           <p>
             Cannabis medicinal, redução de danos e acompanhamento contínuo com a Dra. Bianca Rohsner,
             antes e depois do rolê.
@@ -30,9 +31,6 @@ export function Footer() {
         </div>
         <div>
           <p className="footer-label">contato</p>
-          <a href="#comece">
-            <MessageCircle size={16} aria-hidden="true" /> Contato diário
-          </a>
           <a href={`mailto:${contact.email}`}>
             <Mail size={16} aria-hidden="true" /> {contact.email}
           </a>
